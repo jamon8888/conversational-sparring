@@ -1,0 +1,67 @@
+{
+  "name": "conversational-sparring-marketplace",
+  "owner": {
+    "name": "Hacienda",
+    "email": "maintainer@example.com"
+  },
+  "metadata": {
+    "description": "Official marketplace for Conversational Sparring and Domain Plugins",
+    "version": "1.1.0"
+  },
+  "plugins": [
+    {
+      "name": "conversational-sparring-csuite",
+      "description": "Master plugin with all agents and skills",
+      "version": "1.1.0",
+      "source": ".",
+      "category": "productivity",
+      "tags": ["sparring", "coaching", "strategy", "all-in-one"],
+      "author": { "name": "Hacienda" }
+    },
+    {
+      "name": "marketing-sparring",
+      "description": "Specialized sparring for Marketing professionals",
+      "version": "1.0.0",
+      "source": "./dist/plugins/marketing-sparring",
+      "category": "marketing",
+      "tags": ["marketing", "copywriting", "seo"],
+      "author": { "name": "Hacienda" }
+    },
+    {
+      "name": "engineering-sparring",
+      "description": "Specialized sparring for Engineers",
+      "version": "1.0.0",
+      "source": "./dist/plugins/engineering-sparring",
+      "category": "development",
+      "tags": ["engineering", "code-review", "architecture"],
+      "author": { "name": "Hacienda" }
+    },
+    {
+      "name": "c-level-sparring",
+      "description": "Strategic advisor for C-Suite executives",
+      "version": "1.0.0",
+      "source": "./dist/plugins/c-level-sparring",
+      "category": "business",
+      "tags": ["c-suite", "strategy", "executive"],
+      "author": { "name": "Hacienda" }
+    },
+    {
+      "name": "product-sparring",
+      "description": "Sparring partner for Product Managers",
+      "version": "1.0.0",
+      "source": "./dist/plugins/product-sparring",
+      "category": "product",
+      "tags": ["product", "management", "strategy"],
+      "author": { "name": "Hacienda" }
+    },
+    {
+      "name": "solopreneur-sparring",
+      "description": "All-in-one partner for Solopreneurs",
+      "version": "1.0.0",
+      "source": "./dist/plugins/solopreneur-sparring",
+      "category": "business",
+      "tags": ["solopreneur", "business", "startup"],
+      "author": { "name": "Hacienda" }
+    }
+  ]
+}

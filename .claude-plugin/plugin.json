@@ -11,6 +11,10 @@
     "sparring",
     "productivity"
   ],
+  "homepage": "https://github.com/jamon8888/conversational-sparring",
+  "repository": "https://github.com/jamon8888/conversational-sparring",
+  "bugs": "https://github.com/jamon8888/conversational-sparring/issues",
+  "category": "productivity",
   "data_dir": "~/.claude/coach",
   "database": "~/.claude/coach/coach.db"
 }
