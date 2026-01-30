@@ -1,0 +1,80 @@
+name: Validate Plugin
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".claude-plugin/**"
+      - "skills/**"
+      - "agents/**"
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+
+      - name: Validate Plugin Manifest
+        run: |
+          if [ ! -f ".claude-plugin/plugin.json" ]; then
+            echo "Error: .claude-plugin/plugin.json not found"
+            exit 1
+          fi
+          # Basic JSON validation
+          python -c "import json; json.load(open('.claude-plugin/plugin.json'))"
+
+      - name: Validate Skills Frontmatter
+        run: |
+          # Script to check SKILL.md frontmatter matches plugin spec
+          python -c "
+          import os
+          import yaml
+          import re
+          import sys
+
+          failed = False
+          for root, dirs, files in os.walk('skills'):
+              for file in files:
+                  if file == 'SKILL.md':
+                      path = os.path.join(root, file)
+                      try:
+                          with open(path, 'r', encoding='utf-8') as f:
+                              content = f.read()
+                          
+                          # Extract frontmatter
+                          match = re.match(r'^---\s*\n(.*?)\n---\s*\n', content, re.DOTALL)
+                          if not match:
+                              print(f'❌ Missing frontmatter: {path}')
+                              failed = True
+                              continue
+                              
+                          data = yaml.safe_load(match.group(1))
+                          
+                          if 'name' not in data:
+                              print(f'❌ Missing name in frontmatter: {path}')
+                              failed = True
+                          if 'description' not in data:
+                              print(f'❌ Missing description in frontmatter: {path}')
+                              failed = True
+                              
+                      except Exception as e:
+                          print(f'❌ Error parsing {path}: {e}')
+                          failed = True
+
+          if failed:
+              sys.exit(1)
+          else:
+              print('✅ All skills valid')
+          "
