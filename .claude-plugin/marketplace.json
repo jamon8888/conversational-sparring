@@ -62,6 +62,15 @@
       "category": "business",
       "tags": ["solopreneur", "business", "startup"],
       "author": { "name": "Hacienda" }
+    },
+    {
+      "name": "strategic-research-sparring",
+      "description": "Deep research with Exa.ai and strategic playbooks",
+      "version": "1.0.0",
+      "source": "./dist/plugins/strategic-research-sparring",
+      "category": "research",
+      "tags": ["research", "strategy", "exa", "analysis"],
+      "author": { "name": "Hacienda" }
     }
   ]
 }

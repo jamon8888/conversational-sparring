@@ -1,0 +1,15 @@
+{
+  "name": "sales-sparring",
+  "version": "1.0.0",
+  "description": "Sparring for pipeline, closing, and revenue generation",
+  "commands": [
+    {
+      "name": "sparring",
+      "description": "Start sparring session or manage goals",
+      "usage": "/sparring [command]"
+    }
+  ],
+  "permissions": [
+    "filesystem"
+  ]
+}

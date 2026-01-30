@@ -1,0 +1,205 @@
+# Engineering Domain - Non-Software Engineering Sparring
+# Optimized for mechanical, electrical, civil, and other engineering disciplines
+
+domain:
+  id: engineering
+  name: Engineering
+  description: Sparring for CTOs, VPs of Engineering, and Tech Leads
+
+categories:
+  - id: design
+    name: Design
+    keywords:
+      - design
+      - cad
+      - drawing
+      - schematic
+      - specification
+      - blueprint
+      - model
+      - simulation
+
+  - id: analysis
+    name: Analysis
+    keywords:
+      - analysis
+      - calculation
+      - simulation
+      - fea
+      - cfd
+      - stress
+      - thermal
+      - structural
+
+  - id: testing
+    name: Testing
+    keywords:
+      - test
+      - testing
+      - validation
+      - verification
+      - prototype
+      - qualification
+      - certification
+
+  - id: documentation
+    name: Documentation
+    keywords:
+      - document
+      - specification
+      - report
+      - procedure
+      - manual
+      - standard
+      - drawing
+
+  - id: compliance
+    name: Compliance
+    keywords:
+      - compliance
+      - safety
+      - regulation
+      - standard
+      - code
+      - certification
+      - audit
+
+  - id: maintenance
+    name: Maintenance
+    keywords:
+      - maintenance
+      - repair
+      - troubleshoot
+      - failure
+      - root cause
+      - preventive
+
+  - id: other
+    name: Other
+    keywords: []
+
+# Engineering-specific patterns
+patterns:
+  safety_shortcuts:
+    description: Bypassing safety reviews or procedures
+    severity_threshold: 1
+    severity: concern
+    suggestion: Safety is non-negotiable - follow all review procedures
+
+  documentation_debt:
+    description: Completing work without updating documentation
+    severity_threshold: 3
+    severity: warning
+    suggestion: Document as you go - future you will thank present you
+
+  scope_expansion:
+    description: Design scope growing beyond requirements
+    severity_threshold: 3
+    severity: info
+    suggestion: Stick to requirements unless formally changed
+
+  review_bypass:
+    description: Skipping peer review or design review
+    severity_threshold: 2
+    severity: concern
+    suggestion: Peer review catches issues early - don't skip it
+
+impact_keywords:
+  high:
+    - safety
+    - critical
+    - certification
+    - customer
+    - production
+    - failure
+    - regulatory
+  medium:
+    - performance
+    - cost
+    - schedule
+    - quality
+    - specification
+  low:
+    - optimization
+    - improvement
+    - nice to have
+    - cosmetic
+
+struggle_indicators:
+  blockers:
+    - blocked
+    - waiting
+    - supplier
+    - test equipment
+    - approval
+    - resource
+  confusion:
+    - unclear
+    - specification
+    - requirement
+    - interface
+    - standard
+  pressure:
+    - deadline
+    - schedule
+    - customer
+    - behind
+    - cost
+
+thresholds:
+  stalled_goal_days: 7
+  quick_win_days: 2
+  max_open_goals: 6
+  reflection_cadence: weekly
+
+messages:
+  goal_created: "Engineering task set"
+  goal_completed: "Task completed"
+  goal_abandoned: "Task cancelled"
+  streak_message: "{count} consecutive completions"
+  stalled_warning: "This task needs attention"
+  welcome: "Ready to help you engineer solutions"
+  skill_installed: "Engineering skill added"
+  bundle_installed: "{count} skills installed for CTO workflow"
+
+# Recommended skills for CTOs/Engineering Leaders
+recommended_skills:
+  - cto-advisor
+  - senior-architect
+  - senior-devops
+  - tech-stack-evaluator
+  - tdd-guide
+  - senior-security
+  - aws-solution-architect
+  - code-reviewer
+  - senior-backend
+  - senior-frontend
+  - senior-fullstack
+  - senior-data-scientist
+  - senior-qa
+  - docx
+  - pdf
+  - pptx
+  - technical-researcher
+  - solution-architect
+  - sprint-executor
+  - quality-validator
+  - compliance-analyst
+
+# Skill bundles for progressive adoption
+skill_bundles:
+  starter:
+    - cto-advisor
+    - senior-architect
+  scaling:
+    - cto-advisor
+    - senior-architect
+    - senior-devops
+    - tech-stack-evaluator
+  complete:
+    - cto-advisor
+    - senior-architect
+    - senior-devops
+    - tech-stack-evaluator
+    - tdd-guide
+    - senior-security

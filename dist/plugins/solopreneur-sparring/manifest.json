@@ -1,0 +1,15 @@
+{
+  "name": "solopreneur-sparring",
+  "version": "1.0.0",
+  "description": "All-in-one sparring for indie founders and one-person startups",
+  "commands": [
+    {
+      "name": "sparring",
+      "description": "Start sparring session or manage goals",
+      "usage": "/sparring [command]"
+    }
+  ],
+  "permissions": [
+    "filesystem"
+  ]
+}

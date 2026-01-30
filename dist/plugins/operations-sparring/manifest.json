@@ -1,0 +1,15 @@
+{
+  "name": "operations-sparring",
+  "version": "1.0.0",
+  "description": "Sparring for efficiency, finance, legal, and systems",
+  "commands": [
+    {
+      "name": "sparring",
+      "description": "Start sparring session or manage goals",
+      "usage": "/sparring [command]"
+    }
+  ],
+  "permissions": [
+    "filesystem"
+  ]
+}

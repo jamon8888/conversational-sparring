@@ -1,0 +1,208 @@
+# Solopreneur Domain - Indie Founder Sparring
+# Optimized for solo founders, indie hackers, and one-person startups
+
+domain:
+  id: solopreneur
+  name: Solopreneur
+  description: All-in-one sparring for indie founders and one-person startups
+
+categories:
+  - id: product
+    name: Product
+    keywords:
+      - feature
+      - mvp
+      - roadmap
+      - user
+      - customer
+      - bug
+      - ship
+      - build
+
+  - id: marketing
+    name: Marketing
+    keywords:
+      - content
+      - seo
+      - social
+      - launch
+      - growth
+      - traffic
+      - audience
+      - email
+
+  - id: engineering
+    name: Engineering
+    keywords:
+      - code
+      - deploy
+      - bug
+      - api
+      - database
+      - server
+      - infrastructure
+      - tech
+
+  - id: business
+    name: Business
+    keywords:
+      - revenue
+      - pricing
+      - customer
+      - sales
+      - strategy
+      - monetization
+      - mrr
+      - arr
+
+  - id: operations
+    name: Operations
+    keywords:
+      - process
+      - automation
+      - tool
+      - workflow
+      - admin
+      - support
+
+  - id: other
+    name: Other
+    keywords: []
+
+# Solopreneur-specific patterns
+patterns:
+  feature_creep:
+    description: Adding features before validating core value
+    severity_threshold: 3
+    severity: warning
+    suggestion: Validate with 10 paying customers before expanding
+
+  solo_burnout:
+    description: Working on too many fronts simultaneously
+    severity_threshold: 2
+    severity: concern
+    suggestion: Focus on one area per week
+
+  perfectionism_trap:
+    description: Over-polishing before shipping
+    severity_threshold: 4
+    severity: warning
+    suggestion: Ship now, iterate later - done is better than perfect
+
+  shiny_object:
+    description: Frequently switching between projects/ideas
+    severity_threshold: 3
+    severity: concern
+    suggestion: Commit to one idea for 90 days minimum
+
+  audience_neglect:
+    description: Building without audience or distribution
+    severity_threshold: 3
+    severity: warning
+    suggestion: Build in public and grow your audience while building
+
+impact_keywords:
+  high:
+    - revenue
+    - customer
+    - launch
+    - critical
+    - paying
+    - mrr
+  medium:
+    - feature
+    - marketing
+    - growth
+    - user
+    - conversion
+  low:
+    - optimization
+    - nice-to-have
+    - polish
+    - later
+
+struggle_indicators:
+  blockers:
+    - stuck
+    - blocked
+    - confused
+    - overwhelmed
+    - don't know how
+  context_switching:
+    - jumping
+    - switching
+    - distracted
+    - scattered
+    - too many things
+  burnout:
+    - tired
+    - exhausted
+    - too much
+    - overwhelmed
+    - need a break
+  validation:
+    - not sure if
+    - should I
+    - is this worth
+    - pivot
+    - give up
+
+thresholds:
+  stalled_goal_days: 5
+  quick_win_days: 1
+  max_open_goals: 4 # Solopreneurs need focus
+  reflection_cadence: weekly
+
+messages:
+  goal_created: "Task added to your solo mission"
+  goal_completed: "One less thing on your plate!"
+  goal_abandoned: "Dropped to focus on what matters"
+  streak_message: "{count} wins in a row - you're on fire!"
+  stalled_warning: "This has been sitting too long"
+  welcome: "Ready to help you build your empire"
+  skill_installed: "New skill in your solopreneur toolkit"
+  bundle_installed: "{count} skills installed for solopreneur workflow"
+
+# Recommended skills for Solopreneurs
+recommended_skills:
+  - senior-fullstack
+  - product-manager-toolkit
+  - content-creator
+  - marketing-demand-acquisition
+  - ceo-advisor
+  - aws-solution-architect
+  - docx
+  - pdf
+  - pptx
+  - market-analyst
+  - opportunity-discovery
+  - opportunity-scorer
+  - product-launch-orchestration
+  - email-marketing
+  - growth-analytics
+  - ad-copywriting
+  - content-distribution
+  - pricing-packaging
+  - revenue-analytics
+
+# Skill bundles for progressive adoption
+skill_bundles:
+  mvp-builder:
+    - senior-fullstack
+    - product-manager-toolkit
+  growth-hacker:
+    - content-creator
+    - marketing-demand-acquisition
+    - social-media-analyzer
+  indie-saas:
+    - senior-fullstack
+    - product-manager-toolkit
+    - content-creator
+    - aws-solution-architect
+  complete:
+    - senior-fullstack
+    - product-manager-toolkit
+    - content-creator
+    - marketing-demand-acquisition
+    - ceo-advisor
+    - aws-solution-architect

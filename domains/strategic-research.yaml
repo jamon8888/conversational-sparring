@@ -1,0 +1,17 @@
+domain:
+  name: Strategic Research
+  description: Deep research sparring partner with Exa.ai integration, behavioral economics, and strategic playbooks.
+
+patterns:
+  research_gap: "Identify missing information in strategy"
+  bias_detection: "Spot cognitive biases in decision making"
+
+recommended_skills:
+  - strategic-research-orchestrator
+  - exa-search-expert
+  - opportunity-scorer
+  - market-analyst
+  - comparative-analyzer
+  - insights-repository-kit
+  - market-scenario-modeler
+  - research-synthesizer

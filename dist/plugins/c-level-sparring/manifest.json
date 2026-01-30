@@ -1,0 +1,15 @@
+{
+  "name": "c-level-sparring",
+  "version": "1.0.0",
+  "description": "Sparring for CEOs, Founders, and Chief Strategy Officers",
+  "commands": [
+    {
+      "name": "sparring",
+      "description": "Start sparring session or manage goals",
+      "usage": "/sparring [command]"
+    }
+  ],
+  "permissions": [
+    "filesystem"
+  ]
+}

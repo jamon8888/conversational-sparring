@@ -1,0 +1,18 @@
+{
+    "google_search": {
+        "headline": 30,
+        "description": 90
+    },
+    "facebook_feed": {
+        "primary_text": 125,
+        "headline": 40,
+        "description": 30
+    },
+    "linkedin_sponsored": {
+        "intro_text": 150,
+        "headline": 70
+    },
+    "twitter_ads": {
+        "tweet_copy": 280
+    }
+}

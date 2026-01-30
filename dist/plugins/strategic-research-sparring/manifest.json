@@ -1,0 +1,15 @@
+{
+  "name": "strategic-research-sparring",
+  "version": "1.0.0",
+  "description": "Deep research sparring partner with Exa.ai integration, behavioral economics, and strategic playbooks.",
+  "commands": [
+    {
+      "name": "sparring",
+      "description": "Start sparring session or manage goals",
+      "usage": "/sparring [command]"
+    }
+  ],
+  "permissions": [
+    "filesystem"
+  ]
+}

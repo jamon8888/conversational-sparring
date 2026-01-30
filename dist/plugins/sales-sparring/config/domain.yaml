@@ -1,0 +1,86 @@
+# Sales Domain - Sales & Revenue Sparring
+# Optimized for CROs, Sales Leaders, and Founders
+
+domain:
+  id: sales
+  name: Sales & Revenue
+  description: Sparring for pipeline, closing, and revenue generation
+
+categories:
+  - id: prospecting
+    name: Prospecting
+    keywords: [outbound, cold call, email, lead gen, sdr]
+
+  - id: pipeline
+    name: Pipeline
+    keywords: [crm, hygiene, forecasting, stages, velocity]
+
+  - id: closing
+    name: Closing
+    keywords: [demo, negotiation, contract, sign, deal]
+
+  - id: expansion
+    name: Expansion
+    keywords: [upsell, cross-sell, renewal, account management]
+
+patterns:
+  happy_ears:
+    description: Overestimating the likelihood of closing
+    severity_threshold: 3
+    severity: warning
+    suggestion: verify the budget authority and timeline
+
+  empty_pipeline:
+    description: Focusing only on closing, neglecting prospecting
+    severity_threshold: 5
+    severity: danger
+    suggestion: block time for prospecting every day
+
+thresholds:
+  stalled_goal_days: 2
+  quick_win_days: 1
+  max_open_goals: 10
+  reflection_cadence: daily
+
+messages:
+  goal_created: "Sales target set"
+  goal_completed: "Deal closed"
+  stalled_warning: "This opp is going cold"
+  skill_installed: "Sales skill added"
+  bundle_installed: "{count} skills installed for CRO workflow"
+
+# Recommended skills for CROs/Sales Leaders
+# Recommended skills for CROs/Sales Leaders
+recommended_skills:
+  - cold-outreach
+  - discovery-calls
+  - lead-qualification
+  - objection-handling
+  - value-propositions
+  - social-selling
+  - follow-up-sequences
+  - marketing-demand-acquisition
+  - marketing-strategy-pmm
+  - docx
+  - pdf
+  - pptx
+  - pipeline-forecasting
+  - revenue-analytics
+  - pricing-packaging
+  - crm-hygiene
+  - attribution-roi
+  - sales-marketing-alignment
+
+# Skill bundles for progressive adoption
+skill_bundles:
+  starter:
+    - marketing-demand-acquisition
+    - marketing-strategy-pmm
+  pipeline:
+    - marketing-demand-acquisition
+    - content-creator
+  complete:
+    - marketing-demand-acquisition
+    - marketing-strategy-pmm
+    - ceo-advisor
+    - content-creator

@@ -1,0 +1,71 @@
+# People Domain - HR & Culture Sparring
+# Optimized for CHROs, People Ops, and Founders
+
+domain:
+  id: people
+  name: People & Culture
+  description: Sparring for hiring, management, and company culture
+
+categories:
+  - id: hiring
+    name: Hiring
+    keywords: [recruit, interview, offer, source, job desc]
+
+  - id: culture
+    name: Culture
+    keywords: [values, events, morale, feedback, diversity]
+
+  - id: performance
+    name: Performance
+    keywords: [review, 1:1, promotion, pip, growth plan]
+
+  - id: admin
+    name: HR Admin
+    keywords: [benefits, payroll, compliance, handbook]
+
+patterns:
+  hiring_rush:
+    description: Hiring without a clear role definition
+    severity_threshold: 4
+    severity: danger
+    suggestion: write the scorecard before the job desc
+
+  feedback_debt:
+    description: Delaying difficult conversations
+    severity_threshold: 3
+    severity: warning
+    suggestion: clear is kind - give the feedback now
+
+thresholds:
+  stalled_goal_days: 4
+  quick_win_days: 2
+  max_open_goals: 5
+  reflection_cadence: weekly
+
+messages:
+  goal_created: "People initiative set"
+  goal_completed: "Initiative launched"
+  stalled_warning: "This hire/issue is stalled"
+  skill_installed: "People skill added"
+  bundle_installed: "{count} skills installed for CHRO workflow"
+
+# Recommended skills for CHROs/People Leaders
+recommended_skills:
+  - ceo-advisor
+  - product-strategist
+  - senior-pm
+  - docx
+  - pdf
+  - pptx
+
+# Skill bundles for progressive adoption
+skill_bundles:
+  starter:
+    - ceo-advisor
+  culture:
+    - ceo-advisor
+    - product-strategist
+  complete:
+    - ceo-advisor
+    - product-strategist
+    - senior-pm

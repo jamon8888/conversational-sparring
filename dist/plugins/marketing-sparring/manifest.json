@@ -1,0 +1,15 @@
+{
+  "name": "marketing-sparring",
+  "version": "1.0.0",
+  "description": "Sparring for user acquisition, retention, and marketing",
+  "commands": [
+    {
+      "name": "sparring",
+      "description": "Start sparring session or manage goals",
+      "usage": "/sparring [command]"
+    }
+  ],
+  "permissions": [
+    "filesystem"
+  ]
+}

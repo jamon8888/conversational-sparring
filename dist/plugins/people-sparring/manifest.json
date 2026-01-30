@@ -1,0 +1,15 @@
+{
+  "name": "people-sparring",
+  "version": "1.0.0",
+  "description": "Sparring for hiring, management, and company culture",
+  "commands": [
+    {
+      "name": "sparring",
+      "description": "Start sparring session or manage goals",
+      "usage": "/sparring [command]"
+    }
+  ],
+  "permissions": [
+    "filesystem"
+  ]
+}

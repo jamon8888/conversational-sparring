@@ -1,0 +1,15 @@
+{
+  "name": "revenue-ops-sparring",
+  "version": "1.0.0",
+  "description": "Sparring for full-funnel revenue efficiency, alignment, and data",
+  "commands": [
+    {
+      "name": "sparring",
+      "description": "Start sparring session or manage goals",
+      "usage": "/sparring [command]"
+    }
+  ],
+  "permissions": [
+    "filesystem"
+  ]
+}

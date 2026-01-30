@@ -1,0 +1,15 @@
+{
+  "name": "personal-sparring",
+  "version": "1.0.0",
+  "description": "Sparring for personal growth and life goals",
+  "commands": [
+    {
+      "name": "sparring",
+      "description": "Start sparring session or manage goals",
+      "usage": "/sparring [command]"
+    }
+  ],
+  "permissions": [
+    "filesystem"
+  ]
+}

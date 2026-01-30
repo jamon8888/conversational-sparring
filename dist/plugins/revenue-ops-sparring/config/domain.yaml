@@ -1,0 +1,81 @@
+# Revenue Ops Domain - Revenue Operations Sparring
+# Optimized for RevOps Leads, CROs, and COOs
+
+domain:
+  id: revenue-ops
+  name: Revenue Operations
+  description: Sparring for full-funnel revenue efficiency, alignment, and data
+
+categories:
+  - id: alignment
+    name: Alignment
+    keywords: [sales-marketing, handoff, sla, funnel, attribution]
+
+  - id: optimization
+    name: Optimization
+    keywords: [conversion, velocity, stage, funnel, yield]
+
+  - id: systems
+    name: Systems
+    keywords: [crm, automation, stack, data, integration]
+
+  - id: forecasting
+    name: Forecasting
+    keywords: [forecast, prediction, pipeline, accuracy, quota]
+
+patterns:
+  silo_mentality:
+    description: Sales and Marketing working in isolation
+    severity_threshold: 4
+    severity: danger
+    suggestion: Establish shared revenue goals and SLAs
+
+  dirty_data:
+    description: Unreliable CRM data driving bad decisions
+    severity_threshold: 5
+    severity: danger
+    suggestion: Implement strict validation and regular hygiene audits
+
+thresholds:
+  stalled_goal_days: 5
+  quick_win_days: 2
+  max_open_goals: 6
+  reflection_cadence: weekly
+
+messages:
+  goal_created: "RevOps initiative defined"
+  goal_completed: "Revenue engine optimized"
+  stalled_warning: "This optimization is blocked"
+  skill_installed: "RevOps skill added"
+  bundle_installed: "{count} skills installed for RevOps workflow"
+
+# Recommended skills for RevOps Leaders
+recommended_skills:
+  - revenue-analytics
+  - pipeline-forecasting
+  - attribution-roi
+  - sales-marketing-alignment
+  - pricing-packaging
+  - crm-hygiene
+  - process-automation
+  - marketing-analytics
+  - growth-analytics
+  - docx
+  - pdf
+  - pptx
+
+# Skill bundles for progressive adoption
+skill_bundles:
+  starter:
+    - revenue-analytics
+    - pipeline-forecasting
+  alignment:
+    - sales-marketing-alignment
+    - attribution-roi
+  complete:
+    - revenue-analytics
+    - pipeline-forecasting
+    - attribution-roi
+    - sales-marketing-alignment
+    - crm-hygiene
+    - process-automation

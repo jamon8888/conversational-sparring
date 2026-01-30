@@ -1,0 +1,82 @@
+# Operations Domain - COO & Ops Sparring
+# Optimized for COOs, Ops Managers, and Founders
+
+domain:
+  id: operations
+  name: Operations
+  description: Sparring for efficiency, finance, legal, and systems
+
+categories:
+  - id: finance
+    name: Finance
+    keywords: [budget, accounting, tax, payroll, runway, cashflow]
+
+  - id: legal
+    name: Legal
+    keywords: [contract, ip, compliance, incorporation, terms]
+
+  - id: systems
+    name: Systems
+    keywords: [tool, automation, process, workflow, documentation]
+
+  - id: admin
+    name: Admin
+    keywords: [logistics, office, travel, scheduling, support]
+
+patterns:
+  process_debt:
+    description: Handling everything manually without documenting
+    severity_threshold: 3
+    severity: warning
+    suggestion: document the process checklist
+
+  compliance_risk:
+    description: Ignoring legal/tax obligations
+    severity_threshold: 5
+    severity: danger
+    suggestion: consult a professional immediately
+
+thresholds:
+  stalled_goal_days: 7
+  quick_win_days: 1
+  max_open_goals: 8
+  reflection_cadence: weekly
+
+messages:
+  goal_created: "Ops project started"
+  goal_completed: "System optimized"
+  stalled_warning: "This process is blocked"
+  skill_installed: "Operations skill added"
+  bundle_installed: "{count} skills installed for COO workflow"
+
+# Recommended skills for COOs/Operations Leaders
+recommended_skills:
+  - senior-pm
+  - scrum-master
+  - jira-expert
+  - confluence-expert
+  - quality-manager-qms-iso13485
+  - project-management
+  - docx
+  - pdf
+  - pptx
+  - process-automation
+  - compliance-analyst
+  - revenue-analytics
+  - crm-hygiene
+
+# Skill bundles for progressive adoption
+skill_bundles:
+  starter:
+    - senior-pm
+    - scrum-master
+  atlassian:
+    - senior-pm
+    - jira-expert
+    - confluence-expert
+  complete:
+    - senior-pm
+    - scrum-master
+    - jira-expert
+    - confluence-expert
+    - quality-manager-qms-iso13485

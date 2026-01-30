@@ -1,0 +1,15 @@
+{
+  "name": "product-sparring",
+  "version": "1.0.0",
+  "description": "Sparring for product strategy, roadmap, and user value",
+  "commands": [
+    {
+      "name": "sparring",
+      "description": "Start sparring session or manage goals",
+      "usage": "/sparring [command]"
+    }
+  ],
+  "permissions": [
+    "filesystem"
+  ]
+}
