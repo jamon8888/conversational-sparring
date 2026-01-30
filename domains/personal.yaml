@@ -1,0 +1,165 @@
+# Personal Domain - Personal Development Sparring
+# Optimized for personal growth, habits, and life goals
+
+domain:
+  id: personal
+  name: Personal Development
+  description: Sparring for personal growth and life goals
+
+categories:
+  - id: health
+    name: Health
+    keywords:
+      - health
+      - fitness
+      - exercise
+      - workout
+      - sleep
+      - nutrition
+      - diet
+      - wellness
+      - meditation
+
+  - id: learning
+    name: Learning
+    keywords:
+      - learn
+      - study
+      - course
+      - book
+      - skill
+      - practice
+      - education
+      - certification
+
+  - id: relationships
+    name: Relationships
+    keywords:
+      - relationship
+      - family
+      - friend
+      - social
+      - network
+      - connect
+      - community
+      - communication
+
+  - id: career
+    name: Career
+    keywords:
+      - career
+      - job
+      - work
+      - promotion
+      - interview
+      - resume
+      - skill
+      - professional
+
+  - id: finance
+    name: Finance
+    keywords:
+      - finance
+      - money
+      - budget
+      - save
+      - invest
+      - debt
+      - expense
+      - income
+
+  - id: creativity
+    name: Creativity
+    keywords:
+      - creative
+      - art
+      - write
+      - music
+      - project
+      - hobby
+      - craft
+      - design
+
+  - id: other
+    name: Other
+    keywords: []
+
+# Personal development patterns
+patterns:
+  overcommitment:
+    description: Taking on too many goals simultaneously
+    severity_threshold: 4
+    severity: warning
+    suggestion: Focus on 2-3 key priorities at a time
+
+  neglected_areas:
+    description: Focusing heavily on one area while neglecting others
+    severity_threshold: 5
+    severity: info
+    suggestion: Review balance across life areas periodically
+
+  short_term_focus:
+    description: Setting only short-term goals without long-term vision
+    severity_threshold: 4
+    severity: info
+    suggestion: Connect daily goals to longer-term aspirations
+
+  perfectionism:
+    description: Avoiding completion due to perfectionist tendencies
+    severity_threshold: 3
+    severity: concern
+    suggestion: Done is better than perfect - ship and iterate
+
+impact_keywords:
+  high:
+    - life-changing
+    - major
+    - commitment
+    - milestone
+    - breakthrough
+    - transformation
+  medium:
+    - important
+    - weekly
+    - habit
+    - routine
+    - regular
+  low:
+    - minor
+    - nice to have
+    - sometime
+    - optional
+
+struggle_indicators:
+  blockers:
+    - stuck
+    - can't
+    - blocked
+    - waiting
+    - don't have
+  confusion:
+    - unclear
+    - not sure
+    - don't know
+    - confused
+    - overwhelmed
+  pressure:
+    - stress
+    - anxious
+    - behind
+    - failing
+    - disappointed
+
+thresholds:
+  stalled_goal_days: 7
+  quick_win_days: 1
+  max_open_goals: 5          # Keep it manageable
+  reflection_cadence: daily
+
+messages:
+  goal_created: "Goal set"
+  goal_completed: "Goal achieved"
+  goal_abandoned: "Goal released"
+  streak_message: "{count} days strong"
+  stalled_warning: "This goal needs your attention"
+  welcome: "Ready to help you grow"

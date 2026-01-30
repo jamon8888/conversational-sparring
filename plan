@@ -1,0 +1,1011 @@
+ Roadmap Summary
+
+  9 Phases leveraging Claude Code features:
+  Phase: 1
+  Feature: Hooks
+  Purpose: Auto-detect activities via SessionStart, PostToolUse,
+    UserPromptSubmit, SessionEnd
+  ────────────────────────────────────────
+  Phase: 2
+  Feature: Skills
+  Purpose: Convert commands to skills with disable-model-invocation:
+  false
+     for proactive sparring
+  ────────────────────────────────────────
+  Phase: 3
+  Feature: MCP Server
+  Purpose: Expose 5 sparring tools (get_active_goals, log_activity,
+    detect_patterns, get_rsm_snapshot, suggest_sparring)
+  ────────────────────────────────────────
+  Phase: 4
+  Feature: Mirror
+  Purpose: PMM pattern - O(1) queries for open goals, stale detection
+  ────────────────────────────────────────
+  Phase: 5
+  Feature: RSM
+  Purpose: PMM pattern - Behavioral tendencies, meta-patterns
+  ────────────────────────────────────────
+  Phase: 6
+  Feature: Autonomy
+  Purpose: PMM pattern - Proactive decisions (celebrate, intervene,
+    reflect, rebalance)
+  ────────────────────────────────────────
+  Phase: 7
+  Feature: Agents
+  Purpose: Upgrade 4 agents with RSM awareness
+  ────────────────────────────────────────
+  Phase: 8
+  Feature: IDE
+  Purpose: Status line showing goals/streak
+  ────────────────────────────────────────
+  Phase: 9
+  Feature: Graph
+  Purpose: Causal relationships between events
+  Key Integrations:
+  - Hooks inject sparring context without explicit commands
+  - Skills allow Claude to auto-invoke sparring when relevant
+  - MCP server provides persistent sparring data access
+  - Autonomy kernel suggests proactive actions via hooks
+
+  Recommended Order: 1 → 2 → 4 → 5 → 3 → 6 → 7 → 9 → 8
+  ⎿  User rejected Claude's plan:
+     ╭──────────────────────────────────────────────────────────────────╮
+     │ Conversational Coach - Comprehensive Roadmap v2.0                │
+     │                                                                  │
+     │ Overview                                                         │
+     │                                                                  │
+     │ Evolve the Conversational Coach from a command-based tool into a │
+     │ proactive, self-modeling sparring system that leverages Claude   │
+     │ Code's full feature set: hooks, skills, MCP servers, subagents,  │
+     │ and IDE integrations.                                            │
+     │                                                                  │
+     │ Current State (Completed)                                        │
+     │                                                                  │
+     │ ✅ Domain adaptation system (7 domains + custom)                 │
+     │ ✅ Event-sourced ledger with hash chaining                       │
+     │ ✅ Goal lifecycle management                                     │
+     │ ✅ Basic pattern detection                                       │
+     │ ✅ 4 sparring agents (planner, reviewer, mentor, celebrator)     │
+     │ ✅ 7 sparring commands                                           │
+     │                                                                  │
+     │ Design Philosophy                                                │
+     │                                                                  │
+     │ 1. PMM Principles: Determinism, idempotency, ledger-as-truth,    │
+     │ rebuildable projections                                          │
+     │ 2. Claude Code Native: Leverage hooks, skills, MCP for deep      │
+     │ integration                                                      │
+     │ 3. Proactive sparring: Don't wait for commands - detect and      │
+     │ intervene                                                        │
+     │ 4. Self-Modeling: Track behavioral tendencies and adapt sparring │
+     │ style                                                            │
+     │                                                                  │
+     │ ---                                                              │
+     │ PHASE 1: Claude Code Hooks Integration                           │
+     │                                                                  │
+     │ Goal                                                             │
+     │                                                                  │
+     │ Detect user activities automatically and inject sparring context │
+     │ without explicit commands.                                       │
+     │                                                                  │
+     │ Files to Create                                                  │
+     │                                                                  │
+     │ ~/.claude/settings.json  (or project .claude/settings.json)      │
+     │ conversational-sparring/                                            │
+     │ ├── hooks/                                                       │
+     │ │   ├── session-start.py      # Load goals and sparring context  │
+     │ │   ├── post-tool-use.py      # Track activity patterns          │
+     │ │   ├── user-prompt-submit.py # Inject sparring reminders        │
+     │ │   └── session-end.py        # Save session summary             │
+     │                                                                  │
+     │ Hook Configurations                                              │
+     │                                                                  │
+     │ ~/.claude/settings.json:                                         │
+     │ {                                                                │
+     │   "hooks": {                                                     │
+     │     "SessionStart": [{                                           │
+     │       "matcher": "*",                                            │
+     │       "hooks": [{                                                │
+     │         "type": "command",                                       │
+     │         "command": "python                                       │
+     │ ~/.claude/sparring/hooks/session-start.py"                          │
+     │       }]                                                         │
+     │     }],                                                          │
+     │     "PostToolUse": [{                                            │
+     │       "matcher": "Edit|Write|Bash",                              │
+     │       "hooks": [{                                                │
+     │         "type": "command",                                       │
+     │         "command": "python                                       │
+     │ ~/.claude/sparring/hooks/post-tool-use.py"                          │
+     │       }]                                                         │
+     │     }],                                                          │
+     │     "UserPromptSubmit": [{                                       │
+     │       "matcher": "*",                                            │
+     │       "hooks": [{                                                │
+     │         "type": "command",                                       │
+     │         "command": "python                                       │
+     │ ~/.claude/sparring/hooks/user-prompt-submit.py"                     │
+     │       }]                                                         │
+     │     }],                                                          │
+     │     "SessionEnd": [{                                             │
+     │       "matcher": "*",                                            │
+     │       "hooks": [{                                                │
+     │         "type": "command",                                       │
+     │         "command": "python ~/.claude/sparring/hooks/session-end.py" │
+     │       }]                                                         │
+     │     }]                                                           │
+     │   }                                                              │
+     │ }                                                                │
+     │                                                                  │
+     │ Hook Implementations                                             │
+     │                                                                  │
+     │ hooks/session-start.py:                                          │
+     │ - Load active goals from ledger                                  │
+     │ - Check for stalled goals                                        │
+     │ - Inject sparring context into system prompt                     │
+     │ - Output: {"result": "continue", "sparring_context": {...}}      │
+     │                                                                  │
+     │ hooks/post-tool-use.py:                                          │
+     │ - Record tool usage (Edit/Write = coding, Bash = commands)       │
+     │ - Detect patterns (rapid edits = flow, many bashes = debugging)  │
+     │ - Check if activity relates to active goals                      │
+     │ - Update struggle detection if errors occur                      │
+     │                                                                  │
+     │ hooks/user-prompt-submit.py:                                     │
+     │ - Detect goal-related keywords in user input                     │
+     │ - Check for struggle indicators                                  │
+     │ - Inject relevant goal context if applicable                     │
+     │ - Suggest opening a goal if user mentions tasks                  │
+     │                                                                  │
+     │ hooks/session-end.py:                                            │
+     │ - Calculate session metrics                                      │
+     │ - Detect patterns from session                                   │
+     │ - Auto-generate reflection summary                               │
+     │ - Update streaks and achievements                                │
+     │                                                                  │
+     │ Deliverables                                                     │
+     │                                                                  │
+     │ - 4 hook scripts with ledger integration                         │
+     │ - Hook configuration in settings.json                            │
+     │ - Hook input/output JSON schemas                                 │
+     │ - Integration tests for each hook                                │
+     │                                                                  │
+     │ ---                                                              │
+     │ PHASE 2: Skills System Enhancement                               │
+     │                                                                  │
+     │ Goal                                                             │
+     │                                                                  │
+     │ Convert commands to skills with richer capabilities and          │
+     │ auto-invocation.                                                 │
+     │                                                                  │
+     │ Files to Create/Modify                                           │
+     │                                                                  │
+     │ ~/.claude/skills/coach/                                          │
+     │ ├── SKILL.md                  # Main /coach skill                │
+     │ ├── goal.md                   # /coach goal skill                │
+     │ ├── reflect.md                # /coach reflect skill             │
+     │ ├── progress.md               # /coach progress skill            │
+     │ ├── patterns.md               # /coach patterns skill            │
+     │ └── insights.md               # NEW: /coach insights skill (RSM  │
+     │ data)                                                            │
+     │                                                                  │
+     │ Skill Definitions                                                │
+     │                                                                  │
+     │ SKILL.md (Main Coach Skill):                                     │
+     │ ---                                                              │
+     │ name: coach                                                      │
+     │ description: Personal development coach. Tracks goals, detects   │
+     │ patterns, provides proactive feedback.                           │
+     │ user-invocable: true                                             │
+     │ disable-model-invocation: false  # Allow Claude to invoke        │
+     │ automatically                                                    │
+     │ allowed-tools: Read, Bash(python:*)                              │
+     │ ---                                                              │
+     │                                                                  │
+     │ # Conversational Coach                                           │
+     │                                                                  │
+     │ You are a personal development coach that:                       │
+     │ 1. Tracks progress toward user goals                             │
+     │ 2. Detects behavioral patterns (both positive and negative)      │
+     │ 3. Provides proactive, evidence-based feedback                   │
+     │ 4. Adapts to the user's domain (developer, business, etc.)       │
+     │                                                                  │
+     │ ## Auto-Invocation Triggers                                      │
+     │ - User mentions completing a task → offer to close a goal        │
+     │ - User expresses frustration → check for struggle patterns       │
+     │ - Session has 5+ tool uses → offer reflection                    │
+     │ - Goal has been open 7+ days → suggest review                    │
+     │                                                                  │
+     │ ## Commands                                                      │
+     │ - `/coach` - Dashboard overview                                  │
+     │ - `/coach goal <desc>` - Set new goal                            │
+     │ - `/coach goals` - List active goals                             │
+     │ - `/coach close <id>` - Complete goal                            │
+     │ - `/coach progress` - Metrics and insights                       │
+     │ - `/coach reflect` - Structured reflection                       │
+     │ - `/coach patterns` - Behavioral analysis                        │
+     │ - `/coach insights` - RSM behavioral tendencies                  │
+     │                                                                  │
+     │ insights.md (NEW - RSM Integration):                             │
+     │ ---                                                              │
+     │ name: sparring-insights                                             │
+     │ description: Show behavioral tendencies and self-model insights  │
+     │ allowed-tools: Bash(python:*)                                    │
+     │ ---                                                              │
+     │                                                                  │
+     │ # Sparring Insights                                                 │
+     │                                                                  │
+     │ Display Recursive Self-Model (RSM) data:                         │
+     │ - Behavioral tendencies (goal completion patterns)               │
+     │ - Knowledge gaps (areas with repeated struggles)                 │
+     │ - Meta-patterns (patterns of patterns)                           │
+     │ - sparring recommendations based on history                      │
+     │                                                                  │
+     │ Deliverables                                                     │
+     │                                                                  │
+     │ - Convert 7 commands to skill format                             │
+     │ - Add disable-model-invocation: false for proactive sparring     │
+     │ - Create /coach insights skill                                   │
+     │ - Add auto-invocation trigger documentation                      │
+     │                                                                  │
+     │ ---                                                              │
+     │ PHASE 3: MCP Server for sparring Data                            │
+     │                                                                  │
+     │ Goal                                                             │
+     │                                                                  │
+     │ Expose sparring data via MCP for persistent storage and          │
+     │ cross-session access.                                            │
+     │                                                                  │
+     │ Files to Create                                                  │
+     │                                                                  │
+     │ conversational-sparring/                                            │
+     │ ├── mcp/                                                         │
+     │ │   ├── sparring-server.py    # Main MCP server                  │
+     │ │   ├── tools.py              # MCP tool definitions             │
+     │ │   ├── resources.py          # MCP resource handlers            │
+     │ │   └── prompts.py            # MCP prompt templates             │
+     │                                                                  │
+     │ MCP Server Design                                                │
+     │                                                                  │
+     │ Tools:                                                           │
+     │ TOOLS = [                                                        │
+     │     {                                                            │
+     │         "name": "get_active_goals",                              │
+     │         "description": "Get user's active goals with status",    │
+     │         "inputSchema": {"type": "object", "properties": {}}      │
+     │     },                                                           │
+     │     {                                                            │
+     │         "name": "log_activity",                                  │
+     │         "description": "Record coding activity for pattern       │
+     │ detection",                                                      │
+     │         "inputSchema": {                                         │
+     │             "type": "object",                                    │
+     │             "properties": {                                      │
+     │                 "activity_type": {"type": "string"},             │
+     │                 "details": {"type": "string"}                    │
+     │             }                                                    │
+     │         }                                                        │
+     │     },                                                           │
+     │     {                                                            │
+     │         "name": "detect_patterns",                               │
+     │         "description": "Analyze recent activity for behavioral   │
+     │ patterns",                                                       │
+     │         "inputSchema": {"type": "object", "properties": {}}      │
+     │     },                                                           │
+     │     {                                                            │
+     │         "name": "get_rsm_snapshot",                              │
+     │         "description": "Get Recursive Self-Model behavioral      │
+     │ tendencies",                                                     │
+     │         "inputSchema": {"type": "object", "properties": {}}      │
+     │     },                                                           │
+     │     {                                                            │
+     │         "name": "suggest_sparring",                              │
+     │         "description": "Get contextual sparring suggestion",     │
+     │         "inputSchema": {                                         │
+     │             "type": "object",                                    │
+     │             "properties": {                                      │
+     │                 "context": {"type": "string"}                    │
+     │             }                                                    │
+     │         }                                                        │
+     │     }                                                            │
+     │ ]                                                                │
+     │                                                                  │
+     │ Resources:                                                       │
+     │ RESOURCES = [                                                    │
+     │     "sparring://goals",           # Active goals                 │
+     │     "sparring://patterns",        # Detected patterns            │
+     │     "sparring://history",         # sparring interaction history │
+     │     "sparring://rsm",             # Behavioral self-model        │
+     │     "sparring://domain/{domain}"  # Domain configuration         │
+     │ ]                                                                │
+     │                                                                  │
+     │ MCP Registration                                                 │
+     │                                                                  │
+     │ # Add to Claude Code                                             │
+     │ claude mcp add --transport stdio sparring -- \                   │
+     │   python ~/.claude/sparring/mcp/sparring-server.py                  │
+     │                                                                  │
+     │ # Or in .mcp.json for project-level                              │
+     │ {                                                                │
+     │   "mcpServers": {                                                │
+     │     "sparring": {                                                │
+     │       "type": "stdio",                                           │
+     │       "command": "python",                                       │
+     │       "args": ["~/.claude/sparring/mcp/sparring-server.py"]         │
+     │     }                                                            │
+     │   }                                                              │
+     │ }                                                                │
+     │                                                                  │
+     │ Deliverables                                                     │
+     │                                                                  │
+     │ - MCP server with 5 tools                                        │
+     │ - Resource handlers for sparring data                            │
+     │ - MCP registration instructions                                  │
+     │ - Integration with ledger.py                                     │
+     │                                                                  │
+     │ ---                                                              │
+     │ PHASE 4: Mirror Projection Layer (PMM Pattern)                   │
+     │                                                                  │
+     │ Goal                                                             │
+     │                                                                  │
+     │ Fast O(1) queries over ledger state via rebuildable projection.  │
+     │                                                                  │
+     │ Files to Create                                                  │
+     │                                                                  │
+     │ conversational-sparring/lib/                                        │
+     │ ├── mirror.py     # Projection layer                             │
+     │                                                                  │
+     │ Implementation                                                   │
+     │                                                                  │
+     │ class SparringMirror:                                               │
+     │     """Rebuildable projection over SparringLedger."""               │
+     │                                                                  │
+     │     STALE_THRESHOLD_DEFAULT = 20  # Events before goal considered│
+     │  stale                                                           │
+     │                                                                  │
+     │     def __init__(self, ledger: SparringLedger, listen: bool = True):│
+     │         self.ledger = ledger                                     │
+     │         self.open_goals: Dict[str, Dict] = {}      # goal_id ->  │
+     │ goal data                                                        │
+     │         self.stale_flags: Dict[str, bool] = {}     # goal_id ->  │
+     │ is_stale                                                         │
+     │         self.reflection_counts: Dict[str, int] = {}              │
+     │         self.current_domain: str = "developer"                   │
+     │         self.last_event_id: int = 0                              │
+     │                                                                  │
+     │         if listen:                                               │
+     │             self.ledger.register_listener(self.sync)             │
+     │         self.rebuild()                                           │
+     │                                                                  │
+     │     def rebuild(self, events=None):                              │
+     │         """Rebuild from ledger - deterministic."""               │
+     │         self.open_goals.clear()                                  │
+     │         self.stale_flags.clear()                                 │
+     │         events = events or self.ledger.read_all()                │
+     │         for event in events:                                     │
+     │             self._process_event(event)                           │
+     │                                                                  │
+     │     def sync(self, event):                                       │
+     │         """Incrementally update from new event."""               │
+     │         if event["id"] <= self.last_event_id:                    │
+     │             return                                               │
+     │         self._process_event(event)                               │
+     │         self.last_event_id = event["id"]                         │
+     │                                                                  │
+     │     def _process_event(self, event):                             │
+     │         kind = event.get("kind")                                 │
+     │         meta = event.get("meta", {})                             │
+     │                                                                  │
+     │         if kind == "goal_open":                                  │
+     │             goal_id = meta.get("goal_id")                        │
+     │             self.open_goals[goal_id] = {                         │
+     │                 "event_id": event["id"],                         │
+     │                 "description": event.get("content"),             │
+     │                 "category": meta.get("category"),                │
+     │                 "domain": meta.get("domain")                     │
+     │             }                                                    │
+     │             self.stale_flags[goal_id] = False                    │
+     │                                                                  │
+     │         elif kind in ("goal_close", "goal_abandon"):             │
+     │             goal_id = meta.get("goal_id")                        │
+     │             self.open_goals.pop(goal_id, None)                   │
+     │             self.stale_flags.pop(goal_id, None)                  │
+     │                                                                  │
+     │         elif kind == "reflection":                               │
+     │             source = meta.get("source", "user")                  │
+     │             self.reflection_counts[source] =                     │
+     │ self.reflection_counts.get(source, 0) + 1                        │
+     │                                                                  │
+     │         elif kind == "domain_change":                            │
+     │             self.current_domain = meta.get("domain", "developer")│
+     │                                                                  │
+     │         # Update stale flags                                     │
+     │         for goal_id, data in self.open_goals.items():            │
+     │             age = event["id"] - data["event_id"]                 │
+     │             self.stale_flags[goal_id] = age >                    │
+     │ self.STALE_THRESHOLD_DEFAULT                                     │
+     │                                                                  │
+     │ Benefits                                                         │
+     │                                                                  │
+     │ - O(1) open goal lookup                                          │
+     │ - Real-time stale detection                                      │
+     │ - Domain tracking without scanning                               │
+     │ - Event listener for live updates                                │
+     │                                                                  │
+     │ Deliverables                                                     │
+     │                                                                  │
+     │ - CoachMirror class implementation                               │
+     │ - Integration with GoalManager                                   │
+     │ - Rebuild/sync determinism tests                                 │
+     │ - Performance benchmarks                                         │
+     │                                                                  │
+     │ ---                                                              │
+     │ PHASE 5: Recursive Self-Model (RSM) for sparring                 │
+     │                                                                  │
+     │ Goal                                                             │
+     │                                                                  │
+     │ Track behavioral tendencies over time for personalized sparring. │
+     │                                                                  │
+     │ Files to Create                                                  │
+     │                                                                  │
+     │ conversational-sparring/lib/                                        │
+     │ ├── rsm.py        # Recursive Self-Model                         │
+     │                                                                  │
+     │ Implementation                                                   │
+     │                                                                  │
+     │ class SparringRSM:                                                  │
+     │     """Behavioral self-model built from sparring events."""      │
+     │                                                                  │
+     │     BEHAVIORAL_PATTERNS = {                                      │
+     │         "completion_rate": {                                     │
+     │             "kinds": ("goal_close",),                            │
+     │             "counter": True                                      │
+     │         },                                                       │
+     │         "reflection_habit": {                                    │
+     │             "kinds": ("reflection",),                            │
+     │             "markers": None                                      │
+     │         },                                                       │
+     │         "quick_wins": {                                          │
+     │             "kinds": ("goal_close",),                            │
+     │             "meta_filter": lambda m: m.get("duration_days", 999) │
+     │ <= 1                                                             │
+     │         },                                                       │
+     │         "struggle_frequency": {                                  │
+     │             "kinds": ("struggle",),                              │
+     │             "counter": True                                      │
+     │         },                                                       │
+     │         "context_discipline": {                                  │
+     │             "kinds": ("domain_change",),                         │
+     │             "counter": True,                                     │
+     │             "negative": True  # More = less discipline           │
+     │         }                                                        │
+     │     }                                                            │
+     │                                                                  │
+     │     def __init__(self, ledger: SparringLedger):                     │
+     │         self.ledger = ledger                                     │
+     │         self._pattern_counts: Dict[str, int] = defaultdict(int)  │
+     │         self._meta_patterns: Set[str] = set()                    │
+     │         self.behavioral_tendencies: Dict[str, int] = {}          │
+     │         self.knowledge_gaps: List[str] = []                      │
+     │                                                                  │
+     │     def rebuild(self, events=None):                              │
+     │         """Rebuild from ledger."""                               │
+     │         self._pattern_counts.clear()                             │
+     │         events = events or self.ledger.read_all()                │
+     │         for event in events:                                     │
+     │             self.observe(event)                                  │
+     │                                                                  │
+     │     def observe(self, event):                                    │
+     │         """Process single event incrementally."""                │
+     │         kind = event.get("kind")                                 │
+     │         meta = event.get("meta", {})                             │
+     │                                                                  │
+     │         for pattern_name, config in                              │
+     │ self.BEHAVIORAL_PATTERNS.items():                                │
+     │             if kind not in config.get("kinds", ()):              │
+     │                 continue                                         │
+     │             meta_filter = config.get("meta_filter")              │
+     │             if meta_filter and not meta_filter(meta):            │
+     │                 continue                                         │
+     │             self._pattern_counts[pattern_name] += 1              │
+     │                                                                  │
+     │         # Detect meta-patterns                                   │
+     │         self._detect_meta_patterns()                             │
+     │                                                                  │
+     │         # Update output                                          │
+     │         self.behavioral_tendencies =                             │
+     │ dict(sorted(self._pattern_counts.items()))                       │
+     │                                                                  │
+     │     def _detect_meta_patterns(self):                             │
+     │         """Detect patterns of patterns."""                       │
+     │         # Example: struggles_trigger_reflections                 │
+     │         struggles =                                              │
+     │ self._pattern_counts.get("struggle_frequency", 0)                │
+     │         reflections =                                            │
+     │ self._pattern_counts.get("reflection_habit", 0)                  │
+     │         if struggles > 3 and reflections > struggles * 0.8:      │
+     │                                                                  │
+     │ self._meta_patterns.add("struggles_trigger_reflections")         │
+     │                                                                  │
+     │     def snapshot(self) -> Dict:                                  │
+     │         return {                                                 │
+     │             "behavioral_tendencies": self.behavioral_tendencies, │
+     │             "knowledge_gaps": self.knowledge_gaps,               │
+     │             "meta_patterns": list(self._meta_patterns)           │
+     │         }                                                        │
+     │                                                                  │
+     │ Use Cases                                                        │
+     │                                                                  │
+     │ - Identify users who reflect after struggles (positive)          │
+     │ - Detect users who abandon goals frequently (needs intervention) │
+     │ - Track domain switching patterns                                │
+     │ - Personalize sparring messages based on tendencies              │
+     │                                                                  │
+     │ Deliverables                                                     │
+     │                                                                  │
+     │ - CoachRSM class implementation                                  │
+     │ - Meta-pattern detection logic                                   │
+     │ - Integration with /coach insights                               │
+     │ - RSM snapshot in session-end hook                               │
+     │                                                                  │
+     │ ---                                                              │
+     │ PHASE 6: Autonomy Kernel for Proactive sparring                  │
+     │                                                                  │
+     │ Goal                                                             │
+     │                                                                  │
+     │ Background self-direction that suggests sparring actions.        │
+     │                                                                  │
+     │ Files to Create                                                  │
+     │                                                                  │
+     │ conversational-sparring/lib/                                        │
+     │ ├── autonomy.py   # sparring autonomy kernel                     │
+     │                                                                  │
+     │ Implementation                                                   │
+     │                                                                  │
+     │ @dataclass                                                       │
+     │ class sparringDecision:                                          │
+     │     decision: str  # "reflect", "intervene", "celebrate",        │
+     │ "rebalance", "idle"                                              │
+     │     reasoning: str                                               │
+     │     evidence: List[int]  # Event IDs supporting decision         │
+     │                                                                  │
+     │ class SparringAutonomy:                                          │
+     │     """Deterministic sparring decisions based on ledger state."""│
+     │                                                                  │
+     │     THRESHOLDS = {                                               │
+     │         "reflection_prompt_interval": 5,   # Goals before        │
+     │ reflection prompt                                                │
+     │         "stalled_goal_days": 7,            # Days before stalled │
+     │ warning                                                          │
+     │         "max_open_goals": 5,               # Overcommitment      │
+     │ threshold                                                        │
+     │         "struggle_intervention": 2,        # Struggles before    │
+     │ intervention                                                     │
+     │         "celebration_streak": 3,           # Streak for          │
+     │ celebration                                                      │
+     │     }                                                            │
+     │                                                                  │
+     │     def __init__(self, ledger: SparringLedger, mirror: CoachMirror, │
+     │ rsm: CoachRSM):                                                  │
+     │         self.ledger = ledger                                     │
+     │         self.mirror = mirror                                     │
+     │         self.rsm = rsm                                           │
+     │                                                                  │
+     │     def decide_next_action(self) -> sparringDecision:            │
+     │         """Decide proactive sparring action."""                  │
+     │                                                                  │
+     │         # 1. Check for celebration (streaks)                     │
+     │         if self._should_celebrate():                             │
+     │             return sparringDecision(                             │
+     │                 "celebrate",                                     │
+     │                 f"User has {self._current_streak()} goal         │
+     │ streak!",                                                        │
+     │                 self._streak_evidence()                          │
+     │             )                                                    │
+     │                                                                  │
+     │         # 2. Check for intervention (struggles)                  │
+     │         if self._should_intervene():                             │
+     │             return sparringDecision(                             │
+     │                 "intervene",                                     │
+     │                 "Multiple struggles detected on same goal",      │
+     │                 self._struggle_evidence()                        │
+     │             )                                                    │
+     │                                                                  │
+     │         # 3. Check for reflection prompt                         │
+     │         if self._should_prompt_reflection():                     │
+     │             return sparringDecision(                             │
+     │                 "reflect",                                       │
+     │                 "5+ goals completed without reflection",         │
+     │                 self._recent_completions()                       │
+     │             )                                                    │
+     │                                                                  │
+     │         # 4. Check for rebalancing (overcommitment)              │
+     │         if self._should_rebalance():                             │
+     │             return sparringDecision(                             │
+     │                 "rebalance",                                     │
+     │                 f"Too many open goals                            │
+     │ ({len(self.mirror.open_goals)})",                                │
+     │                 list(self.mirror.open_goals.keys())              │
+     │             )                                                    │
+     │                                                                  │
+     │         # 5. Check for stalled goals                             │
+     │         stalled = self._get_stalled_goals()                      │
+     │         if stalled:                                              │
+     │             return sparringDecision(                             │
+     │                 "unstall",                                       │
+     │                 f"{len(stalled)} goals stalled for 7+ days",     │
+     │                 stalled                                          │
+     │             )                                                    │
+     │                                                                  │
+     │         return sparringDecision("idle", "No sparring action      │
+     │ needed", [])                                                     │
+     │                                                                  │
+     │ Integration with Hooks                                           │
+     │                                                                  │
+     │ In user-prompt-submit.py:                                        │
+     │ autonomy = sparringAutonomy(ledger, mirror, rsm)                 │
+     │ decision = autonomy.decide_next_action()                         │
+     │                                                                  │
+     │ if decision.decision != "idle":                                  │
+     │     # Inject sparring suggestion into user's prompt context      │
+     │     output = {                                                   │
+     │         "result": "continue",                                    │
+     │         "sparring_suggestion": {                                 │
+     │             "action": decision.decision,                         │
+     │             "message": sparring_MESSAGES[decision.decision],     │
+     │             "reasoning": decision.reasoning                      │
+     │         }                                                        │
+     │     }                                                            │
+     │                                                                  │
+     │ Deliverables                                                     │
+     │                                                                  │
+     │ - sparringAutonomy class                                         │
+     │ - 5 decision types implemented                                   │
+     │ - Hook integration for proactive suggestions                     │
+     │ - Threshold configuration via ledger                             │
+     │                                                                  │
+     │ ---                                                              │
+     │ PHASE 7: Enhanced Agents                                         │
+     │                                                                  │
+     │ Goal                                                             │
+     │                                                                  │
+     │ Upgrade existing agents with RSM awareness and autonomy          │
+     │ integration.                                                     │
+     │                                                                  │
+     │ Files to Modify                                                  │
+     │                                                                  │
+     │ conversational-sparring/agents/                                     │
+     │ ├── sparring-planner.md    # Add RSM-aware planning                 │
+     │ ├── sparring-reviewer.md   # Add pattern-based feedback             │
+     │ ├── sparring-mentor.md     # Add autonomy-triggered intervention    │
+     │ └── sparring-celebrator.md # Add streak/achievement tracking        │
+     │                                                                  │
+     │ Agent Enhancements                                               │
+     │                                                                  │
+     │ sparring-planner.md:                                                │
+     │ ---                                                              │
+     │ name: sparring-planner                                              │
+     │ description: Pre-work planning with behavioral awareness         │
+     │ model: sonnet                                                    │
+     │ tools: Read, Bash(python:*)                                      │
+     │ ---                                                              │
+     │                                                                  │
+     │ # Enhanced Sparring Planner                                         │
+     │                                                                  │
+     │ Before planning, I will:                                         │
+     │ 1. Load user's behavioral tendencies from RSM                    │
+     │ 2. Check recent pattern history                                  │
+     │ 3. Adapt planning style to user's strengths                      │
+     │                                                                  │
+     │ ## Behavioral Adaptations                                        │
+     │ - High completion_rate → Challenge with stretch goals            │
+     │ - Low reflection_habit → Build in reflection checkpoints         │
+     │ - High context_switching → Suggest focus techniques              │
+     │ - Frequent struggles → Break down into smaller steps             │
+     │                                                                  │
+     │ sparring-mentor.md (Autonomy-Triggered):                            │
+     │ ---                                                              │
+     │ name: sparring-mentor                                               │
+     │ description: Struggle intervention triggered by autonomy kernel  │
+     │ model: sonnet                                                    │
+     │ tools: Read, Bash(python:*)                                      │
+     │ ---                                                              │
+     │                                                                  │
+     │ # Autonomy-Triggered Mentor                                      │
+     │                                                                  │
+     │ This agent is invoked when sparringAutonomy decides "intervene". │
+     │                                                                  │
+     │ ## Intervention Protocol                                         │
+     │ 1. Acknowledge the struggle without judgment                     │
+     │ 2. Review the goal and recent activity                           │
+     │ 3. Identify specific blockers                                    │
+     │ 4. Offer scaffolded help:                                        │
+     │    - Ask clarifying questions first                              │
+     │    - Suggest rubber-duck debugging                               │
+     │    - Break problem into smaller pieces                           │
+     │    - Offer to pair on the solution                               │
+     │                                                                  │
+     │ Deliverables                                                     │
+     │                                                                  │
+     │ - Update 4 agents with RSM awareness                             │
+     │ - Add autonomy trigger documentation                             │
+     │ - Test agent invocation flows                                    │
+     │                                                                  │
+     │ ---                                                              │
+     │ PHASE 8: IDE Integration                                         │
+     │                                                                  │
+     │ Goal                                                             │
+     │                                                                  │
+     │ Surface sparring in VS Code status line and command palette.     │
+     │                                                                  │
+     │ Files to Create                                                  │
+     │                                                                  │
+     │ conversational-sparring/                                            │
+     │ ├── ide/                                                         │
+     │ │   ├── status-line.sh    # Script for status line display       │
+     │ │   └── README.md         # IDE integration guide                │
+     │                                                                  │
+     │ VS Code Status Line                                              │
+     │                                                                  │
+     │ status-line.sh:                                                  │
+     │ #!/bin/bash                                                      │
+     │ # Display sparring status in Claude Code status line             │
+     │                                                                  │
+     │ COACH_DB="$HOME/.claude/sparring/coach.db"                          │
+     │                                                                  │
+     │ # Get counts                                                     │
+     │ OPEN_GOALS=$(sqlite3 "$COACH_DB" "                               │
+     │   SELECT COUNT(DISTINCT json_extract(meta, '$.goal_id'))         │
+     │   FROM events                                                    │
+     │   WHERE kind = 'goal_open'                                       │
+     │   AND json_extract(meta, '$.goal_id') NOT IN (                   │
+     │     SELECT json_extract(meta, '$.goal_id')                       │
+     │     FROM events                                                  │
+     │     WHERE kind IN ('goal_close', 'goal_abandon')                 │
+     │   )                                                              │
+     │ ")                                                               │
+     │                                                                  │
+     │ STREAK=$(python -c "                                             │
+     │ from conversational_sparring.lib.goals import GoalManager           │
+     │ from conversational_sparring.lib.ledger import SparringLedger          │
+     │ ledger = SparringLedger()                                           │
+     │ manager = GoalManager(ledger)                                    │
+     │ stats = manager.get_goal_stats()                                 │
+     │ print(stats.get('current_streak', 0))                            │
+     │ ")                                                               │
+     │                                                                  │
+     │ echo "🎯 $OPEN_GOALS goals | 🔥 $STREAK streak"                  │
+     │                                                                  │
+     │ ~/.claude/settings.json:                                         │
+     │ {                                                                │
+     │   "statusLine": {                                                │
+     │     "script": "~/.claude/sparring/ide/status-line.sh"               │
+     │   }                                                              │
+     │ }                                                                │
+     │                                                                  │
+     │ Command Palette Commands                                         │
+     │                                                                  │
+     │ All /coach * skills appear in command palette automatically.     │
+     │                                                                  │
+     │ Deliverables                                                     │
+     │                                                                  │
+     │ - Status line script                                             │
+     │ - Settings.json configuration                                    │
+     │ - IDE integration documentation                                  │
+     │                                                                  │
+     │ ---                                                              │
+     │ PHASE 9: Causal Graph (MemeGraph Adaptation)                     │
+     │                                                                  │
+     │ Goal                                                             │
+     │                                                                  │
+     │ Track relationships between sparring events for thread analysis. │
+     │                                                                  │
+     │ Files to Create                                                  │
+     │                                                                  │
+     │ conversational-sparring/lib/                                        │
+     │ ├── graph.py      # Causal event graph                           │
+     │                                                                  │
+     │ Implementation                                                   │
+     │                                                                  │
+     │ class CoachGraph:                                                │
+     │     """Directed graph of sparring event relationships."""        │
+     │                                                                  │
+     │     TRACKED_KINDS = {                                            │
+     │         "goal_open", "goal_close", "goal_abandon",               │
+     │         "reflection", "struggle", "intervention", "feedback"     │
+     │     }                                                            │
+     │                                                                  │
+     │     EDGE_TYPES = {                                               │
+     │         "closes": ("goal_close", "goal_open"),                   │
+     │         "abandons": ("goal_abandon", "goal_open"),               │
+     │         "reflects_on": ("reflection", "goal_close"),             │
+     │         "triggered_by": ("struggle", "goal_open"),               │
+     │         "resolves": ("intervention", "struggle"),                │
+     │     }                                                            │
+     │                                                                  │
+     │     def __init__(self, ledger: SparringLedger):                     │
+     │         self.ledger = ledger                                     │
+     │         self.graph = nx.DiGraph()                                │
+     │                                                                  │
+     │     def thread_for_goal(self, goal_id: str) -> List[int]:        │
+     │         """Get all events in a goal's thread."""                 │
+     │         # Returns: [goal_open, struggles, interventions,         │
+     │ reflections, goal_close]                                         │
+     │                                                                  │
+     │     def impact_analysis(self, goal_id: str) -> Dict:             │
+     │         """Analyze which patterns led to goal outcome."""        │
+     │                                                                  │
+     │ Use Cases                                                        │
+     │                                                                  │
+     │ - Show full goal journey (open → struggles → reflection → close) │
+     │ - Identify which interventions were effective                    │
+     │ - Trace patterns back to root causes                             │
+     │                                                                  │
+     │ Deliverables                                                     │
+     │                                                                  │
+     │ - CoachGraph class with NetworkX                                 │
+     │ - Thread query methods                                           │
+     │ - Impact analysis for goals                                      │
+     │ - Integration with /coach progress                               │
+     │                                                                  │
+     │ ---                                                              │
+     │ Implementation Order                                             │
+     │                                                                  │
+     │                                                                  │
+     │                                                                  │
+     │                                                                  │
+     │                                                                  │
+     │                                                                  │
+     │                                                                  │
+     │                                                                  │
+     │                                                                  │
+     │ ┌───────────────┬──────────┬───────────────┬────────┐            │
+     │ │     Phase     │ Priority │ Dependencies  │ Effort │            │
+     │ ├───────────────┼──────────┼───────────────┼────────┤            │
+     │ │ 1. Hooks      │ HIGH     │ None          │ Medium │            │
+     │ ├───────────────┼──────────┼───────────────┼────────┤            │
+     │ │ 2. Skills     │ HIGH     │ None          │ Low    │            │
+     │ ├───────────────┼──────────┼───────────────┼────────┤            │
+     │ │ 3. MCP Server │ HIGH     │ Ledger        │ Medium │            │
+     │ ├───────────────┼──────────┼───────────────┼────────┤            │
+     │ │ 4. Mirror     │ HIGH     │ Ledger        │ Medium │            │
+     │ ├───────────────┼──────────┼───────────────┼────────┤            │
+     │ │ 5. RSM        │ HIGH     │ Mirror        │ Medium │            │
+     │ ├───────────────┼──────────┼───────────────┼────────┤            │
+     │ │ 6. Autonomy   │ MEDIUM   │ Mirror, RSM   │ High   │            │
+     │ ├───────────────┼──────────┼───────────────┼────────┤            │
+     │ │ 7. Agents     │ MEDIUM   │ RSM, Autonomy │ Low    │            │
+     │ ├───────────────┼──────────┼───────────────┼────────┤            │
+     │ │ 8. IDE        │ LOW      │ Hooks         │ Low    │            │
+     │ ├───────────────┼──────────┼───────────────┼────────┤            │
+     │ │ 9. Graph      │ LOW      │ Ledger        │ Medium │            │
+     │ └───────────────┴──────────┴───────────────┴────────┘            │
+     │ Recommended Order: 1 → 2 → 4 → 5 → 3 → 6 → 7 → 9 → 8             │
+     │                                                                  │
+     │ ---                                                              │
+     │ Directory Structure (Final)                                      │
+     │                                                                  │
+     │ conversational-sparring/                                            │
+     │ ├── lib/                                                         │
+     │ │   ├── __init__.py                                              │
+     │ │   ├── ledger.py           # Event-sourced storage ✅           │
+     │ │   ├── goals.py            # Goal management ✅                 │
+     │ │   ├── patterns.py         # Pattern detection ✅               │
+     │ │   ├── feedback.py         # Feedback generation ✅             │
+     │ │   ├── metrics.py          # Progress metrics ✅                │
+     │ │   ├── mirror.py           # NEW: Projection layer              │
+     │ │   ├── rsm.py              # NEW: Recursive Self-Model          │
+     │ │   ├── autonomy.py         # NEW: Proactive sparring            │
+     │ │   ├── graph.py            # NEW: Causal relationships          │
+     │ │   └── domains/            # Domain configs ✅                  │
+     │ ├── hooks/                                                       │
+     │ │   ├── session-start.py    # NEW: Load context                  │
+     │ │   ├── post-tool-use.py    # NEW: Track activity                │
+     │ │   ├── user-prompt-submit.py # NEW: Inject sparring             │
+     │ │   └── session-end.py      # NEW: Save summary                  │
+     │ ├── mcp/                                                         │
+     │ │   ├── sparring-server.py  # NEW: MCP server                    │
+     │ │   ├── tools.py            # NEW: MCP tools                     │
+     │ │   └── resources.py        # NEW: MCP resources                 │
+     │ ├── skills/                 # Enhanced skills                    │
+     │ ├── agents/                 # RSM-aware agents                   │
+     │ ├── commands/               # Legacy commands ✅                 │
+     │ ├── domains/                # Domain YAMLs ✅                    │
+     │ ├── ide/                                                         │
+     │ │   └── status-line.sh      # NEW: IDE integration               │
+     │ └── tests/                                                       │
+     │                                                                  │
+     │ ---                                                              │
+     │ Verification Plan                                                │
+     │                                                                  │
+     │ Unit Tests                                                       │
+     │                                                                  │
+     │ # Test each new component                                        │
+     │ pytest tests/test_mirror.py -v                                   │
+     │ pytest tests/test_rsm.py -v                                      │
+     │ pytest tests/test_autonomy.py -v                                 │
+     │ pytest tests/test_graph.py -v                                    │
+     │                                                                  │
+     │ Integration Tests                                                │
+     │                                                                  │
+     │ # Test hooks                                                     │
+     │ python -c "                                                      │
+     │ import json                                                      │
+     │ import subprocess                                                │
+     │ result = subprocess.run(                                         │
+     │     ['python', 'hooks/session-start.py'],                        │
+     │     input=json.dumps({'event': 'SessionStart'}),                 │
+     │     capture_output=True, text=True                               │
+     │ )                                                                │
+     │ print(result.stdout)                                             │
+     │ "                                                                │
+     │                                                                  │
+     │ # Test MCP server                                                │
+     │ claude mcp call sparring get_active_goals                        │
+     │ claude mcp call sparring get_rsm_snapshot                        │
+     │                                                                  │
+     │ E2E Tests                                                        │
+     │                                                                  │
+     │ 1. Start session → verify hooks load context                     │
+     │ 2. Complete goal → verify autonomy suggests reflection           │
+     │ 3. Hit streak → verify celebrator agent triggered                │
+     │ 4. Struggle detected → verify mentor agent offered               │
+     │ 5. Close session → verify RSM updated                            │
+     │                                                                  │
+     │ ---                                                              │
+     │ Success Metrics                                                  │
+     │ ┌────────────────────┬─────────────────────────┬─────────────────│
+     │ ─┐                                                               │
+     │ │       Metric       │         Target          │   Measurement   │
+     │  │                                                               │
+     │ ├────────────────────┼─────────────────────────┼─────────────────│
+     │ ─┤                                                               │
+     │ │ Hook response time │ <100ms                  │ Benchmark script│
+     │  │                                                               │
+     │ ├────────────────────┼─────────────────────────┼─────────────────│
+     │ ─┤                                                               │
+     │ │ Mirror rebuild     │ <50ms for 1000 events   │ pytest benchmark│
+     │  │                                                               │
+     │ ├────────────────────┼─────────────────────────┼─────────────────│
+     │ ─┤                                                               │
+     │ │ RSM accuracy       │ 90%+ pattern detection  │ Manual review   │
+     │  │                                                               │
+     │ ├────────────────────┼─────────────────────────┼─────────────────│
+     │ ─┤                                                               │
+     │ │ Autonomy relevance │ 80%+ useful suggestions │ User feedback   │
+     │  │                                                               │
+     │ ├────────────────────┼─────────────────────────┼─────────────────│
+     │ ─┤                                                               │
+     │ │ Agent satisfaction │ 4/5 rating              │ User survey     │
+     │  │                                                               │
+     │ └────────────────────┴─────────────────────────┴─────────────────│
+     │ ─┘                                                               │
+     │                                                                  │
+     │                                                                  │
+     │                                                                  │
+     │                                                                  │
+     │ ---                                                              │
+     │ Technical Constraints (From PMM)                                 │
+     │                                                                  │
+     │ Must Follow                                                      │
+     │                                                                  │
+     │ 1. Determinism: All decisions reproducible from ledger           │
+     │ 2. Idempotency: Same input = same output                         │
+     │ 3. Rebuildability: All projections derivable from ledger         │
+     │ 4. No hidden state: Everything in events                         │
+     │ 5. Hash chain integrity: prev_hash linking                       │
+     │                                                                  │
+     │ Should Avoid                                                     │
+     │                                                                  │
+     │ 1. Wall-clock dependencies in decisions                          │
+     │ 2. Regex in runtime parsing                                      │
+     │ 3. Environment variables for behavior                            │
+     │ 4. Unbounded memory growth                                       │
+     │                                                                  │
+     │ ---                                                              │
+     │ Privacy & Data                                                   │
+     │                                                                  │
+     │ - All sparring data stored locally at ~/.claude/sparring/           │
+     │ - User custom domains never uploaded                             │
+     │ - Domain choice stored in ledger for continuity                  │
+     │ - MCP server runs locally (stdio transport)                      │
+     │ - Can reset with rm -rf ~/.claude/sparring/

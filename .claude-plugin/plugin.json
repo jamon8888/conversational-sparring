@@ -1,0 +1,16 @@
+{
+  "name": "conversational-sparring-csuite",
+  "version": "1.1.0",
+  "description": "Persistent, personalized sparring partner for C-suite with goal tracking, pattern detection, and adaptive recommendations",
+  "author": "Hacienda",
+  "license": "MIT",
+  "keywords": [
+    "coaching",
+    "c-suite",
+    "strategy",
+    "sparring",
+    "productivity"
+  ],
+  "data_dir": "~/.claude/coach",
+  "database": "~/.claude/coach/coach.db"
+}

@@ -1,0 +1,19 @@
+# Secrets
+mcp.json
+.env
+.DS_Store
+
+# Data
+*.db
+*.sqlite
+data/
+logs/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.pytest_cache/
+
+# Claude
+.claude/

@@ -1,0 +1,8 @@
+{
+  "widgets": [
+    {"type": "kpi", "title": "Campaign ROI"},
+    {"type": "kpi", "title": "Spend vs Revenue"},
+    {"type": "table", "title": "Channel Breakdown"},
+    {"type": "funnel", "title": "Conversion Funnel"}
+  ]
+}

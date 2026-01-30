@@ -1,0 +1,195 @@
+# Strategy Domain - Strategic Planning Sparring
+# Optimized for strategists, consultants, and strategic planners
+
+domain:
+  id: c-level
+  name: C-Level Strategy
+  description: Sparring for CEOs, Founders, and Chief Strategy Officers
+
+categories:
+  - id: initiative
+    name: Initiative
+    keywords:
+      - initiative
+      - project
+      - program
+      - workstream
+      - transformation
+      - change
+
+  - id: planning
+    name: Planning
+    keywords:
+      - plan
+      - planning
+      - roadmap
+      - timeline
+      - milestone
+      - phase
+      - scope
+
+  - id: analysis
+    name: Analysis
+    keywords:
+      - analysis
+      - research
+      - assessment
+      - audit
+      - benchmark
+      - competitive
+      - market
+
+  - id: alignment
+    name: Alignment
+    keywords:
+      - align
+      - alignment
+      - stakeholder
+      - buy-in
+      - consensus
+      - communication
+      - change management
+
+  - id: execution
+    name: Execution
+    keywords:
+      - execute
+      - implement
+      - deliver
+      - action
+      - progress
+      - tracking
+      - accountability
+
+  - id: review
+    name: Review
+    keywords:
+      - review
+      - retrospective
+      - lessons learned
+      - post-mortem
+      - evaluation
+      - measure
+
+  - id: other
+    name: Other
+    keywords: []
+
+# Strategy-specific patterns
+patterns:
+  analysis_paralysis:
+    description: Over-analyzing without moving to action
+    severity_threshold: 4
+    severity: warning
+    suggestion: Set analysis deadlines and move to hypothesis testing
+
+  misalignment:
+    description: Proceeding without key stakeholder alignment
+    severity_threshold: 2
+    severity: concern
+    suggestion: Conduct alignment check before major decisions
+
+  execution_gap:
+    description: Strong plans that don't translate to action
+    severity_threshold: 3
+    severity: warning
+    suggestion: Define clear owners, timelines, and accountability
+
+  scope_inflation:
+    description: Initiative scope growing beyond capacity
+    severity_threshold: 3
+    severity: concern
+    suggestion: Ruthlessly prioritize and phase work
+
+impact_keywords:
+  high:
+    - strategic
+    - board
+    - transformation
+    - enterprise-wide
+    - multi-year
+    - critical
+  medium:
+    - department
+    - annual
+    - significant
+    - cross-functional
+  low:
+    - tactical
+    - incremental
+    - pilot
+    - experiment
+
+struggle_indicators:
+  blockers:
+    - blocked
+    - decision
+    - approval
+    - resource
+    - alignment
+    - political
+  confusion:
+    - unclear
+    - scope
+    - direction
+    - priority
+    - conflicting
+  pressure:
+    - deadline
+    - board
+    - quarter
+    - commitment
+    - behind
+
+thresholds:
+  stalled_goal_days: 14 # Strategy work takes time
+  quick_win_days: 5 # Quick for strategy is a week
+  max_open_goals: 6 # Focus on fewer initiatives
+  reflection_cadence: biweekly
+
+messages:
+  goal_created: "Strategic initiative set"
+  goal_completed: "Initiative completed"
+  goal_abandoned: "Initiative discontinued"
+  streak_message: "{count} consecutive completions"
+  stalled_warning: "This initiative needs attention"
+  welcome: "Ready to help you execute strategy"
+  skill_installed: "Skill added to your CEO toolkit"
+  bundle_installed: "{count} skills installed for CEO workflow"
+
+# Recommended skills for CEOs/Founders
+recommended_skills:
+  - ceo-advisor
+  - cto-advisor
+  - product-strategist
+  - senior-architect
+  - marketing-strategy-pmm
+  - risk-management-specialist
+  - growth-analytics
+  - docx
+  - pdf
+  - pptx
+  - comparative-analyzer
+  - market-analyst
+  - opportunity-discovery
+  - opportunity-scorer
+  - roadmap-planner
+  - report-synthesizer
+  - revenue-analytics
+  - pricing-packaging
+  - pipeline-forecasting
+
+# Skill bundles for progressive adoption
+skill_bundles:
+  starter:
+    - ceo-advisor
+  growth:
+    - ceo-advisor
+    - product-strategist
+    - marketing-strategy-pmm
+  complete:
+    - ceo-advisor
+    - product-strategist
+    - senior-architect
+    - marketing-strategy-pmm
+    - risk-management-specialist

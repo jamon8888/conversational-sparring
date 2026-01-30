@@ -1,0 +1,94 @@
+compliance_checklist:
+  name: "GDPR Compliance"
+  description: "General Data Protection Regulation compliance for EU content"
+  region: "EU"
+  regulation: "GDPR"
+  
+  checks:
+    - id: "gdpr-01"
+      requirement: "Legal Basis for Data Processing"
+      description: "If content describes collecting/processing personal data, state legal basis (consent, contract, legitimate interest)"
+      severity: "critical"
+      article: "Article 6"
+      examples:
+        pass: "We collect email with your consent to send newsletters"
+        fail: "We collect your email" (no legal basis stated)
+      
+    - id: "gdpr-02"
+      requirement: "Privacy Policy Linked"
+      description: "Any data collection must link to privacy policy"
+      severity: "critical"
+      article: "Article 13"
+      examples:
+        pass: "Enter email. See our [Privacy Policy](link)"
+        fail: "Enter email" (no privacy policy link)
+      
+    - id: "gdpr-03"
+      requirement: "Clear Affirmative Consent"
+      description: "Opt-in must be clear, affirmative action (no pre-checked boxes)"
+      severity: "critical"
+      article: "Article 7"
+      examples:
+        pass: "☐ I agree to receive marketing emails"
+        fail: "☑ I agree to receive marketing emails" (pre-checked)
+      
+    - id: "gdpr-04"
+      requirement: "Right to Access Mentioned"
+      description: "Inform users of their right to access their data"
+      severity: "high"
+      article: "Article 15"
+      examples:
+        pass: "Contact privacy@company.com for data requests"
+        fail: No contact information provided
+      
+    - id: "gdpr-05"
+      requirement: "Data Retention Period"
+      description: "State how long personal data will be kept"
+      severity: "medium"
+      article: "Article 13(2)(a)"
+      examples:
+        pass: "We keep your email for 2 years or until you unsubscribe"
+        fail: No retention period mentioned
+      
+    - id: "gdpr-06"
+      requirement: "Third-Party Data Sharing Disclosed"
+      description: "List any third parties who will receive personal data"
+      severity: "high"
+      article: "Article 13(1)(e)"
+      examples:
+        pass: "We share data with Mailchimp (email) and Salesforce (CRM)"
+        fail: No third-party disclosure
+      
+    - id: "gdpr-07"
+      requirement: "Cookie Consent (if web content)"
+      description: "Websites must have proper cookie consent UI"
+      severity: "critical"
+      article: "ePrivacy Directive"
+      examples:
+        pass: "Banner with accept/reject before any cookies"
+        fail: "Cookies set without consent"
+      
+    - id: "gdpr-08"
+      requirement: "Data Minimization"
+      description: "Only collect data necessary for stated purpose"
+      severity: "high"
+      article: "Article 5(1)(c)"
+      examples:
+        pass: "Email required for newsletter (necessary)"
+        fail: "Email + phone + address for newsletter (excessive)"
+  
+  risk_assessment:
+    low_risk:
+      description: "General content, no data collection"
+      review: "Standard workflow"
+      examples: ["Blog post", "Social media post"]
+      
+    medium_risk:
+      description: "Lead magnet with email collection"
+      review: "Standard workflow + GDPR checklist"
+      examples: ["Ebook download", "Newsletter signup"]
+      
+    high_risk:
+      description: "Sensitive data collection or processing"
+      review: "Legal review required"
+      examples: ["Customer testimonials", "Case studies with company data", "Survey collecting opinions"]

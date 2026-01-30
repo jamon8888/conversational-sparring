@@ -1,0 +1,6 @@
+{
+  "ideation": { "count_per_week": 5 },
+  "creation": { "min_seo_score": 85 },
+  "repurpose": { "formats": ["twitter", "linkedin", "email", "video-script"] },
+  "schedule": { "export": "csv" }
+}

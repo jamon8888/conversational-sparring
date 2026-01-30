@@ -1,0 +1,9 @@
+{
+  "anchors_per_month": 4,
+  "repurpose_formats": ["twitter-thread", "linkedin", "instagram", "email"],
+  "min_seo_score": 85,
+  "schedule": {
+    "export": "csv",
+    "time_window": "30d"
+  }
+}

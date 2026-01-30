@@ -1,0 +1,20 @@
+{
+  "linkedin": {
+    "feed_image": "1200 x 627 px",
+    "profile_cover": "1128 x 191 px",
+    "carousel": "1080 x 1080 px"
+  },
+  "twitter": {
+    "post_image": "1600 x 900 px",
+    "header": "1500 x 500 px"
+  },
+  "instagram": {
+    "square": "1080 x 1080 px",
+    "portrait": "1080 x 1350 px",
+    "story": "1080 x 1920 px"
+  },
+  "facebook": {
+    "feed_image": "1200 x 630 px",
+    "cover": "820 x 312 px"
+  }
+}

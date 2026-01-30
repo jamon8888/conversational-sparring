@@ -1,0 +1,31 @@
+{
+    "templates": [
+        {
+            "name": "Problem-Agitate-Solve",
+            "subject": "Quick question about [pain point]",
+            "body": "Hi [First Name],\n\nNoticed [Company] is [specific observation from research].\n\nMost [job title]s I talk to struggle with [specific pain point]. This usually means [consequence 1] and [consequence 2].\n\nWe help companies like [similar company] [achieve specific result] in [timeframe].\n\nWorth a 15-min chat?\n\n[Your Name]"
+        },
+        {
+            "name": "Social Proof",
+            "subject": "How [Similar Company] achieved [result]",
+            "body": "Hi [First Name],\n\n[Similar Company] was facing [problem] last quarter.\n\nWe helped them [specific solution], resulting in:\n• [Metric 1]\n• [Metric 2]\n• [Metric 3]\n\nSaw you're [relevant trigger event]. Would this be relevant for [Company]?\n\nHappy to share the case study.\n\n[Your Name]"
+        },
+        {
+            "name": "Trigger Event",
+            "subject": "Congrats on [trigger event]",
+            "body": "Hi [First Name],\n\nCongrats on [specific trigger event - funding/hiring/launch]!\n\nWith [number] new [hires/customers/etc], you're probably thinking about [related challenge].\n\nWe work with companies at your stage to [specific outcome]. Recent client [Company Name] saw [specific metric] in [timeframe].\n\nWorth exploring?\n\n[Your Name]"
+        }
+    ],
+    "subject_lines": [
+        "Quick question about [pain point]",
+        "[Mutual connection] suggested I reach out",
+        "Saw your post about [topic]",
+        "How [Similar Company] achieved [result]",
+        "[First Name], thought of you",
+        "Congrats on [achievement]",
+        "Following up on [event/post]",
+        "[Number]% improvement in [metric]?",
+        "Alternative to [competitor]",
+        "Noticed [specific observation]"
+    ]
+}

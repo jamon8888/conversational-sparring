@@ -1,0 +1,7 @@
+{
+  "description": "Configuration and data for content-repurposing",
+  "version": "1.0",
+  "data": {
+    "example_field": "example_value"
+  }
+}

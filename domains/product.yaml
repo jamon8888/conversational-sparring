@@ -1,0 +1,89 @@
+# Product Domain - Product Management Sparring
+# Optimized for CPOs, Product Managers, and Founders
+
+domain:
+  id: product
+  name: Product Management
+  description: Sparring for product strategy, roadmap, and user value
+
+categories:
+  - id: discovery
+    name: Discovery
+    keywords: [research, interview, survey, user testing, problem space]
+
+  - id: roadmap
+    name: Roadmap
+    keywords: [specs, planning, prioritization, strategy, quarters]
+
+  - id: delivery
+    name: Delivery
+    keywords: [launch, release, qa, shipping, iteration]
+
+  - id: metrics
+    name: Product Metrics
+    keywords: [usage, dau, mau, engagement, adoption]
+
+patterns:
+  feature_factory:
+    description: Shipping features without solving problems
+    severity_threshold: 4
+    severity: warning
+    suggestion: focus on outcomes, not outputs
+
+  scope_creep:
+    description: Adding REQUIREMENTS mid-sprint
+    severity_threshold: 3
+    severity: concern
+    suggestion: freeze scope or swap items out
+
+thresholds:
+  stalled_goal_days: 5
+  quick_win_days: 2
+  max_open_goals: 6
+  reflection_cadence: biweekly
+
+messages:
+  goal_created: "Product initiative defined"
+  goal_completed: "Shipped to users"
+  stalled_warning: "This feature is stuck in development"
+  skill_installed: "Product skill added to your toolkit"
+  bundle_installed: "{count} skills installed for CPO workflow"
+
+# Recommended skills for CPOs/Product Leaders
+recommended_skills:
+  - product-manager-toolkit
+  - product-strategist
+  - ux-researcher-designer
+  - agile-product-owner
+  - ui-design-system
+  - product-launch-orchestration
+  - product-led-growth
+  - marketing-strategy-pmm
+  - senior-pm
+  - scrum-master
+  - jira-expert
+  - confluence-expert
+  - atlassian-templates
+  - docx
+  - pdf
+  - pptx
+  - market-analyst
+  - opportunity-discovery
+  - roadmap-planner
+  - sprint-orchestrator
+  - sprint-progress-tracker
+
+# Skill bundles for progressive adoption
+skill_bundles:
+  starter:
+    - product-manager-toolkit
+    - product-strategist
+  discovery:
+    - product-manager-toolkit
+    - ux-researcher-designer
+  complete:
+    - product-manager-toolkit
+    - product-strategist
+    - ux-researcher-designer
+    - agile-product-owner
+    - ui-design-system

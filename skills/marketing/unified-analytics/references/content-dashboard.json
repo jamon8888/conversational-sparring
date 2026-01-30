@@ -1,0 +1,8 @@
+{
+  "widgets": [
+    {"type": "kpi", "title": "Total Views"},
+    {"type": "kpi", "title": "Engagement Rate"},
+    {"type": "table", "title": "Top Content"},
+    {"type": "trend", "title": "Traffic Trend (30d)"}
+  ]
+}

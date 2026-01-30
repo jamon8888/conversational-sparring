@@ -1,0 +1,78 @@
+# Base Configuration - Universal patterns applicable to all domains
+# This file is automatically merged into all domain configs
+
+domain:
+  id: _base
+  name: Base Configuration
+  description: Universal patterns applicable to all domains
+
+# Universal patterns inherited by all domains
+patterns:
+  context_switching:
+    description: Starting new goals before completing existing ones
+    severity_threshold: 3
+    severity: warning
+    suggestion: Focus on completing one goal before starting another
+
+  goal_abandonment:
+    description: Frequently abandoning goals without completion
+    severity_threshold: 2
+    severity: concern
+    suggestion: Break large goals into smaller, achievable tasks
+
+  rushed_completion:
+    description: Completing goals very quickly
+    severity_threshold: 5
+    severity: info
+    positive: true
+    suggestion: Quick wins are good! Ensure quality isn't sacrificed
+
+  stalled_work:
+    description: Goals sitting idle for extended periods
+    severity_threshold: 3
+    severity: warning
+    suggestion: Break blockers into sub-goals or seek help
+
+  reflection_consistency:
+    description: Regular reflection on work progress
+    severity_threshold: 5
+    severity: info
+    positive: true
+    suggestion: Keep reflecting! It helps identify patterns
+
+# Default struggle indicators (can be overridden)
+struggle_indicators:
+  blockers:
+    - blocked
+    - waiting
+    - dependency
+    - stuck
+    - can't proceed
+  confusion:
+    - unclear
+    - uncertain
+    - don't understand
+    - confused
+    - not sure
+  pressure:
+    - deadline
+    - overdue
+    - behind
+    - urgent
+    - running out of time
+
+# Default thresholds (can be overridden per domain)
+thresholds:
+  stalled_goal_days: 3
+  quick_win_days: 1
+  max_open_goals: 7
+  reflection_cadence: daily
+
+# Default messages (can be overridden per domain)
+messages:
+  goal_created: "Goal set"
+  goal_completed: "Goal completed"
+  goal_abandoned: "Goal abandoned"
+  streak_message: "{count} in a row"
+  stalled_warning: "This goal needs attention"
+  welcome: "Ready to help you track your progress"

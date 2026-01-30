@@ -1,0 +1,106 @@
+{
+  "twitter": {
+    "max_chars": 280,
+    "max_images": 4,
+    "image_dimensions": "1200x675",
+    "image_formats": ["JPG", "PNG", "GIF", "WEBP"],
+    "optimal_hashtags": 2,
+    "max_hashtags": 4,
+    "best_posting_times": ["8-10am", "12-1pm", "5-6pm"],
+    "engagement_tactics": [
+      "Ask questions",
+      "Use emojis strategically",
+      "Thread long content",
+      "Tag relevant accounts"
+    ]
+  },
+  "linkedin": {
+    "max_chars": 3000,
+    "optimal_chars": "1200-1500",
+    "max_images": 9,
+    "image_dimensions": "1200x627",
+    "image_formats": ["JPG", "PNG"],
+    "optimal_hashtags": 3,
+    "max_hashtags": 5,
+    "best_posting_times": ["7-8am", "12pm", "5-6pm"],
+    "engagement_tactics": [
+      "Professional tone",
+      "Data and insights",
+      "Ask for opinions",
+      "Share expertise"
+    ]
+  },
+  "instagram": {
+    "max_caption_chars": 2200,
+    "optimal_caption_chars": "138-150",
+    "image_dimensions": "1080x1080",
+    "image_formats": ["JPG", "PNG"],
+    "optimal_hashtags": "5-10",
+    "max_hashtags": 30,
+    "best_posting_times": ["11am-1pm", "7-9pm"],
+    "engagement_tactics": [
+      "Visual storytelling",
+      "Carousel posts",
+      "Reels for reach",
+      "Interactive stickers"
+    ]
+  },
+  "facebook": {
+    "max_chars": 63206,
+    "optimal_chars": "40-80",
+    "image_dimensions": "1200x630",
+    "image_formats": ["JPG", "PNG", "GIF"],
+    "optimal_hashtags": 2,
+    "max_hashtags": 3,
+    "best_posting_times": ["1-3pm", "7-9pm"],
+    "engagement_tactics": [
+      "Native video",
+      "Live streams",
+      "Community building",
+      "Share valuable content"
+    ]
+  },
+  "youtube": {
+    "max_description_chars": 5000,
+    "optimal_description_chars": "200-300",
+    "thumbnail_dimensions": "1280x720",
+    "thumbnail_formats": ["JPG", "PNG"],
+    "optimal_hashtags": 3,
+    "max_hashtags": 15,
+    "best_posting_times": ["2-4pm", "6-9pm"],
+    "engagement_tactics": [
+      "Engaging thumbnails",
+      "Compelling titles",
+      "Timestamps/chapters",
+      "Clear CTAs"
+    ]
+  },
+  "tiktok": {
+    "max_description_chars": 2200,
+    "optimal_description_chars": "150",
+    "video_dimensions": "1080x1920",
+    "video_formats": ["MP4", "MOV"],
+    "optimal_hashtags": "3-5",
+    "max_hashtags": 10,
+    "best_posting_times": ["6-10am", "7-11pm"],
+    "engagement_tactics": [
+      "Hook in first 3 seconds",
+      "Trending sounds",
+      "Authentic content",
+      "High energy"
+    ]
+  },
+  "medium": {
+    "optimal_length": "1500-2000",
+    "image_dimensions": "1400x933",
+    "image_formats": ["JPG", "PNG"],
+    "optimal_hashtags": 5,
+    "best_posting_times": ["7-10am"],
+    "engagement_tactics": [
+      "Compelling intro",
+      "Subheadings",
+      "Data and research",
+      "Personal stories"
+    ]
+  }
+}

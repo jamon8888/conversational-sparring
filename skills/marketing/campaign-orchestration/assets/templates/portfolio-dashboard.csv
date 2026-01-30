@@ -1,0 +1,4 @@
+campaign_id,campaign_name,owner,phase,start_date,end_date,channels,weekly_hours,status
+C001,Q1 Launch,Alex,creation,2025-01-05,2025-02-02,blog;email;social,24,green
+C002,Webinar Series,Sara,planning,2025-01-12,2025-03-01,webinar;email;social,16,yellow
+C003,ABM Pilot,Lee,execution,2025-01-20,2025-02-28,linkedin;email,20,red

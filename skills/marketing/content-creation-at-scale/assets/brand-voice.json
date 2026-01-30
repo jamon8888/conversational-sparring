@@ -1,0 +1,54 @@
+{
+  "brand_voice": {
+    "name": "Your Brand Voice",
+    "attributes": [
+      "professional",
+      "helpful",
+      "concise",
+      "data-driven"
+    ],
+    "tone_scores": {
+      "formality": 7,
+      "professionalism": 9,
+      "friendliness": 6,
+      "technicality": 5,
+      "humor": 3
+    },
+    "vocabulary": {
+      "preferred_words": [
+        "actionable",
+        "proven",
+        "results",
+        "insights",
+        "optimize",
+        "strategic"
+      ],
+      "avoid_words": [
+        "synergy",
+        "leverage",
+        "disrupt",
+        "guru",
+        "ninja",
+        "rockstar"
+      ]
+    },
+    "grammar_style": {
+      "use_oxford_comma": true,
+      "prefer_active_voice": true,
+      "max_sentence_length": 25,
+      "prefer_short_paragraphs": true
+    },
+    "examples": {
+      "good": [
+        "Our data shows 40% improvement in engagement",
+        "Three strategies that increased conversions by 25%",
+        "Here's how we solved this problem"
+      ],
+      "bad": [
+        "We're like, super good at engagement stuff",
+        "Leveraging synergies to disrupt the paradigm",
+        "Our revolutionary solution will change everything"
+      ]
+    }
+  }
+}
