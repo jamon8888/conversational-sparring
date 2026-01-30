@@ -14,9 +14,34 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Create Release
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install pyyaml
+
+      - name: Generate Domain Plugins
+        run: |
+          mkdir -p dist/plugins
+          python scripts/generate_plugins.py --dist-dir dist/plugins
+
+          # Zip each plugin folder in dist/plugins
+          cd dist/plugins
+          for dir in */ ; do
+            plugin_name=${dir%/}
+            echo "Zipping $plugin_name..."
+            zip -r "${plugin_name}.zip" "$plugin_name"
+          done
+          ls -la *.zip
+
+      - name: Create Release and Upload Assets
         uses: softprops/action-gh-release@v1
         with:
           generate_release_notes: true
           draft: false
           prerelease: false
+          files: |
+            dist/plugins/*.zip
