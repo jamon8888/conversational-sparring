@@ -31,6 +31,10 @@ def package_skills():
         if not category_dir.is_dir() or category_dir.name.startswith('.'):
             continue
             
+        category_name = category_dir.name
+        category_dist_dir = DIST_DIR / category_name
+        category_dist_dir.mkdir(exist_ok=True)
+            
         for skill_dir in category_dir.iterdir():
             if not skill_dir.is_dir() or skill_dir.name.startswith('.'):
                 continue
@@ -41,17 +45,10 @@ def package_skills():
                 
             skill_name = skill_dir.name
             
-            # Create zip archive
-            # We want the zip to contain the skill folder itself, not just contents
-            # So if we unzip my-skill.zip, we get my-skill/ folder
+            # Create zip archive in the category subdirectory
+            archive_path = category_dist_dir / skill_name
             
-            # shutil.make_archive base_name is without extension
-            # root_dir is the parent of the directory we want to zip
-            # base_dir is the directory inside root_dir we want to zip
-            
-            archive_path = DIST_DIR / skill_name
-            
-            logger.info(f"  Zipping {skill_name}...")
+            logger.info(f"  Zipping {category_name}/{skill_name}...")
             shutil.make_archive(
                 str(archive_path),
                 'zip',

@@ -48,4 +48,4 @@ jobs:
           prerelease: false
           files: |
             dist/plugins/*.zip
-            dist/skills/*.zip
+            dist/skills/**/*.zip
