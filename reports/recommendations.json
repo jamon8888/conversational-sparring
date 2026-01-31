@@ -1,0 +1,262 @@
+{
+  "report_date": "2026-01-31",
+  "executive_summary": {
+    "current_state": "Architecture solid, integration incomplete",
+    "coverage": "10% of expected events recorded (1/10)",
+    "estimated_repair_time_minutes": 155,
+    "estimated_repair_time_hours": 2.6,
+    "priority_distribution": {
+      "p0_critical": 3,
+      "p1_high": 3,
+      "p2_medium": 2,
+      "p3_low": 2
+    }
+  },
+  "implementation_phases": [
+    {
+      "phase": "PHASE 1: Critical Fixes (35 min)",
+      "goal": "Unblock all components",
+      "tasks": [
+        {
+          "id": "P0-1",
+          "priority": "P0",
+          "title": "Fix Default Domain",
+          "file": "lib/domains/loader.py",
+          "line": 297,
+          "current_code": "return \"strategy\"",
+          "fixed_code": "return \"personal\"",
+          "rationale": "Domain 'strategy' does not exist, blocks GoalManager initialization",
+          "estimated_minutes": 5,
+          "verification": "python -c \"from lib.domains import get_default_domain, load_domain; domain = load_domain(get_default_domain()); print(f'Default domain: {domain.name}')\"",
+          "impact": "Unblocks GoalManager, Mirror, RSM, Autonomy"
+        },
+        {
+          "id": "P0-2",
+          "priority": "P0",
+          "title": "Add Categories to strategic-research.yaml",
+          "file": "domains/strategic-research.yaml",
+          "line": 8,
+          "insert_after": "patterns:",
+          "new_content": "categories:\n  - id: research\n    name: Research\n    keywords:\n      - research\n      - study\n      - investigate\n      - explore\n      - analyze\n      - insight\n      - data\n      - findings\n  - id: analysis\n    name: Analysis\n    keywords:\n      - analysis\n      - synthesize\n      - compare\n      - evaluate\n      - framework\n  - id: strategy\n    name: Strategy\n    keywords:\n      - strategy\n      - opportunity\n      - market\n      - competitive\n      - positioning",
+          "rationale": "Without categories, all goals default to 'other' with low impact scores",
+          "estimated_minutes": 10,
+          "verification": "python -c \"from lib.domains import load_domain; d = load_domain('strategic-research'); cat = d.detect_category('Research Gen Z trends'); assert cat == 'research'\"",
+          "impact": "Correct category detection, proper impact scores (7-8 instead of 5)"
+        },
+        {
+          "id": "P0-3",
+          "priority": "P0",
+          "title": "Add Session Start Hook",
+          "file": "lib/goals.py",
+          "method": "GoalManager.open_goal()",
+          "insert_location": "Beginning of method, before goal creation",
+          "new_code": "# Check if first goal in session\nrecent = self.ledger.read_recent(hours=1)\nif not any(e['kind'] == 'session_start' for e in recent):\n    self.ledger.append('session_start', {\n        'domain': domain or self._domain.id,\n        'trigger': 'goal_creation',\n        'timestamp': datetime.now(timezone.utc).isoformat()\n    })",
+          "rationale": "Session lifecycle not tracked, domain context lost",
+          "estimated_minutes": 20,
+          "verification": "python -c \"from lib.goals import GoalManager; from lib.ledger import SparringLedger; ledger = SparringLedger(); mgr = GoalManager(ledger); mgr.open_goal('Test'); events = ledger.read_all(); assert any(e['kind'] == 'session_start' for e in events)\"",
+          "impact": "Session tracking, domain context preserved"
+        }
+      ]
+    },
+    {
+      "phase": "PHASE 2: Cognitive Integration (55 min)",
+      "goal": "Wire cognitive components into workflow",
+      "tasks": [
+        {
+          "id": "P1-1",
+          "priority": "P1",
+          "title": "Hook Cognitive Router to Goal Creation",
+          "file": "lib/goals.py",
+          "method": "GoalManager.open_goal()",
+          "insert_location": "After session_start, before goal creation",
+          "new_code": "# Detect cognitive mode\nfrom .cognition import CognitiveRouter\nrouter = CognitiveRouter(self.ledger)\nmode, confidence = router.determine_mode(description)\n\n# Persist to ledger\nself.ledger.append('cognitive_mode_switch', {\n    'mode': mode.value,\n    'confidence': confidence,\n    'ere_level': router.get_current_ere_level().value,\n    'context': description[:100]\n})",
+          "rationale": "System cannot adapt behavior to LEARNING vs DECISION mode",
+          "estimated_minutes": 20,
+          "verification": "python -c \"from lib.goals import GoalManager; from lib.ledger import SparringLedger; ledger = SparringLedger(); mgr = GoalManager(ledger); mgr.open_goal('I want to learn Python'); events = ledger.read_all(); assert any(e['kind'] == 'cognitive_mode_switch' for e in events)\"",
+          "impact": "Mode-aware sparring, ERE-adapted support"
+        },
+        {
+          "id": "P1-2",
+          "priority": "P1",
+          "title": "Fix Autonomy Kernel Initialization",
+          "file": "lib/autonomy.py",
+          "method": "SparringAutonomy.__init__()",
+          "current_issue": "Expects Mirror but receives Ledger in parameter",
+          "solution": "Create Mirror internally from Ledger",
+          "new_code": "def __init__(self, ledger: SparringLedger, rsm: SparringRSM) -> None:\n    from .mirror import SparringMirror\n    self.ledger = ledger\n    self.mirror = SparringMirror(ledger)\n    self.mirror.rebuild()  # Initial sync\n    self.rsm = rsm",
+          "rationale": "Type confusion blocks autonomous decisions",
+          "estimated_minutes": 15,
+          "verification": "python -c \"from lib.autonomy import SparringAutonomy; from lib.rsm import SparringRSM; from lib.ledger import SparringLedger; ledger = SparringLedger(); rsm = SparringRSM(ledger); autonomy = SparringAutonomy(ledger, rsm); decision = autonomy.decide_next_action(); assert 'action' in decision\"",
+          "impact": "Autonomous check-ins, interventions, reflections"
+        },
+        {
+          "id": "P1-3",
+          "priority": "P1",
+          "title": "Bridge MCP Tools to Skill Tracking",
+          "file": "lib/skills/manager.py OR new middleware layer",
+          "approach": "Hook MCP tool invocations",
+          "new_code": "# In MCP tool wrapper or Claude Code integration\ndef on_mcp_tool_call(tool_name: str, args: dict, result: Any):\n    # Map MCP tools to skills\n    skill_mapping = {\n        'exa_search': 'exa-search-expert',\n        'exa_find_similar': 'exa-search-expert',\n        # ... other mappings\n    }\n    \n    if tool_name in skill_mapping:\n        skill_id = skill_mapping[tool_name]\n        ledger.append('skill_use', {\n            'skill': skill_id,\n            'tool': tool_name,\n            'args': args,\n            'success': result is not None,\n            'domain': get_current_domain()\n        })",
+          "rationale": "Exa.ai usage not tracked, cannot recommend skills",
+          "estimated_minutes": 30,
+          "note": "Requires access to Claude Code's MCP invocation layer",
+          "verification": "Use Exa tool, then check: python -c \"from lib.ledger import SparringLedger; ledger = SparringLedger(); events = ledger.read_by_kind('skill_use'); print(f'Skill uses: {len(events)}')\"",
+          "impact": "Skill usage analytics, recommendations, effectiveness tracking"
+        }
+      ]
+    },
+    {
+      "phase": "PHASE 3: Behavioral Intelligence (35 min)",
+      "goal": "Enable pattern detection and proactive sparring",
+      "tasks": [
+        {
+          "id": "P2-1",
+          "priority": "P2",
+          "title": "Add Pattern Detection Triggers",
+          "file": "lib/goals.py",
+          "method": "GoalManager.close_goal()",
+          "insert_location": "End of method, after goal closed",
+          "new_code": "# Trigger pattern detection\nfrom .patterns import PatternDetector\ndetector = PatternDetector(self.ledger, domain=self._domain)\npatterns = detector.analyze()\n\n# Persist detected patterns\nfor pattern in patterns:\n    self.ledger.append('pattern_detected', {\n        'pattern': pattern['name'],\n        'description': pattern['description'],\n        'severity': pattern['severity'],\n        'goal_id': goal_id,\n        'evidence': pattern.get('evidence', [])\n    })",
+          "rationale": "Patterns never detected despite defined in domain config",
+          "estimated_minutes": 20,
+          "verification": "Create and close 5 goals in different patterns, check: python -c \"from lib.ledger import SparringLedger; ledger = SparringLedger(); events = ledger.read_by_kind('pattern_detected'); print(f'Patterns: {len(events)}')\"",
+          "impact": "Behavioral insights (context switching, goal abandonment, research gaps)"
+        },
+        {
+          "id": "P2-2",
+          "priority": "P2",
+          "title": "Implement Reflection Prompts",
+          "file": "lib/autonomy.py",
+          "method": "SparringAutonomy.decide_next_action()",
+          "enhance_logic": "Add reflection decision",
+          "new_code": "# Check for reflection opportunities\nrecent_completions = [e for e in self.ledger.read_recent(hours=24) if e['kind'] == 'goal_close']\nif len(recent_completions) >= 3:\n    # User completed 3+ goals recently, prompt reflection\n    return {\n        'action': 'reflect',\n        'reason': f'{len(recent_completions)} goals completed in 24h',\n        'context': {\n            'completed_goals': [e['meta']['goal_id'] for e in recent_completions],\n            'prompt': 'You\\'ve completed several goals. What patterns do you notice?'\n        }\n    }",
+          "rationale": "No automatic reflection prompts despite defined trigger points",
+          "estimated_minutes": 15,
+          "verification": "Complete 3 goals, then: python -c \"from lib.autonomy import SparringAutonomy; from lib.rsm import SparringRSM; from lib.ledger import SparringLedger; ledger = SparringLedger(); rsm = SparringRSM(ledger); autonomy = SparringAutonomy(ledger, rsm); decision = autonomy.decide_next_action(); assert decision['action'] == 'reflect'\"",
+          "impact": "Structured reflection, learning consolidation"
+        }
+      ]
+    },
+    {
+      "phase": "PHASE 4: Polish (25 min)",
+      "goal": "Achievements and auto-close features",
+      "tasks": [
+        {
+          "id": "P3-1",
+          "priority": "P3",
+          "title": "Add Achievement Recognition",
+          "file": "lib/autonomy.py",
+          "method": "SparringAutonomy.decide_next_action() OR new method",
+          "new_method": "check_achievements()",
+          "new_code": "def check_achievements(self) -> List[Dict]:\n    all_events = self.ledger.read_all()\n    completed = [e for e in all_events if e['kind'] == 'goal_close']\n    \n    achievements = []\n    \n    # First goal\n    if len(completed) == 1:\n        achievements.append({\n            'type': 'first_goal',\n            'message': 'First goal completed! 🎯'\n        })\n    \n    # Momentum (5 goals)\n    if len(completed) == 5:\n        achievements.append({\n            'type': 'momentum',\n            'message': '5 goals completed! Building momentum 🚀'\n        })\n    \n    # Consistency (10 goals)\n    if len(completed) == 10:\n        achievements.append({\n            'type': 'consistency',\n            'message': '10 goals completed! Consistency master 🏆'\n        })\n    \n    return achievements",
+          "rationale": "No celebration/recognition of milestones",
+          "estimated_minutes": 15,
+          "verification": "Complete 1st, 5th, 10th goal and check for achievement events",
+          "impact": "User motivation, progress visibility"
+        },
+        {
+          "id": "P3-2",
+          "priority": "P3",
+          "title": "Auto-close Stalled Goals Prompt",
+          "file": "lib/autonomy.py",
+          "method": "SparringAutonomy.decide_next_action()",
+          "enhance_logic": "Check for very stale goals (>7 days)",
+          "new_code": "# Check for very stale goals\nfrom .goals import GoalManager\nmanager = GoalManager(self.ledger)\nvery_stale = manager.get_stalled_goals(threshold_days=7)\n\nif very_stale:\n    return {\n        'action': 'prompt_close',\n        'reason': f'{len(very_stale)} goals stalled >7 days',\n        'context': {\n            'stale_goals': [g['id'] for g in very_stale],\n            'prompt': f'You have {len(very_stale)} goals open for >7 days. Close or abandon?'\n        }\n    }",
+          "rationale": "Goals remain open indefinitely without prompt to close",
+          "estimated_minutes": 10,
+          "verification": "Create goal, wait 7+ days (or simulate timestamp), check autonomy decision",
+          "impact": "Cleaner goal list, accurate completion metrics"
+        }
+      ]
+    }
+  ],
+  "quick_wins": [
+    {
+      "task": "Fix default domain",
+      "time": "5 min",
+      "impact": "HIGH",
+      "description": "One-line change unblocks all components"
+    },
+    {
+      "task": "Add strategic-research categories",
+      "time": "10 min",
+      "impact": "HIGH",
+      "description": "Correct category detection, proper impact scores"
+    },
+    {
+      "task": "Session start hook",
+      "time": "20 min",
+      "impact": "MEDIUM",
+      "description": "Session lifecycle tracking, domain context"
+    }
+  ],
+  "architectural_improvements": [
+    {
+      "improvement": "Event Bus Pattern",
+      "description": "Central event dispatcher to decouple workflow from components",
+      "benefit": "Easier to add new event listeners without modifying core workflow",
+      "estimated_effort": "4 hours",
+      "priority": "FUTURE"
+    },
+    {
+      "improvement": "Unified Context Object",
+      "description": "Single SparringContext with ledger, mirror, rsm, domain, event_bus",
+      "benefit": "Simplify component initialization, reduce parameter passing",
+      "estimated_effort": "2 hours",
+      "priority": "FUTURE"
+    },
+    {
+      "improvement": "Middleware Layer for MCP",
+      "description": "Transparent hook system for MCP tool calls → skill tracking",
+      "benefit": "Automatic skill usage tracking without manual instrumentation",
+      "estimated_effort": "6 hours",
+      "priority": "FUTURE"
+    },
+    {
+      "improvement": "Scheduler for Periodic Tasks",
+      "description": "Cron-like system for pattern detection, check-ins, reflections",
+      "benefit": "Proactive sparring without user prompts",
+      "estimated_effort": "4 hours",
+      "priority": "FUTURE"
+    }
+  ],
+  "verification_checklist": {
+    "after_phase_1": [
+      "Default domain loads successfully",
+      "strategic-research has 3+ categories",
+      "GoalManager initializes without error",
+      "session_start event created on first goal"
+    ],
+    "after_phase_2": [
+      "cognitive_mode_switch event created",
+      "Autonomy Kernel initializes without error",
+      "skill_use events tracked (if MCP hook implemented)",
+      "ERE level calculated correctly"
+    ],
+    "after_phase_3": [
+      "pattern_detected events on goal close",
+      "Reflection prompts after 3+ completions",
+      "Behavioral patterns identified"
+    ],
+    "after_phase_4": [
+      "achievement events on milestones (1st, 5th, 10th goal)",
+      "Stalled goal prompts after 7 days",
+      "All expected events present in ledger"
+    ],
+    "final_test": [
+      "Create goal → check 3 events (session_start, cognitive_mode_switch, goal_open)",
+      "Use Exa tool → check skill_use event",
+      "Close goal → check pattern_detected event",
+      "Complete 3 goals → check reflection decision",
+      "Complete 5 goals → check achievement event",
+      "Hash chain remains valid throughout"
+    ]
+  },
+  "estimated_timeline": {
+    "phase_1_critical": "35 minutes",
+    "phase_2_cognitive": "55 minutes",
+    "phase_3_behavioral": "35 minutes",
+    "phase_4_polish": "25 minutes",
+    "total": "150 minutes (2.5 hours)",
+    "with_testing_buffer": "3 hours"
+  }
+}

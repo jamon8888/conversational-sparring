@@ -1,0 +1,299 @@
+{
+  "analysis_date": "2026-01-31",
+  "session_analyzed": {
+    "goal_id": "f6358ee7",
+    "description": "Research how Gen Z uses video and reels for global insight consumption",
+    "created_at": "2026-01-30T17:06:53.263011Z",
+    "expected_domain": "strategic-research",
+    "actual_category": "other"
+  },
+  "summary": {
+    "total_expected": 10,
+    "total_actual": 1,
+    "coverage_percent": 10,
+    "missing_count": 9
+  },
+  "missing_events": [
+    {
+      "event_kind": "session_start",
+      "expected_timestamp": "2026-01-30T17:06:53Z",
+      "priority": "P0",
+      "severity": "CRITICAL",
+      "root_cause": "No hook in workflow to create session on goal creation",
+      "impact": "Cannot track session lifecycle, domain context lost",
+      "expected_content": {
+        "domain": "strategic-research",
+        "trigger": "goal_creation",
+        "cognitive_mode": "LEARNING"
+      },
+      "fix_location": "lib/goals.py - GoalManager.open_goal()",
+      "fix_type": "Add session_start event before goal_open"
+    },
+    {
+      "event_kind": "cognitive_mode_switch",
+      "expected_timestamp": "2026-01-30T17:06:53Z",
+      "priority": "P1",
+      "severity": "HIGH",
+      "root_cause": "CognitiveRouter not invoked during goal processing",
+      "impact": "System cannot adapt behavior to LEARNING vs DECISION mode",
+      "expected_content": {
+        "mode": "LEARNING",
+        "confidence": 0.8,
+        "ere_level": 1,
+        "reasoning": "Keywords: 'research', 'want to'"
+      },
+      "fix_location": "lib/goals.py - GoalManager.open_goal()",
+      "fix_type": "Call CognitiveRouter.determine_mode() and persist result"
+    },
+    {
+      "event_kind": "domain_change",
+      "expected_timestamp": "2026-01-30T17:06:53Z",
+      "priority": "P1",
+      "severity": "HIGH",
+      "root_cause": "Domain never explicitly set to strategic-research",
+      "impact": "Wrong category 'other' assigned, impact_score only 5/10",
+      "expected_content": {
+        "from_domain": "personal",
+        "to_domain": "strategic-research",
+        "trigger": "goal_category_detection"
+      },
+      "fix_location": "lib/goals.py - GoalManager.open_goal()",
+      "fix_type": "Add domain detection and domain_change event"
+    },
+    {
+      "event_kind": "skill_use",
+      "skill_name": "exa-search-expert",
+      "expected_timestamp": "2026-01-30T17:15:00Z",
+      "priority": "P1",
+      "severity": "HIGH",
+      "root_cause": "MCP tool calls not hooked to SkillsManager.record_usage()",
+      "impact": "Cannot track tool usage, recommend skills, or measure effectiveness",
+      "expected_content": {
+        "skill": "exa-search-expert",
+        "tool": "exa_search",
+        "query": "Gen Z video consumption trends",
+        "domain": "strategic-research",
+        "goal_id": "f6358ee7"
+      },
+      "fix_location": "MCP middleware layer",
+      "fix_type": "Add hook to intercept MCP tool calls and create skill_use events"
+    },
+    {
+      "event_kind": "skill_use",
+      "skill_name": "strategic-research-orchestrator",
+      "expected_timestamp": "2026-01-30T17:20:00Z",
+      "priority": "P1",
+      "severity": "HIGH",
+      "root_cause": "Skills not installed/activated automatically for domain",
+      "impact": "Strategic frameworks not applied to research",
+      "expected_content": {
+        "skill": "strategic-research-orchestrator",
+        "action": "apply_framework",
+        "framework": "Porter's Five Forces",
+        "domain": "strategic-research",
+        "goal_id": "f6358ee7"
+      },
+      "fix_location": "lib/skills/manager.py",
+      "fix_type": "Auto-install domain-recommended skills on domain change"
+    },
+    {
+      "event_kind": "skill_use",
+      "skill_name": "research-synthesizer",
+      "expected_timestamp": "2026-01-30T17:45:00Z",
+      "priority": "P2",
+      "severity": "MEDIUM",
+      "root_cause": "Synthesis step not triggered automatically",
+      "impact": "Insights not structured or synthesized",
+      "expected_content": {
+        "skill": "research-synthesizer",
+        "action": "synthesize_insights",
+        "source_count": 12,
+        "domain": "strategic-research",
+        "goal_id": "f6358ee7"
+      },
+      "fix_location": "agents/strategic-research/mentor.md",
+      "fix_type": "Add synthesis trigger after N search results"
+    },
+    {
+      "event_kind": "reflection",
+      "expected_timestamp": "2026-01-30T18:00:00Z",
+      "priority": "P2",
+      "severity": "MEDIUM",
+      "root_cause": "No trigger points defined in workflow for reflections",
+      "impact": "User not prompted to consolidate learning",
+      "expected_content": {
+        "prompt": "What patterns did you notice about Gen Z video consumption?",
+        "goal_id": "f6358ee7",
+        "trigger": "research_completion"
+      },
+      "fix_location": "lib/autonomy.py",
+      "fix_type": "Add reflection decision when goal nearing completion"
+    },
+    {
+      "event_kind": "pattern_detected",
+      "pattern_name": "research_gap",
+      "expected_timestamp": "2026-01-30T17:30:00Z",
+      "priority": "P2",
+      "severity": "MEDIUM",
+      "root_cause": "PatternDetector.analyze() not called periodically",
+      "impact": "Behavioral patterns not identified (research gaps, bias detection)",
+      "expected_content": {
+        "pattern": "research_gap",
+        "description": "Missing quantitative data on TikTok vs YouTube Shorts usage",
+        "severity": "medium",
+        "domain": "strategic-research",
+        "goal_id": "f6358ee7"
+      },
+      "fix_location": "lib/patterns.py",
+      "fix_type": "Add scheduler or milestone triggers for pattern detection"
+    },
+    {
+      "event_kind": "goal_close",
+      "expected_timestamp": "2026-01-30T18:00:00Z",
+      "priority": "P0",
+      "severity": "CRITICAL",
+      "root_cause": "Session ended without explicit close command",
+      "impact": "Goal still marked as open, completion metrics not calculated",
+      "expected_content": {
+        "goal_id": "f6358ee7",
+        "status": "completed",
+        "duration_hours": 1,
+        "skill_uses": 3,
+        "outcome": "Insights synthesized"
+      },
+      "fix_location": "User workflow",
+      "fix_type": "User should run '/sparring close f6358ee7' or auto-close on session end"
+    },
+    {
+      "event_kind": "achievement",
+      "expected_timestamp": "2026-01-30T18:00:00Z",
+      "priority": "P3",
+      "severity": "LOW",
+      "root_cause": "No milestone detection implemented",
+      "impact": "No celebration/recognition of completion",
+      "expected_content": {
+        "type": "first_goal_completed",
+        "goal_id": "f6358ee7",
+        "domain": "strategic-research",
+        "message": "First strategic research completed!"
+      },
+      "fix_location": "lib/autonomy.py",
+      "fix_type": "Add achievement detection on goal_close"
+    }
+  ],
+  "root_causes_summary": {
+    "workflow_integration": {
+      "issue": "PMM components not wired into user workflow",
+      "affected_events": [
+        "session_start",
+        "cognitive_mode_switch",
+        "domain_change"
+      ],
+      "severity": "CRITICAL"
+    },
+    "mcp_bridge_missing": {
+      "issue": "No bridge between MCP tool usage and skill tracking",
+      "affected_events": [
+        "skill_use"
+      ],
+      "severity": "HIGH"
+    },
+    "scheduler_missing": {
+      "issue": "No periodic or milestone-based triggers",
+      "affected_events": [
+        "pattern_detected",
+        "reflection"
+      ],
+      "severity": "MEDIUM"
+    },
+    "manual_close_required": {
+      "issue": "Goals require explicit close command",
+      "affected_events": [
+        "goal_close",
+        "achievement"
+      ],
+      "severity": "MEDIUM"
+    }
+  },
+  "recommendations": {
+    "p0_critical": [
+      {
+        "id": 1,
+        "title": "Fix Default Domain",
+        "file": "lib/domains/loader.py:297",
+        "change": "Return 'personal' or 'solopreneur' instead of non-existent 'strategy'",
+        "estimated_time_minutes": 5
+      },
+      {
+        "id": 2,
+        "title": "Add Categories to strategic-research.yaml",
+        "file": "domains/strategic-research.yaml",
+        "change": "Add research, analysis, strategy categories with keywords",
+        "estimated_time_minutes": 10
+      },
+      {
+        "id": 3,
+        "title": "Add Session Start Hook",
+        "file": "lib/goals.py - GoalManager.open_goal()",
+        "change": "Create session_start event if no recent session",
+        "estimated_time_minutes": 15
+      }
+    ],
+    "p1_high": [
+      {
+        "id": 4,
+        "title": "Hook Cognitive Router",
+        "file": "lib/goals.py - GoalManager.open_goal()",
+        "change": "Call CognitiveRouter.determine_mode() and persist to ledger",
+        "estimated_time_minutes": 20
+      },
+      {
+        "id": 5,
+        "title": "Fix Autonomy Initialization",
+        "file": "lib/autonomy.py",
+        "change": "Create SparringMirror internally or adjust type expectations",
+        "estimated_time_minutes": 15
+      },
+      {
+        "id": 6,
+        "title": "Bridge MCP to Skill Tracking",
+        "file": "MCP middleware layer",
+        "change": "Intercept tool calls and create skill_use events",
+        "estimated_time_minutes": 30
+      }
+    ],
+    "p2_medium": [
+      {
+        "id": 7,
+        "title": "Add Pattern Detection Triggers",
+        "file": "lib/patterns.py or lib/autonomy.py",
+        "change": "Run pattern analysis on goal_close or every N goals",
+        "estimated_time_minutes": 20
+      },
+      {
+        "id": 8,
+        "title": "Implement Reflection Prompts",
+        "file": "lib/autonomy.py",
+        "change": "Add reflection decision after completions or time intervals",
+        "estimated_time_minutes": 15
+      }
+    ],
+    "p3_low": [
+      {
+        "id": 9,
+        "title": "Add Achievement Recognition",
+        "file": "lib/autonomy.py",
+        "change": "Detect milestones (1st, 5th, 10th goal) and create achievement events",
+        "estimated_time_minutes": 15
+      },
+      {
+        "id": 10,
+        "title": "Auto-close Stalled Goals",
+        "file": "lib/goals.py",
+        "change": "Prompt user to close goals >7 days old",
+        "estimated_time_minutes": 10
+      }
+    ]
+  },
+  "total_repair_time_estimate_minutes": 155
+}

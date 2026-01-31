@@ -1,0 +1,280 @@
+{
+  "test_date": "2026-01-31",
+  "database_path": "~/.claude/sparring/sparring.db",
+  "goal_analyzed": "f6358ee7",
+  "tests": [
+    {
+      "component": "Ledger",
+      "test_name": "Hash Chain Integrity",
+      "status": "PASS",
+      "details": {
+        "hash_chain_valid": true,
+        "total_events": 1,
+        "hash_continuity": "maintained"
+      }
+    },
+    {
+      "component": "Ledger",
+      "test_name": "Event Storage",
+      "status": "PASS",
+      "details": {
+        "read_operations": "functional",
+        "write_operations": "functional",
+        "schema_valid": true
+      }
+    },
+    {
+      "component": "Domain System",
+      "test_name": "Default Domain",
+      "status": "FAIL",
+      "error": "ValueError: Unknown domain: strategy",
+      "details": {
+        "configured_default": "strategy",
+        "domain_exists": false,
+        "available_domains": [
+          "c-level",
+          "engineering",
+          "marketing",
+          "operations",
+          "people",
+          "personal",
+          "product",
+          "revenue-ops",
+          "sales",
+          "solopreneur",
+          "strategic-research"
+        ]
+      }
+    },
+    {
+      "component": "Domain System",
+      "test_name": "Strategic Research Domain Load",
+      "status": "PASS",
+      "details": {
+        "domain_name": "Strategic Research",
+        "patterns_count": 7,
+        "patterns": [
+          "context_switching",
+          "goal_abandonment",
+          "rushed_completion",
+          "stalled_work",
+          "reflection_consistency",
+          "research_gap",
+          "bias_detection"
+        ],
+        "categories_count": 0,
+        "categories": []
+      }
+    },
+    {
+      "component": "Domain System",
+      "test_name": "Category Detection",
+      "status": "FAIL",
+      "details": {
+        "test_description": "Research how Gen Z uses video and reels for global insight consumption",
+        "detected_category": "other",
+        "expected_category": "research",
+        "impact_score": 5,
+        "expected_impact": 7,
+        "reason": "No categories defined in strategic-research.yaml"
+      }
+    },
+    {
+      "component": "Goal Manager",
+      "test_name": "Initialization",
+      "status": "FAIL",
+      "error": "ValueError: Unknown domain: strategy",
+      "details": {
+        "blocked_by": "Invalid default domain",
+        "workaround": "Must pass domain explicitly to GoalManager(ledger, domain='personal')"
+      }
+    },
+    {
+      "component": "Goal Manager",
+      "test_name": "Open Goals Query",
+      "status": "NOT_TESTED",
+      "reason": "Blocked by initialization failure"
+    },
+    {
+      "component": "Goal Manager",
+      "test_name": "Stalled Goals Detection",
+      "status": "NOT_TESTED",
+      "reason": "Blocked by initialization failure"
+    },
+    {
+      "component": "Cognitive Router",
+      "test_name": "Mode Detection",
+      "status": "PASS",
+      "details": {
+        "test_query": "I want to research how Gen Z uses video and reels for global insight",
+        "detected_mode": "LEARNING",
+        "confidence": 0.4,
+        "expected_mode": "LEARNING",
+        "note": "Low confidence because only 'want to' keyword matched"
+      }
+    },
+    {
+      "component": "Cognitive Router",
+      "test_name": "ERE Level Calculation",
+      "status": "PASS",
+      "details": {
+        "ere_level": 1,
+        "ere_name": "NOVICE",
+        "basis": "0 completed goals",
+        "expected": "NOVICE"
+      }
+    },
+    {
+      "component": "Cognitive Router",
+      "test_name": "Event Persistence",
+      "status": "FAIL",
+      "details": {
+        "cognitive_mode_switch_events": 0,
+        "expected": 1,
+        "reason": "Router not invoked during goal creation workflow"
+      }
+    },
+    {
+      "component": "RSM (Self-Model)",
+      "test_name": "Class Import",
+      "status": "PASS",
+      "details": {
+        "class_name": "SparringRSM",
+        "note": "Not RecursiveSelfModel as documented"
+      }
+    },
+    {
+      "component": "RSM (Self-Model)",
+      "test_name": "Tendency Calculation",
+      "status": "NOT_TESTED",
+      "reason": "Insufficient events (need 3+ for tendencies)"
+    },
+    {
+      "component": "Autonomy Kernel",
+      "test_name": "Initialization",
+      "status": "FAIL",
+      "error": "AttributeError: 'SparringLedger' object has no attribute 'sync'",
+      "details": {
+        "issue": "Constructor expects Mirror but receives Ledger",
+        "type_confusion": "Ledger vs Mirror initialization unclear"
+      }
+    },
+    {
+      "component": "Autonomy Kernel",
+      "test_name": "Decision Making",
+      "status": "NOT_TESTED",
+      "reason": "Blocked by initialization failure"
+    },
+    {
+      "component": "Mirror Projection",
+      "test_name": "Rebuild from Ledger",
+      "status": "NOT_TESTED",
+      "reason": "Blocked by autonomy initialization failure"
+    },
+    {
+      "component": "Mirror Projection",
+      "test_name": "Fast Queries",
+      "status": "NOT_TESTED",
+      "reason": "Blocked by autonomy initialization failure"
+    },
+    {
+      "component": "Skills Manager",
+      "test_name": "Skill Usage Tracking",
+      "status": "FAIL",
+      "details": {
+        "skill_use_events": 0,
+        "expected": 3,
+        "exa_used": true,
+        "exa_tracked": false,
+        "reason": "No MCP → ledger integration"
+      }
+    },
+    {
+      "component": "Pattern Detector",
+      "test_name": "Pattern Analysis",
+      "status": "NOT_TESTED",
+      "reason": "Insufficient events (need 5+ for pattern detection)"
+    },
+    {
+      "component": "Feedback Generator",
+      "test_name": "Feedback Generation",
+      "status": "NOT_TESTED",
+      "reason": "Insufficient events"
+    }
+  ],
+  "summary": {
+    "total_tests": 20,
+    "passed": 5,
+    "failed": 6,
+    "not_tested": 9,
+    "pass_rate_percent": 25,
+    "blocker_count": 3
+  },
+  "blockers": [
+    {
+      "id": 1,
+      "component": "Domain System",
+      "issue": "Default domain 'strategy' does not exist",
+      "impact": "GoalManager cannot initialize",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": 2,
+      "component": "strategic-research.yaml",
+      "issue": "No categories defined",
+      "impact": "All goals defaulted to 'other' category with low impact scores",
+      "severity": "HIGH"
+    },
+    {
+      "id": 3,
+      "component": "Autonomy Kernel",
+      "issue": "Type confusion between Ledger and Mirror",
+      "impact": "Cannot make autonomous decisions",
+      "severity": "HIGH"
+    }
+  ],
+  "integration_gaps": [
+    {
+      "gap": "Cognitive Router → Ledger",
+      "description": "Router detects mode but doesn't persist cognitive_mode_switch event",
+      "impact": "System cannot adapt behavior to cognitive mode"
+    },
+    {
+      "gap": "MCP Tools → Skills Manager",
+      "description": "Exa.ai tool usage not tracked as skill_use events",
+      "impact": "Cannot recommend skills or measure effectiveness"
+    },
+    {
+      "gap": "Goal Creation → Session Start",
+      "description": "No automatic session_start event on first goal",
+      "impact": "Session lifecycle not tracked"
+    },
+    {
+      "gap": "Pattern Detector → Workflow",
+      "description": "PatternDetector.analyze() never called automatically",
+      "impact": "Behavioral patterns never detected"
+    },
+    {
+      "gap": "Autonomy Decisions → Actions",
+      "description": "Kernel decides interventions but can't execute them",
+      "impact": "No proactive check-ins or reflections"
+    }
+  ],
+  "what_works": [
+    "Hash chain integrity maintained correctly",
+    "Goal creation persisted reliably",
+    "Cognitive Router mode detection accurate",
+    "ERE level calculation correct",
+    "Domain YAML configs load successfully",
+    "RSM class structure sound"
+  ],
+  "what_needs_fixing": [
+    "Default domain pointing to non-existent 'strategy'",
+    "strategic-research.yaml missing categories section",
+    "Autonomy Kernel expects Mirror but receives Ledger",
+    "No hooks from workflow to PMM components",
+    "No MCP tool usage tracking",
+    "No periodic pattern detection triggers",
+    "No session lifecycle management"
+  ]
+}

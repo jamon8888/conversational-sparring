@@ -109,6 +109,72 @@ class GoalManager:
         if not description:
             raise ValueError("Goal description cannot be empty")
 
+        # Create session_start event if this is the first goal in a new session
+        # Check last 50 events for a recent session_start
+        recent_events = self.ledger.read_tail(limit=50)
+        has_recent_session = False
+
+        if recent_events:
+            from datetime import datetime, timezone, timedelta
+
+            # Check if any session_start in last hour
+            cutoff_time = datetime.now(timezone.utc) - timedelta(hours=1)
+            for event in reversed(recent_events):  # Most recent first
+                if event["kind"] == "session_start":
+                    event_time = datetime.fromisoformat(event["ts"].replace("Z", "+00:00"))
+                    if event_time > cutoff_time:
+                        has_recent_session = True
+                    break
+
+        if not has_recent_session:
+            from datetime import datetime, timezone
+
+            session_meta = {
+                "trigger": "goal_creation",
+            }
+
+            # Include domain if available
+            if self._domain:
+                session_meta["domain"] = self._domain.id
+
+            self.ledger.append(
+                kind="session_start",
+                content=json.dumps({
+                    "domain": self._domain.id if self._domain else "personal",
+                    "trigger": "goal_creation",
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                }, sort_keys=True),
+                meta=session_meta,
+            )
+
+        # Detect cognitive mode (LEARNING vs DECISION)
+        try:
+            from .cognition import CognitiveRouter
+
+            router = CognitiveRouter(self.ledger)
+            mode, confidence = router.determine_mode(description)
+            ere_level = router.get_current_ere_level()
+
+            # Persist cognitive mode to ledger
+            self.ledger.append(
+                kind="cognitive_mode_switch",
+                content=json.dumps({
+                    "mode": mode.value,
+                    "confidence": confidence,
+                    "ere_level": ere_level.value,
+                    "context": description[:100],
+                }, sort_keys=True),
+                meta={
+                    "mode": mode.value,
+                    "confidence": confidence,
+                    "ere_level": ere_level.value,
+                    "ere_name": ere_level.name,
+                },
+            )
+        except ImportError:
+            # Cognition module not available, skip
+            pass
+
         # Detect category from description if not provided
         if not category:
             category = self._detect_category(description)
@@ -219,6 +285,39 @@ class GoalManager:
         # Record achievement for successful completion
         if outcome == "success":
             self._record_achievement(goal_id, duration_days)
+
+        # Trigger pattern detection after goal closure
+        try:
+            from .patterns import PatternDetector
+
+            detector = PatternDetector(self.ledger, domain=self._domain)
+            patterns = detector.analyze()
+
+            # Persist detected patterns
+            for pattern in patterns:
+                # Only record if pattern is significant (warning or concern)
+                if pattern.severity in ["warning", "concern"]:
+                    self.ledger.append(
+                        kind="pattern_detected",
+                        content=json.dumps({
+                            "pattern": pattern.name,
+                            "description": pattern.description,
+                            "severity": pattern.severity,
+                            "occurrences": pattern.occurrences,
+                            "trend": pattern.trend,
+                            "goal_id": goal_id,
+                        }, sort_keys=True),
+                        meta={
+                            "pattern": pattern.name,
+                            "severity": pattern.severity,
+                            "occurrences": pattern.occurrences,
+                            "trend": pattern.trend,
+                            "goal_id": goal_id,
+                        },
+                    )
+        except (ImportError, Exception):
+            # Patterns module not available or error in analysis, skip
+            pass
 
         return True
 
@@ -346,6 +445,61 @@ class GoalManager:
             "current_streak": streak,
             "stalled_count": len([g for g in open_goals if g["is_stalled"]]),
         }
+
+    def prompt_reflection(
+        self,
+        prompt: Optional[str] = None,
+        context: Optional[str] = None,
+        goal_ids: Optional[List[str]] = None,
+    ) -> str:
+        """Create a reflection prompt event.
+
+        Args:
+            prompt: Custom reflection prompt (auto-generated if not provided)
+            context: Context for the reflection
+            goal_ids: Related goal IDs
+
+        Returns:
+            Reflection event ID
+        """
+        from datetime import datetime, timezone
+
+        # Auto-generate prompt if not provided
+        if not prompt:
+            stats = self.get_goal_stats()
+            closed_count = stats["total_closed"]
+            if closed_count > 0:
+                prompt = f"You've completed {closed_count} goal(s) recently. What patterns do you notice in your work?"
+            else:
+                prompt = "Take a moment to reflect on your current goals and progress."
+
+        # Create event ID
+        event_id = sha1(f"reflection_{datetime.now(timezone.utc).isoformat()}".encode()).hexdigest()[:8]
+
+        content_data = {
+            "prompt": prompt,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+        }
+
+        meta_data = {
+            "reflection_id": event_id,
+        }
+
+        if context:
+            content_data["context"] = context
+            meta_data["context"] = context[:100]
+
+        if goal_ids:
+            content_data["goal_ids"] = goal_ids
+            meta_data["goal_count"] = len(goal_ids)
+
+        self.ledger.append(
+            kind="reflection",
+            content=json.dumps(content_data, sort_keys=True),
+            meta=meta_data,
+        )
+
+        return event_id
 
     def _is_goal_open(self, goal_id: str) -> bool:
         """Check if a goal is currently open."""

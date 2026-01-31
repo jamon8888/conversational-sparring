@@ -100,49 +100,47 @@ class SparringMirror:
     # --- Handlers ---
 
     def _handle_goal_open(self, event: Dict[str, Any], data: Dict[str, Any]) -> None:
-        # data usually contains { "text": "...", "category": "..." }
-        # We assume the event ID or a generated UUID is the goal_id. 
-        # For simplicity, if 'id' is in data usage that, else key by event ID.
-        # But wait, usually PMM goals have a specific ID in the content.
-        # Let's assume standard PMM mostly uses the event ID as reference, 
-        # or the content has 'goal_id'.
-        
-        # If the content defines a goal_id, use it. Otherwise use str(event['id'])
-        goal_id = data.get("goal_id", str(event["id"]))
-        
+        # Try to get goal_id from meta first (preferred), then data, then event ID
+        goal_id = event.get("meta", {}).get("goal_id") or data.get("goal_id") or str(event["id"])
+
         goal_entry = {
             "id": goal_id,
             "created_at": event["ts"],
-            "text": data.get("text", ""),
+            "text": data.get("text", data.get("description", "")),
+            "description": data.get("description", ""),
             "category": data.get("category", "generic"),
             "domain": self.current_domain,
             "status": "OPEN",
             "open_event_id": event["id"]
         }
         self.open_goals[goal_id] = goal_entry
-        
+
         # Track counts
         d = self.current_domain
         self.goal_counts[d] = self.goal_counts.get(d, 0) + 1
 
     def _handle_goal_close(self, event: Dict[str, Any], data: Dict[str, Any]) -> None:
-        goal_id = data.get("goal_id")
+        # Try to get goal_id from meta first (preferred), then data
+        goal_id = event.get("meta", {}).get("goal_id") or data.get("goal_id")
         if goal_id and goal_id in self.open_goals:
             # Move from open to closed
             goal = self.open_goals.pop(goal_id)
             goal["status"] = "CLOSED"
             goal["closed_at"] = event["ts"]
             goal["close_reason"] = data.get("reason", "")
+            goal["outcome"] = data.get("outcome", event.get("meta", {}).get("outcome", "success"))
             goal["close_event_id"] = event["id"]
             self.closed_goals[goal_id] = goal
 
     def _handle_goal_abandon(self, event: Dict[str, Any], data: Dict[str, Any]) -> None:
-        goal_id = data.get("goal_id")
+        # Try to get goal_id from meta first (preferred), then data
+        goal_id = event.get("meta", {}).get("goal_id") or data.get("goal_id")
         if goal_id and goal_id in self.open_goals:
             goal = self.open_goals.pop(goal_id)
             goal["status"] = "ABANDONED"
             goal["abandoned_at"] = event["ts"]
             goal["abandon_reason"] = data.get("reason", "")
+            goal["outcome"] = "abandoned"
             goal["abandon_event_id"] = event["id"]
             self.closed_goals[goal_id] = goal
 
