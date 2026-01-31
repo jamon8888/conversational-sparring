@@ -1,0 +1,21 @@
+contact_id,content_id,content_title,content_type,timestamp,conversion_event,deal_value
+C001,blog-001,What is Content Marketing,blog,2024-01-15 10:30:00,visit,0
+C001,ebook-001,Content Marketing Guide,ebook,2024-01-20 14:15:00,lead,0
+C001,webinar-001,Content Automation Webinar,webinar,2024-02-10 11:00:00,mql,0
+C001,case-001,Acme Corp Case Study,case-study,2024-03-05 16:45:00,customer,10000
+C002,blog-002,How to Scale Content,blog,2024-01-18 09:20:00,visit,0
+C002,blog-001,What is Content Marketing,blog,2024-01-25 13:10:00,visit,0
+C002,ebook-002,Content Repurposing,ebook,2024-02-01 15:30:00,lead,0
+C002,webinar-001,Content Automation Webinar,webinar,2024-02-15 11:00:00,mql,0
+C002,case-002,Beta Corp Success Story,case-study,2024-03-10 14:20:00,customer,15000
+C003,blog-003,Content Attribution Guide,blog,2024-02-01 08:45:00,visit,0
+C003,ebook-001,Content Marketing Guide,ebook,2024-02-10 16:00:00,lead,0
+C003,case-001,Acme Corp Case Study,case-study,2024-02-28 10:30:00,customer,8000
+C004,blog-001,What is Content Marketing,blog,2024-01-22 11:15:00,visit,0
+C004,blog-002,How to Scale Content,blog,2024-02-05 14:45:00,visit,0
+C004,ebook-002,Content Repurposing,ebook,2024-02-15 09:30:00,lead,0
+C004,webinar-002,Advanced Content Strategies,webinar,2024-03-01 11:00:00,mql,0
+C004,case-001,Acme Corp Case Study,case-study,2024-03-15 13:20:00,customer,12000
+C005,blog-002,How to Scale Content,blog,2024-02-10 10:00:00,visit,0
+C005,ebook-001,Content Marketing Guide,ebook,2024-02-20 15:15:00,lead,0
+C005,case-002,Beta Corp Success Story,case-study,2024-03-08 14:40:00,customer,20000

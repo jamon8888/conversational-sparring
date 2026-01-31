@@ -1,0 +1,15 @@
+{
+  "name": "marketing-growth-sparring",
+  "version": "1.0.0",
+  "description": "specialized AI partner for Acquisition, Experiments, SEO, and Analytics.",
+  "commands": [
+    {
+      "name": "sparring",
+      "description": "Start sparring session or manage goals",
+      "usage": "/sparring [command]"
+    }
+  ],
+  "permissions": [
+    "filesystem"
+  ]
+}

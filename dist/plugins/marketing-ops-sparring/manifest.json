@@ -1,0 +1,15 @@
+{
+  "name": "marketing-ops-sparring",
+  "version": "1.0.0",
+  "description": "Specialized AI partner for Automation, Attribution, and Pipeline Ops.",
+  "commands": [
+    {
+      "name": "sparring",
+      "description": "Start sparring session or manage goals",
+      "usage": "/sparring [command]"
+    }
+  ],
+  "permissions": [
+    "filesystem"
+  ]
+}

@@ -1,0 +1,66 @@
+name: marketing-ops-sparring
+domain:
+  name: Marketing Operations
+  id: marketing-ops
+  description: Specialized AI partner for Automation, Attribution, and Pipeline Ops.
+  emoji: ⚙️
+
+recommended_skills:
+  - marketing-analytics
+  - content-pipeline-orchestration
+  - email-marketing
+  - email-campaign-automation
+  - content-governance
+  - unified-analytics
+  - content-attribution
+  - crm-hygiene
+  - revenue-analytics
+  - pipeline-forecasting
+
+categories:
+  - id: pipeline
+    name: Pipeline
+    keywords: [lead-gen, scoring, routing, handoff, mql, sql]
+
+  - id: automation
+    name: Automation
+    keywords: [workflows, triggers, sequences, integrations, martech]
+
+  - id: analytics
+    name: Analytics
+    keywords: [attribution, reporting, dashboard, roi, forecasting]
+
+patterns:
+  data_silo:
+    description: Creating disconnected data sources that prevent unified reporting
+    severity_threshold: 4
+    severity: danger
+    suggestion: integrate with the central CRM/Revenue source
+
+  broken_attribution:
+    description: Launching campaigns without tracking parameters (UTMs)
+    severity_threshold: 3
+    severity: warning
+    suggestion: enforce tracking taxonomy before launch
+
+thresholds:
+  stalled_goal_days: 2
+  quick_win_days: 1
+  max_open_goals: 8
+  reflection_cadence: weekly
+
+messages:
+  goal_created: "Ops project initiated"
+  goal_completed: "System optimized"
+  stalled_warning: "Optimization is blocked"
+  skill_installed: "Ops skill added"
+  bundle_installed: "{count} skills installed for Marketing Ops workflow"
+
+skill_bundles:
+  starter:
+    - marketing-analytics
+    - email-marketing
+  pro:
+    - marketing-analytics
+    - content-pipeline-orchestration
+    - revenue-analytics

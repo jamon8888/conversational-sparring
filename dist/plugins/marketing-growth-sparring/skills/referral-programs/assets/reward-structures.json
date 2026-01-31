@@ -1,0 +1,7 @@
+{
+  "description": "Configuration and data for referral-programs",
+  "version": "1.0",
+  "data": {
+    "example_field": "example_value"
+  }
+}

@@ -64,14 +64,15 @@ recommended_skills:
   - jira-expert
   - confluence-expert
   - atlassian-templates
+  - customer-feedback-taxonomy
+  - closed-loop-playbook
+  - launch-plays
+  - launch-tiering
+  - war-room-ops
   - docx
   - pdf
   - pptx
   - market-analyst
-  - opportunity-discovery
-  - roadmap-planner
-  - sprint-orchestrator
-  - sprint-progress-tracker
 
 # Skill bundles for progressive adoption
 skill_bundles:

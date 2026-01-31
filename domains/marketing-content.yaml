@@ -1,0 +1,71 @@
+name: marketing-content-sparring
+domain:
+  name: Content & Brand Strategy
+  id: marketing-content
+  description: Specialized AI partner for Brand Voice, Storytelling, and Content Production.
+  emoji: ✍️
+
+recommended_skills:
+  - content-creator
+  - brand-guidelines
+  - storytelling
+  - social-media-content
+  - social-calendar-system
+  - seo-blog-writing
+  - video-marketing
+  - podcasting
+  - ad-copywriting
+  - landing-page-copy
+  - brand-narrative-playbook
+  - content-strategy
+  - content-personalization
+  - content-repurposing
+
+categories:
+  - id: production
+    name: Production
+    keywords: [writing, video, audio, design, editing, draft]
+
+  - id: strategy
+    name: Strategy
+    keywords: [calendar, persona, journey, narrative, voice]
+
+  - id: governance
+    name: Governance
+    keywords: [guidelines, compliance, review, standards, consistency]
+
+patterns:
+  inconsistent_voice:
+    description: Drifting from brand guidelines or shifting tone randomly
+    severity_threshold: 3
+    severity: warning
+    suggestion: review against brand-guidelines.md
+
+  quantity_over_quality:
+    description: Prioritizing volume over audience value and engagement
+    severity_threshold: 4
+    severity: danger
+    suggestion: focus on one high-impact piece vs three low-impact ones
+
+thresholds:
+  stalled_goal_days: 3
+  quick_win_days: 1
+  max_open_goals: 5
+  reflection_cadence: weekly
+
+messages:
+  goal_created: "Content project initialized"
+  goal_completed: "Content published"
+  stalled_warning: "This draft is stagnant"
+  skill_installed: "Creative skill added"
+  bundle_installed: "{count} skills installed for Content Director workflow"
+
+skill_bundles:
+  starter:
+    - content-creator
+    - brand-guidelines
+  pro:
+    - content-creator
+    - brand-guidelines
+    - storytelling
+    - social-media-content

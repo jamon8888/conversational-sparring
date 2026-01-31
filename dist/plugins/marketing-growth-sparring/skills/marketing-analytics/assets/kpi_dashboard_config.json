@@ -1,0 +1,38 @@
+{
+    "dashboard_title": "Marketing Performance",
+    "refresh_rate": "daily",
+    "sections": [
+        {
+            "title": "Acquisition",
+            "metrics": [
+                "Traffic",
+                "New Leads",
+                "CAC"
+            ]
+        },
+        {
+            "title": "Engagement",
+            "metrics": [
+                "Time on Site",
+                "Pages/Session",
+                "Bounce Rate"
+            ]
+        },
+        {
+            "title": "Conversion",
+            "metrics": [
+                "Conversion Rate",
+                "New Customers",
+                "Cost/Acquisition"
+            ]
+        },
+        {
+            "title": "Retention",
+            "metrics": [
+                "Churn Rate",
+                "LTV",
+                "Repeat Purchase Rate"
+            ]
+        }
+    ]
+}

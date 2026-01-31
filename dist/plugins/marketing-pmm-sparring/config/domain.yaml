@@ -1,0 +1,68 @@
+name: marketing-pmm-sparring
+domain:
+  name: Product Marketing (PMM)
+  id: marketing-pmm
+  description: Specialized AI partner for Go-To-Market, Launches, and Positioning.
+  emoji: 🎯
+
+recommended_skills:
+  - marketing-strategy-pmm
+  - product-launch-orchestration
+  - account-tiering
+  - signal-intel
+  - partnership-development
+  - user-onboarding
+  - lead-magnets
+  - webinars
+  - product-marketing
+  - launch-plays
+  - positioning
+  - sales-marketing-alignment
+
+categories:
+  - id: launch
+    name: Launch
+    keywords: [go-to-market, release, announce, beta, ga]
+
+  - id: positioning
+    name: Positioning
+    keywords: [messaging, narrative, value-prop, differentiation, story]
+
+  - id: enablement
+    name: Sales Enablement
+    keywords: [battlecards, decks, training, collateral, pitch]
+
+patterns:
+  feature_dumping:
+    description: Listing technical features instead of customer benefits/value
+    severity_threshold: 3
+    severity: warning
+    suggestion: rewrite using "so that" structure (Benefit focus)
+
+  weak_differentiation:
+    description: Positioning that sounds identical to competitors
+    severity_threshold: 4
+    severity: danger
+    suggestion: identify the unique selling proposition
+
+thresholds:
+  stalled_goal_days: 5
+  quick_win_days: 2
+  max_open_goals: 5
+  reflection_cadence: biweekly
+
+messages:
+  goal_created: "GTM initiative defined"
+  goal_completed: "Launch executed"
+  stalled_warning: "Launch timeline is slipping"
+  skill_installed: "PMM skill added"
+  bundle_installed: "{count} skills installed for Product Marketing workflow"
+
+skill_bundles:
+  starter:
+    - marketing-strategy-pmm
+    - product-launch-orchestration
+  pro:
+    - marketing-strategy-pmm
+    - account-tiering
+    - positioning

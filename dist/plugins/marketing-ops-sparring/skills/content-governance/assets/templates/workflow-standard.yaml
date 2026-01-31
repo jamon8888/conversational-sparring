@@ -1,0 +1,90 @@
+workflow:
+  name: "Standard Content Approval"
+  description: "Standard approval workflow for most content types"
+  type: "standard"
+  sla_total_hours: 72
+  
+  stages:
+    - id: 1
+      name: "draft"
+      description: "Creator develops content"
+      approver_role: "creator"
+      sla_hours: 48
+      actions:
+        - "Write content"
+        - "Self-review against brand guidelines"
+        - "Run automated compliance checks"
+        - "Submit for review"
+      next_stage: "review"
+      
+    - id: 2
+      name: "review"
+      description: "Content manager reviews quality and compliance"
+      approver_role: "content-manager"
+      sla_hours: 24
+      checks:
+        - check: "brand_voice"
+          description: "Voice and tone match brand guidelines"
+          severity: "high"
+        - check: "seo_compliance"
+          description: "SEO checklist completed"
+          severity: "medium"
+        - check: "grammar_spelling"
+          description: "No grammar or spelling errors"
+          severity: "high"
+        - check: "compliance_basic"
+          description: "Basic GDPR/CCPA compliance"
+          severity: "critical"
+      actions:
+        - "Review content quality"
+        - "Check brand alignment"
+        - "Verify SEO optimization"
+        - "Run compliance checklist"
+      decisions:
+        - "approve" # → next stage
+        - "request_changes" # → back to draft
+        - "reject" # → end workflow
+      next_stage: "approval"
+      
+    - id: 3
+      name: "approval"
+      description: "Team lead provides final approval"
+      approver_role: "team-lead"
+      sla_hours: 24
+      checks:
+        - check: "strategic_alignment"
+          description: "Aligns with content strategy"
+          severity: "high"
+        - check: "risk_assessment"
+          description: "No reputational or legal risks"
+          severity: "critical"
+      actions:
+        - "Verify strategic alignment"
+        - "Assess risk"
+        - "Final approval"
+      decisions:
+        - "approve" # → next stage
+        - "hold" # → pause for discussion
+        - "reject" # → end workflow
+      next_stage: "publish"
+      
+    - id: 4
+      name: "publish"
+      description: "Publisher distributes content"
+      approver_role: "publisher"
+      sla_hours: 4
+      actions:
+        - "Final formatting"
+        - "Schedule publication"
+        - "Distribute across channels"
+        - "Mark as published"
+      next_stage: "completed"
+  
+  escalation:
+    - condition: "sla_exceeded"
+      action: "notify_next_level"
+      notification: "SLA breach alert sent to [approver]"
+    
+    - condition: "critical_issue"
+      action: "escalate_to_legal"
+      notification: "Legal review required"

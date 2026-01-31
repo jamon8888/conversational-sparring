@@ -1,0 +1,68 @@
+name: marketing-growth-sparring
+domain:
+  name: Growth & Performance Marketing
+  id: marketing-growth
+  description: specialized AI partner for Acquisition, Experiments, SEO, and Analytics.
+  emoji: 🚀
+
+recommended_skills:
+  - growth-analytics
+  - marketing-demand-acquisition
+  - experiment-design
+  - technical-seo
+  - keyword-research
+  - app-store-optimization
+  - referral-programs
+  - viral-mechanics
+  - product-led-growth
+  - marketing-analytics
+  - unified-analytics
+  - attribution-roi
+
+categories:
+  - id: acquisition
+    name: Acquisition
+    keywords: [seo, ads, referral, viral, traffic, sources]
+
+  - id: activation
+    name: Activation
+    keywords: [funnel, conversion, onboarding, signup, first-value]
+
+  - id: experimentation
+    name: Experiments
+    keywords: [test, hypothesis, ab-test, multivariate, lift]
+
+patterns:
+  vanity_metrics:
+    description: Focusing on traffic/clicks instead of revenue/retention
+    severity_threshold: 3
+    severity: danger
+    suggestion: switch to down-funnel metrics
+
+  premature_optimization:
+    description: Optimizing small-scale funnels without statistical significance
+    severity_threshold: 3
+    severity: warning
+    suggestion: focus on increasing volume first
+
+thresholds:
+  stalled_goal_days: 3
+  quick_win_days: 1
+  max_open_goals: 7
+  reflection_cadence: weekly
+
+messages:
+  goal_created: "Growth experiment launched"
+  goal_completed: "Experiment analyzed"
+  stalled_warning: "This experiment is losing momentum"
+  skill_installed: "Growth skill added"
+  bundle_installed: "{count} skills installed for Head of Growth workflow"
+
+skill_bundles:
+  starter:
+    - growth-analytics
+    - experiment-design
+  pro:
+    - growth-analytics
+    - marketing-demand-acquisition
+    - technical-seo

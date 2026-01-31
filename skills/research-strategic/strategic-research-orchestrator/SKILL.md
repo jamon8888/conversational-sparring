@@ -58,6 +58,22 @@ Master coordinator for comprehensive strategic research across the entire resear
 - `brand-narrative-playbook`: Storytelling frameworks
 - `experience-system-blueprint`: CX design mapping
 
+**Customer Analytics Extensions (New)**
+
+- `segmentation-framework`: Advanced market segmentation logic
+- `retention-dashboard`: Churn analysis and retention metrics
+- `insights-repository-kit`: Centralized research library management
+
+**Advanced Research Extensions (New)**
+
+- `market-scenario-modeler`: Future scenario simulations
+- `research-synthesizer`: AI-driven synthesis of cross-channel data
+
+**Search & Discovery Extensions (New)**
+
+- `exa-search-expert`: Deep semantic search using Exa AI (requires MCP)
+- `executive-briefing-kit`: Synthesize search results into briefings
+
 ## Strategic Playbook Library
 
 ### Brand & Semiotics
@@ -194,6 +210,17 @@ Research Question
 2. **Gen Z Focus**: Use `gen-z-zconomy-strategy.md` (if targeting Gen Z)
 3. **Historical Context**: Use `fourth-turning-historical-cycles.md`
 4. **Activation**: Apply to marketing, HR, product strategy
+
+### Workflow 4: Deep Search & Discovery (Exa AI)
+
+**Trigger**: "Find whitepapers about...", "Map the landscape of..."
+
+1.  **Search Strategy**: Use `exa-search-expert` to formulate semantic queries.
+2.  **Execution**:
+    - If MCP connected: Use `mcp__exa_search` for live retrieval.
+    - Fallback: Use standard `search_web` or manual browsing.
+3.  **Synthesis**: Use `research-synthesizer` to cluster findings.
+4.  **Output**: Generate `executive-briefing-kit` summary.
 
 ## Quality Standards
 

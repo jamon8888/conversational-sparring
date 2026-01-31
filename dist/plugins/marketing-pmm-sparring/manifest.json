@@ -1,0 +1,15 @@
+{
+  "name": "marketing-pmm-sparring",
+  "version": "1.0.0",
+  "description": "Specialized AI partner for Go-To-Market, Launches, and Positioning.",
+  "commands": [
+    {
+      "name": "sparring",
+      "description": "Start sparring session or manage goals",
+      "usage": "/sparring [command]"
+    }
+  ],
+  "permissions": [
+    "filesystem"
+  ]
+}

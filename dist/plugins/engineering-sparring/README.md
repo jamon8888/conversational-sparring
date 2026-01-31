@@ -11,12 +11,14 @@
 
 Most AI plugins are just **Toolboxes** - they give you a hammer and saw but don't tell you how to build a house.
 
-**Engineering Sparring** is a **Thinking Partner**. It combines:
-1.  **Expert Agents**: A "Sparring Mentor" who knows the best frameworks (e.g., First Principles, Jobs-to-be-Done, RICE).
-2.  **Proactive Challenge**: It doesn't just answer; it asks "Is this the right problem?" and "Have you considered X?"
-3.  **Deep Skills**: A library of 21 professional skills (not just distinct scripts, but integrated workflows).
+**Engineering Sparring** is a **Cognitive System**, not just a script runner.
 
-It doesn't just execute commands; it **elevates your thinking**.
+### 🧠 The Cognitive Difference
+1.  **Shared Memory (`lib`)**: Unlike stateless plugins, this system **remembers**. It uses a shared cognitive library to track your goals, preferences, and project history across sessions.
+2.  **Episodic Context**: It maintains state files (contracts, memory banks) so you don't have to repeat your context every time.
+3.  **Proactive Challenge**: It doesn't just answer; it uses the "Sparring Mentor" architecture to challenge assumptions and force deeper thinking.
+
+It doesn't just execute commands; it **thinks with you**.
 
 ---
 
@@ -37,40 +39,45 @@ If you have configured the Conversational Sparring marketplace:
 
 ---
 
-## 🧠 What's Included
+## 🎮 Commands & Usage
 
-### 1. The Sparring Partner (Agent)
-Your dedicated AI co-pilot. Trigger it by asking:
+Start interacting with your new partner:
+
+```bash
+/sparring goal "Launch Q3 Marketing Campaign"   # Set a strategic objective
+/sparring progress                              # Check your trajectory & blockers
+/sparring help                                  # Show available cognitive tools
+```
+
+## 📦 What's Included
+
+### 1. The Agents
+Your dedicated AI co-pilots. Trigger them by asking:
 > "Spar with me on [topic]..."
 > "Challenge my assumptions about..."
 > "Help me plan a [project]..."
 
-### 2. Professional Skills (21)
+### 2. Professional Skills (16)
 This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
 | `tdd-guide` | Professional workflow for tdd guide |
-| `senior-backend` | Professional workflow for senior backend |
-| `sprint-executor` | Professional workflow for sprint executor |
-| `solution-architect` | Professional workflow for solution architect |
-| `senior-architect` | Professional workflow for senior architect |
 | `aws-solution-architect` | Professional workflow for aws solution architect |
-| `pdf` | Professional workflow for pdf |
-| `technical-researcher` | Professional workflow for technical researcher |
-| `senior-devops` | Professional workflow for senior devops |
-| `senior-data-scientist` | Professional workflow for senior data scientist |
-| `compliance-analyst` | Professional workflow for compliance analyst |
-| `senior-qa` | Professional workflow for senior qa |
-| `code-reviewer` | Professional workflow for code reviewer |
-| `tech-stack-evaluator` | Professional workflow for tech stack evaluator |
 | `pptx` | Professional workflow for pptx |
 | `docx` | Professional workflow for docx |
-| `senior-fullstack` | Professional workflow for senior fullstack |
 | `cto-advisor` | Professional workflow for cto advisor |
+| `senior-data-scientist` | Professional workflow for senior data scientist |
+| `tech-stack-evaluator` | Professional workflow for tech stack evaluator |
+| `code-reviewer` | Professional workflow for code reviewer |
+| `senior-devops` | Professional workflow for senior devops |
+| `senior-architect` | Professional workflow for senior architect |
+| `senior-backend` | Professional workflow for senior backend |
 | `senior-frontend` | Professional workflow for senior frontend |
+| `pdf` | Professional workflow for pdf |
 | `senior-security` | Professional workflow for senior security |
-| `quality-validator` | Professional workflow for quality validator |
+| `senior-fullstack` | Professional workflow for senior fullstack |
+| `senior-qa` | Professional workflow for senior qa |
 
 ---
 

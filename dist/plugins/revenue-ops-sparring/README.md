@@ -11,12 +11,14 @@
 
 Most AI plugins are just **Toolboxes** - they give you a hammer and saw but don't tell you how to build a house.
 
-**Revenue Ops Sparring** is a **Thinking Partner**. It combines:
-1.  **Expert Agents**: A "Sparring Mentor" who knows the best frameworks (e.g., First Principles, Jobs-to-be-Done, RICE).
-2.  **Proactive Challenge**: It doesn't just answer; it asks "Is this the right problem?" and "Have you considered X?"
-3.  **Deep Skills**: A library of 12 professional skills (not just distinct scripts, but integrated workflows).
+**Revenue Ops Sparring** is a **Cognitive System**, not just a script runner.
 
-It doesn't just execute commands; it **elevates your thinking**.
+### 🧠 The Cognitive Difference
+1.  **Shared Memory (`lib`)**: Unlike stateless plugins, this system **remembers**. It uses a shared cognitive library to track your goals, preferences, and project history across sessions.
+2.  **Episodic Context**: It maintains state files (contracts, memory banks) so you don't have to repeat your context every time.
+3.  **Proactive Challenge**: It doesn't just answer; it uses the "Sparring Mentor" architecture to challenge assumptions and force deeper thinking.
+
+It doesn't just execute commands; it **thinks with you**.
 
 ---
 
@@ -37,10 +39,20 @@ If you have configured the Conversational Sparring marketplace:
 
 ---
 
-## 🧠 What's Included
+## 🎮 Commands & Usage
 
-### 1. The Sparring Partner (Agent)
-Your dedicated AI co-pilot. Trigger it by asking:
+Start interacting with your new partner:
+
+```bash
+/sparring goal "Launch Q3 Marketing Campaign"   # Set a strategic objective
+/sparring progress                              # Check your trajectory & blockers
+/sparring help                                  # Show available cognitive tools
+```
+
+## 📦 What's Included
+
+### 1. The Agents
+Your dedicated AI co-pilots. Trigger them by asking:
 > "Spar with me on [topic]..."
 > "Challenge my assumptions about..."
 > "Help me plan a [project]..."
@@ -50,18 +62,18 @@ This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
-| `revenue-analytics` | Professional workflow for revenue analytics |
 | `marketing-analytics` | Professional workflow for marketing analytics |
-| `pdf` | Professional workflow for pdf |
-| `growth-analytics` | Professional workflow for growth analytics |
-| `attribution-roi` | Professional workflow for attribution roi |
-| `sales-marketing-alignment` | Professional workflow for sales marketing alignment |
-| `process-automation` | Professional workflow for process automation |
+| `revenue-analytics` | Professional workflow for revenue analytics |
 | `pptx` | Professional workflow for pptx |
+| `process-automation` | Professional workflow for process automation |
 | `pipeline-forecasting` | Professional workflow for pipeline forecasting |
-| `pricing-packaging` | Professional workflow for pricing packaging |
-| `docx` | Professional workflow for docx |
 | `crm-hygiene` | Professional workflow for crm hygiene |
+| `docx` | Professional workflow for docx |
+| `pricing-packaging` | Professional workflow for pricing packaging |
+| `sales-marketing-alignment` | Professional workflow for sales marketing alignment |
+| `growth-analytics` | Professional workflow for growth analytics |
+| `pdf` | Professional workflow for pdf |
+| `attribution-roi` | Professional workflow for attribution roi |
 
 ---
 

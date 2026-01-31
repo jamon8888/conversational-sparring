@@ -1,0 +1,7 @@
+ym,content_type,channel,views,clicks,shares,views_mom,clicks_mom,shares_mom
+2025-01,blog,linkedin,1000,80,20,,,
+2025-01,blog,twitter,900,60,40,,,
+2025-02,blog,linkedin,1300,100,25,0.3,0.25,0.25
+2025-02,blog,twitter,800,55,35,-0.111,-0.083,-0.125
+2025-03,blog,linkedin,1500,120,30,0.154,0.2,0.2
+2025-03,blog,twitter,1000,70,45,0.25,0.273,0.286

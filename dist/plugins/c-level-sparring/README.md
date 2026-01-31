@@ -11,12 +11,14 @@
 
 Most AI plugins are just **Toolboxes** - they give you a hammer and saw but don't tell you how to build a house.
 
-**C Level Sparring** is a **Thinking Partner**. It combines:
-1.  **Expert Agents**: A "Sparring Mentor" who knows the best frameworks (e.g., First Principles, Jobs-to-be-Done, RICE).
-2.  **Proactive Challenge**: It doesn't just answer; it asks "Is this the right problem?" and "Have you considered X?"
-3.  **Deep Skills**: A library of 19 professional skills (not just distinct scripts, but integrated workflows).
+**C Level Sparring** is a **Cognitive System**, not just a script runner.
 
-It doesn't just execute commands; it **elevates your thinking**.
+### 🧠 The Cognitive Difference
+1.  **Shared Memory (`lib`)**: Unlike stateless plugins, this system **remembers**. It uses a shared cognitive library to track your goals, preferences, and project history across sessions.
+2.  **Episodic Context**: It maintains state files (contracts, memory banks) so you don't have to repeat your context every time.
+3.  **Proactive Challenge**: It doesn't just answer; it uses the "Sparring Mentor" architecture to challenge assumptions and force deeper thinking.
+
+It doesn't just execute commands; it **thinks with you**.
 
 ---
 
@@ -37,38 +39,44 @@ If you have configured the Conversational Sparring marketplace:
 
 ---
 
-## 🧠 What's Included
+## 🎮 Commands & Usage
 
-### 1. The Sparring Partner (Agent)
-Your dedicated AI co-pilot. Trigger it by asking:
+Start interacting with your new partner:
+
+```bash
+/sparring goal "Launch Q3 Marketing Campaign"   # Set a strategic objective
+/sparring progress                              # Check your trajectory & blockers
+/sparring help                                  # Show available cognitive tools
+```
+
+## 📦 What's Included
+
+### 1. The Agents
+Your dedicated AI co-pilots. Trigger them by asking:
 > "Spar with me on [topic]..."
 > "Challenge my assumptions about..."
 > "Help me plan a [project]..."
 
-### 2. Professional Skills (19)
+### 2. Professional Skills (15)
 This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
-| `report-synthesizer` | Professional workflow for report synthesizer |
-| `opportunity-discovery` | Professional workflow for opportunity discovery |
-| `ceo-advisor` | Professional workflow for ceo advisor |
-| `opportunity-scorer` | Professional workflow for opportunity scorer |
-| `senior-architect` | Professional workflow for senior architect |
-| `market-analyst` | Professional workflow for market analyst |
-| `revenue-analytics` | Professional workflow for revenue analytics |
-| `pdf` | Professional workflow for pdf |
-| `growth-analytics` | Professional workflow for growth analytics |
-| `product-strategist` | Professional workflow for product strategist |
-| `risk-management-specialist` | Professional workflow for risk management specialist |
-| `comparative-analyzer` | Professional workflow for comparative analyzer |
+| `marketing-strategy-pmm` | Professional workflow for marketing strategy pmm |
 | `pptx` | Professional workflow for pptx |
 | `docx` | Professional workflow for docx |
 | `cto-advisor` | Professional workflow for cto advisor |
+| `comparative-analyzer` | Professional workflow for comparative analyzer |
+| `revenue-analytics` | Professional workflow for revenue analytics |
 | `pipeline-forecasting` | Professional workflow for pipeline forecasting |
+| `ceo-advisor` | Professional workflow for ceo advisor |
+| `market-analyst` | Professional workflow for market analyst |
 | `pricing-packaging` | Professional workflow for pricing packaging |
-| `marketing-strategy-pmm` | Professional workflow for marketing strategy pmm |
-| `roadmap-planner` | Professional workflow for roadmap planner |
+| `senior-architect` | Professional workflow for senior architect |
+| `opportunity-scorer` | Professional workflow for opportunity scorer |
+| `growth-analytics` | Professional workflow for growth analytics |
+| `pdf` | Professional workflow for pdf |
+| `product-strategist` | Professional workflow for product strategist |
 
 ---
 

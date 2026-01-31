@@ -11,12 +11,14 @@
 
 Most AI plugins are just **Toolboxes** - they give you a hammer and saw but don't tell you how to build a house.
 
-**Solopreneur Sparring** is a **Thinking Partner**. It combines:
-1.  **Expert Agents**: A "Sparring Mentor" who knows the best frameworks (e.g., First Principles, Jobs-to-be-Done, RICE).
-2.  **Proactive Challenge**: It doesn't just answer; it asks "Is this the right problem?" and "Have you considered X?"
-3.  **Deep Skills**: A library of 20 professional skills (not just distinct scripts, but integrated workflows).
+**Solopreneur Sparring** is a **Cognitive System**, not just a script runner.
 
-It doesn't just execute commands; it **elevates your thinking**.
+### 🧠 The Cognitive Difference
+1.  **Shared Memory (`lib`)**: Unlike stateless plugins, this system **remembers**. It uses a shared cognitive library to track your goals, preferences, and project history across sessions.
+2.  **Episodic Context**: It maintains state files (contracts, memory banks) so you don't have to repeat your context every time.
+3.  **Proactive Challenge**: It doesn't just answer; it uses the "Sparring Mentor" architecture to challenge assumptions and force deeper thinking.
+
+It doesn't just execute commands; it **thinks with you**.
 
 ---
 
@@ -37,10 +39,20 @@ If you have configured the Conversational Sparring marketplace:
 
 ---
 
-## 🧠 What's Included
+## 🎮 Commands & Usage
 
-### 1. The Sparring Partner (Agent)
-Your dedicated AI co-pilot. Trigger it by asking:
+Start interacting with your new partner:
+
+```bash
+/sparring goal "Launch Q3 Marketing Campaign"   # Set a strategic objective
+/sparring progress                              # Check your trajectory & blockers
+/sparring help                                  # Show available cognitive tools
+```
+
+## 📦 What's Included
+
+### 1. The Agents
+Your dedicated AI co-pilots. Trigger them by asking:
 > "Spar with me on [topic]..."
 > "Challenge my assumptions about..."
 > "Help me plan a [project]..."
@@ -50,26 +62,26 @@ This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
-| `marketing-demand-acquisition` | Professional workflow for marketing demand acquisition |
+| `revenue-analytics` | Professional workflow for revenue analytics |
+| `ad-copywriting` | Professional workflow for ad copywriting |
+| `content-distribution` | Professional workflow for content distribution |
+| `product-manager-toolkit` | Professional workflow for product manager toolkit |
 | `opportunity-discovery` | Professional workflow for opportunity discovery |
 | `ceo-advisor` | Professional workflow for ceo advisor |
-| `opportunity-scorer` | Professional workflow for opportunity scorer |
-| `ad-copywriting` | Professional workflow for ad copywriting |
-| `market-analyst` | Professional workflow for market analyst |
-| `aws-solution-architect` | Professional workflow for aws solution architect |
-| `revenue-analytics` | Professional workflow for revenue analytics |
-| `pdf` | Professional workflow for pdf |
-| `growth-analytics` | Professional workflow for growth analytics |
-| `pptx` | Professional workflow for pptx |
-| `social-media-analyzer` | Professional workflow for social media analyzer |
-| `product-launch-orchestration` | Professional workflow for product launch orchestration |
-| `content-distribution` | Professional workflow for content distribution |
-| `docx` | Professional workflow for docx |
-| `content-creator` | Professional workflow for content creator |
-| `senior-fullstack` | Professional workflow for senior fullstack |
-| `product-manager-toolkit` | Professional workflow for product manager toolkit |
-| `email-marketing` | Professional workflow for email marketing |
 | `pricing-packaging` | Professional workflow for pricing packaging |
+| `growth-analytics` | Professional workflow for growth analytics |
+| `product-launch-orchestration` | Professional workflow for product launch orchestration |
+| `senior-fullstack` | Professional workflow for senior fullstack |
+| `marketing-demand-acquisition` | Professional workflow for marketing demand acquisition |
+| `content-creator` | Professional workflow for content creator |
+| `opportunity-scorer` | Professional workflow for opportunity scorer |
+| `email-marketing` | Professional workflow for email marketing |
+| `aws-solution-architect` | Professional workflow for aws solution architect |
+| `pptx` | Professional workflow for pptx |
+| `docx` | Professional workflow for docx |
+| `social-media-analyzer` | Professional workflow for social media analyzer |
+| `market-analyst` | Professional workflow for market analyst |
+| `pdf` | Professional workflow for pdf |
 
 ---
 
