@@ -35,7 +35,10 @@ jobs:
             echo "Zipping $plugin_name..."
             zip -r "${plugin_name}.zip" "$plugin_name"
           done
-          ls -la *.zip
+
+          # Package individual skills
+          cd ../..
+          python scripts/package_skills.py
 
       - name: Create Release and Upload Assets
         uses: softprops/action-gh-release@v1
@@ -45,3 +48,4 @@ jobs:
           prerelease: false
           files: |
             dist/plugins/*.zip
+            dist/skills/*.zip
