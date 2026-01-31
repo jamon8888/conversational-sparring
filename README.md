@@ -13,48 +13,41 @@ A comprehensive plugin for Claude Code that combines a **Strategic Sparring Part
 Choose your preferred platform below to install the Domain Coaches (Sparring Partners).
 
 ### 1. Claude Code (Recommended)
-
 Add the marketplace first:
-
 ```bash
 /plugin marketplace add https://github.com/jamon8888/conversational-sparring
 ```
 
 Then install your specific coach:
 
-| Domain          | Coach Name           | Install Command                                                                      |
-| :-------------- | :------------------- | :----------------------------------------------------------------------------------- |
-| **All Domains** | **Master Plugin**    | `/plugin install conversational-sparring-csuite@conversational-sparring-marketplace` |
-| **Marketing**   | Marketing Sparring   | `/plugin install marketing-sparring@conversational-sparring-marketplace`             |
-| **Engineering** | Engineering Sparring | `/plugin install engineering-sparring@conversational-sparring-marketplace`           |
-| **Strategy**    | Strategic Research   | `/plugin install strategic-research-sparring@conversational-sparring-marketplace`    |
-| **Executive**   | C-Level Sparring     | `/plugin install c-level-sparring@conversational-sparring-marketplace`               |
-| **Product**     | Product Sparring     | `/plugin install product-sparring@conversational-sparring-marketplace`               |
-| **Solo/Indie**  | Solopreneur Sparring | `/plugin install solopreneur-sparring@conversational-sparring-marketplace`           |
+| Domain | Coach Name | Install Command |
+| :--- | :--- | :--- |
+| **All Domains** | **Master Plugin** | `/plugin install conversational-sparring-csuite@conversational-sparring-marketplace` |
+| **Marketing** | Marketing Sparring | `/plugin install marketing-sparring@conversational-sparring-marketplace` |
+| **Engineering** | Engineering Sparring | `/plugin install engineering-sparring@conversational-sparring-marketplace` |
+| **Strategy** | Strategic Research | `/plugin install strategic-research-sparring@conversational-sparring-marketplace` |
+| **Executive** | C-Level Sparring | `/plugin install c-level-sparring@conversational-sparring-marketplace` |
+| **Product** | Product Sparring | `/plugin install product-sparring@conversational-sparring-marketplace` |
+| **Solo/Indie** | Solopreneur Sparring | `/plugin install solopreneur-sparring@conversational-sparring-marketplace` |
 
 ---
 
 ### 2. Codex (Local Script)
-
 If you are using the local Codex environment, use the provided scripts in `scripts/`.
 
 **Windows (`.bat`):**
-
 ```cmd
 REM Install specific skills by name
 scripts\codex-install.bat --skill marketing-strategy-pmm
-scripts\codex-install.bat --skill senior-fullstack
 
 REM Or install everything
 scripts\codex-install.bat --all
 ```
 
 **Mac/Linux (`.sh`):**
-
 ```bash
 # Install by category (Recommended)
 ./scripts/codex-install.sh --category marketing
-./scripts/codex-install.sh --category engineering
 
 # Or install everything
 ./scripts/codex-install.sh --all
@@ -74,40 +67,181 @@ To enable **Deep Research (Exa)**, **Jira**, and **Confluence**, you must config
 
 ---
 
-## 📚 Master Skill Catalog
+## 📚 Detailed Plugin Capabilities
 
-You can also use any skill individually by referencing its path in `skills/`.
+Here is the **full list of skills** included in each domain plugin.
 
-### 🔍 Strategic Research (`skills/research-strategic/`)
+### � Marketing & Growth (`marketing-sparring`)
+> *Optimized for Heads of Growth, CMOs, and Marketing Leads.*
 
-| Skill                             | Description                                  | Codex Install                                           |
-| :-------------------------------- | :------------------------------------------- | :------------------------------------------------------ |
-| `strategic-research-orchestrator` | **MASTER**: 18+ playbooks (Blue Ocean, etc.) | `codex-install --skill strategic-research-orchestrator` |
-| `exa-search-expert`               | **AI SEARCH**: Neural search & deep agents   | `codex-install --skill exa-search-expert`               |
-| `opportunity-scorer`              | RICE/ICE prioritization                      | `codex-install --skill opportunity-scorer`              |
+**Core Strategy:**
+- `marketing-strategy-pmm` (GTM Strategy)
+- `marketing-analytics`
+- `growth-analytics`
+- `attribution-roi`
+- `market-analyst`
+- `comparative-analyzer`
+- `report-generator`
 
-### 📣 Marketing (`skills/marketing/`)
+**Content & Creative:**
+- `content-creator` (Brand Voice & SEO)
+- `content-strategy`
+- `content-distribution`
+- `ad-copywriting`
+- `social-media-analyzer`
+- `email-marketing`
 
-| Skill                          | Description                         | Codex Install                                        |
-| :----------------------------- | :---------------------------------- | :--------------------------------------------------- |
-| `content-creator`              | **CORE**: Brand voice & SEO writing | `codex-install --skill content-creator`              |
-| `marketing-demand-acquisition` | Funnel analytics                    | `codex-install --skill marketing-demand-acquisition` |
-| `marketing-strategy-pmm`       | GTM strategy                        | `codex-install --skill marketing-strategy-pmm`       |
+**Acquisition:**
+- `marketing-demand-acquisition`
+- `app-store-optimization`
+- `campaign-orchestration`
+- `sales-marketing-alignment`
+- `revenue-analytics`
 
-### 💻 Engineering (`skills/engineering/`)
+**Tools:**
+- `docx`, `pdf`, `pptx`
 
-| Skill              | Description                   | Codex Install                            |
-| :----------------- | :---------------------------- | :--------------------------------------- |
-| `senior-fullstack` | **CORE**: Project scaffolding | `codex-install --skill senior-fullstack` |
-| `senior-devops`    | CI/CD, K8s, Docker            | `codex-install --skill senior-devops`    |
-| `senior-security`  | Vulnerability scanning        | `codex-install --skill senior-security`  |
+---
 
-### 👔 C-Level (`skills/c-level/`)
+### 💻 Engineering (`engineering-sparring`)
+> *Optimized for CTOs, VPs of Engineering, and Tech Leads.*
 
-| Skill         | Description                   | Codex Install                       |
-| :------------ | :---------------------------- | :---------------------------------- |
-| `ceo-advisor` | Strategic decision frameworks | `codex-install --skill ceo-advisor` |
-| `cto-advisor` | Technology strategy           | `codex-install --skill cto-advisor` |
+**Leadership:**
+- `cto-advisor`
+- `senior-architect`
+- `tech-stack-evaluator`
+- `technical-researcher`
+- `compliance-analyst`
+
+**Development:**
+- `senior-fullstack`
+- `senior-backend`
+- `senior-frontend`
+- `code-reviewer`
+- `tdd-guide`
+- `solution-architect`
+
+**Operations & Quality:**
+- `senior-devops`
+- `senior-security` (Vuln Scanning)
+- `senior-qa`
+- `quality-validator`
+- `aws-solution-architect`
+
+**Process:**
+- `sprint-executor`
+- `senior-data-scientist`
+- `docx`, `pdf`, `pptx`
+
+---
+
+### 👔 C-Level Strategy (`c-level-sparring`)
+> *Optimized for CEOs, Founders, and Chief Strategy Officers.*
+
+**Executive Strategy:**
+- `ceo-advisor`
+- `cto-advisor`
+- `product-strategist`
+- `senior-architect`
+- `risk-management-specialist`
+
+**Business Intelligence:**
+- `growth-analytics`
+- `revenue-analytics`
+- `pipeline-forecasting`
+- `pricing-packaging`
+- `market-analyst`
+- `comparative-analyzer`
+
+**Planning:**
+- `opportunity-discovery`
+- `opportunity-scorer` (RICE/ICE)
+- `roadmap-planner`
+- `marketing-strategy-pmm`
+- `report-synthesizer`
+- `docx`, `pdf`, `pptx`
+
+---
+
+### � Strategic Research (`strategic-research-sparring`)
+> *Deep research intelligence with Exa.ai integration.*
+
+**Core Intelligence:**
+- `strategic-research-orchestrator` (Master Orchestrator)
+- `exa-search-expert` (Neural Search)
+- `research-synthesizer`
+- `market-analyst`
+- `comparative-analyzer`
+
+**Analysis Tools:**
+- `opportunity-scorer`
+- `market-scenario-modeler`
+- `win-loss-dataset`
+- `insights-repository-kit`
+- `participant-operations-hub`
+- `executive-briefing-kit`
+
+---
+
+### 📦 Product Management (`product-sparring`)
+> *Optimized for CPOs and Product Managers.*
+
+**Product Strategy:**
+- `product-manager-toolkit`
+- `product-strategist`
+- `product-launch-orchestration`
+- `product-led-growth`
+- `marketing-strategy-pmm`
+- `roadmap-planner`
+
+**Execution:**
+- `agile-product-owner`
+- `senior-pm`
+- `scrum-master`
+- `sprint-orchestrator`
+- `sprint-progress-tracker`
+
+**UX & Design:**
+- `ux-researcher-designer`
+- `ui-design-system`
+
+**Atlassian Suite:**
+- `jira-expert`
+- `confluence-expert`
+- `atlassian-templates`
+
+**Tools:**
+- `market-analyst`
+- `opportunity-discovery`
+- `docx`, `pdf`, `pptx`
+
+---
+
+### � Solopreneur (`solopreneur-sparring`)
+> *The "All-in-One" kit for Indie Founders.*
+
+**Build:**
+- `senior-fullstack`
+- `aws-solution-architect`
+- `product-manager-toolkit`
+
+**Growth:**
+- `content-creator`
+- `marketing-demand-acquisition`
+- `growth-analytics`
+- `email-marketing`
+- `ad-copywriting`
+- `content-distribution`
+
+**Business:**
+- `ceo-advisor`
+- `revenue-analytics`
+- `pricing-packaging`
+- `market-analyst`
+- `opportunity-discovery`
+- `opportunity-scorer`
+- `product-launch-orchestration`
+- `docx`, `pdf`, `pptx`
 
 ---
 
@@ -124,11 +258,9 @@ python skills/product/product-manager-toolkit/scripts/rice_prioritizer.py featur
 ```
 
 ## Contributing
-
 1.  Fork the repo.
 2.  Add skill to `skills/<category>/`.
 3.  Submit PR (CI will validate `SKILL.md`).
 
 ## License
-
 MIT
