@@ -62,32 +62,32 @@ This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
-| `app-store-optimization` | Professional workflow for app store optimization |
-| `ad-copywriting` | Professional workflow for ad copywriting |
-| `account-tiering` | Professional workflow for account tiering |
-| `sales-marketing-alignment` | Professional workflow for sales marketing alignment |
-| `social-media-analyzer` | Professional workflow for social media analyzer |
-| `docx` | Professional workflow for docx |
+| `email-marketing` | Professional workflow for email marketing |
 | `marketing-analytics` | Professional workflow for marketing analytics |
 | `keyword-research` | Professional workflow for keyword research |
-| `growth-analytics` | Professional workflow for growth analytics |
-| `attribution-roi` | Professional workflow for attribution roi |
-| `pdf` | Professional workflow for pdf |
-| `email-marketing` | Professional workflow for email marketing |
-| `content-creator` | Professional workflow for content creator |
-| `content-distribution` | Professional workflow for content distribution |
-| `technical-seo` | Professional workflow for technical seo |
-| `revenue-analytics` | Professional workflow for revenue analytics |
-| `content-strategy` | Professional workflow for content strategy |
-| `community-sentiment-dashboard` | Professional workflow for community sentiment dashboard |
-| `signal-intel` | Professional workflow for signal intel |
-| `marketing-strategy-pmm` | Professional workflow for marketing strategy pmm |
-| `comparative-analyzer` | Professional workflow for comparative analyzer |
-| `pptx` | Professional workflow for pptx |
-| `social-calendar-system` | Professional workflow for social calendar system |
 | `marketing-demand-acquisition` | Professional workflow for marketing demand acquisition |
 | `market-analyst` | Professional workflow for market analyst |
+| `attribution-roi` | Professional workflow for attribution roi |
+| `account-tiering` | Professional workflow for account tiering |
+| `marketing-strategy-pmm` | Professional workflow for marketing strategy pmm |
 | `campaign-orchestration` | Professional workflow for campaign orchestration |
+| `docx` | Professional workflow for docx |
+| `technical-seo` | Professional workflow for technical seo |
+| `content-creator` | Professional workflow for content creator |
+| `revenue-analytics` | Professional workflow for revenue analytics |
+| `pdf` | Professional workflow for pdf |
+| `content-strategy` | Professional workflow for content strategy |
+| `sales-marketing-alignment` | Professional workflow for sales marketing alignment |
+| `community-sentiment-dashboard` | Professional workflow for community sentiment dashboard |
+| `app-store-optimization` | Professional workflow for app store optimization |
+| `comparative-analyzer` | Professional workflow for comparative analyzer |
+| `pptx` | Professional workflow for pptx |
+| `content-distribution` | Professional workflow for content distribution |
+| `social-calendar-system` | Professional workflow for social calendar system |
+| `ad-copywriting` | Professional workflow for ad copywriting |
+| `social-media-analyzer` | Professional workflow for social media analyzer |
+| `growth-analytics` | Professional workflow for growth analytics |
+| `signal-intel` | Professional workflow for signal intel |
 
 ---
 

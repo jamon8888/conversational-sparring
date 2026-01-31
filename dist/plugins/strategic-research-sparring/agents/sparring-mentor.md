@@ -342,7 +342,7 @@ Shall we dive into Gen Z behavioral patterns?
 
 ```python
 import sys
-sys.path.insert(0, 'lib')
+sys.path.insert(0, '../lib')
 from ledger import SparringLedger
 from patterns import PatternDetector
 

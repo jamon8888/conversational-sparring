@@ -179,7 +179,7 @@ Break down the Big Win into daily tasks:
 
 ```python
 import sys
-sys.path.insert(0, 'lib')
+sys.path.insert(0, '../lib')
 from ledger import SparringLedger
 from goals import GoalManager
 from domains.loader import load_domain

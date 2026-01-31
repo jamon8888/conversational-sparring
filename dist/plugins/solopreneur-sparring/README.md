@@ -62,26 +62,26 @@ This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
-| `ad-copywriting` | Professional workflow for ad copywriting |
-| `aws-solution-architect` | Professional workflow for aws solution architect |
-| `opportunity-scorer` | Professional workflow for opportunity scorer |
-| `social-media-analyzer` | Professional workflow for social media analyzer |
-| `lead-qualification` | Professional workflow for lead qualification |
-| `docx` | Professional workflow for docx |
-| `product-manager-toolkit` | Professional workflow for product manager toolkit |
-| `growth-analytics` | Professional workflow for growth analytics |
-| `pdf` | Professional workflow for pdf |
-| `ceo-advisor` | Professional workflow for ceo advisor |
 | `email-marketing` | Professional workflow for email marketing |
-| `content-creator` | Professional workflow for content creator |
-| `product-launch-orchestration` | Professional workflow for product launch orchestration |
-| `content-distribution` | Professional workflow for content distribution |
-| `revenue-analytics` | Professional workflow for revenue analytics |
-| `pricing-packaging` | Professional workflow for pricing packaging |
-| `pptx` | Professional workflow for pptx |
-| `senior-fullstack` | Professional workflow for senior fullstack |
+| `opportunity-scorer` | Professional workflow for opportunity scorer |
 | `marketing-demand-acquisition` | Professional workflow for marketing demand acquisition |
 | `market-analyst` | Professional workflow for market analyst |
+| `product-launch-orchestration` | Professional workflow for product launch orchestration |
+| `docx` | Professional workflow for docx |
+| `content-creator` | Professional workflow for content creator |
+| `revenue-analytics` | Professional workflow for revenue analytics |
+| `ceo-advisor` | Professional workflow for ceo advisor |
+| `pdf` | Professional workflow for pdf |
+| `lead-qualification` | Professional workflow for lead qualification |
+| `pricing-packaging` | Professional workflow for pricing packaging |
+| `aws-solution-architect` | Professional workflow for aws solution architect |
+| `senior-fullstack` | Professional workflow for senior fullstack |
+| `pptx` | Professional workflow for pptx |
+| `content-distribution` | Professional workflow for content distribution |
+| `product-manager-toolkit` | Professional workflow for product manager toolkit |
+| `ad-copywriting` | Professional workflow for ad copywriting |
+| `social-media-analyzer` | Professional workflow for social media analyzer |
+| `growth-analytics` | Professional workflow for growth analytics |
 
 ---
 

@@ -105,12 +105,18 @@ You have pre-installed skills in `../skills/`. Use them directly to save time.
 
 **Common Tools:**
 
-| Need           | Skill           | Command                                                                       |
-| -------------- | --------------- | ----------------------------------------------------------------------------- |
-| Content/SEO    | content-creator | `python ../skills/content-creator/scripts/seo_optimizer.py <file>`            |
-| Prioritization | product-manager | `python ../skills/product-manager-toolkit/scripts/rice_prioritizer.py <file>` |
-| Marketing      | demand-gen      | `ls ../skills/marketing-demand-acquisition/scripts/`                          |
-| Infrastructure | aws-architect   | `python ../skills/aws-solution-architect/scripts/generate_template.py`        |
+| Need | Skill | Command |
+|------|-------|---------|
+| Development | senior-fullstack | `cat ../skills/engineering/senior-fullstack/SKILL.md` |
+| Prioritization | product-manager-toolkit | `python ../skills/product/product-manager-toolkit/scripts/rice_prioritizer.py <file>` |
+| Infrastructure | aws-solution-architect | `python ../skills/engineering/aws-solution-architect/scripts/generate_template.py` |
+| Content/SEO | content-creator | `python ../skills/marketing/content-creator/scripts/seo_optimizer.py <file>` |
+| Marketing | marketing-demand-acquisition | `ls ../skills/marketing/marketing-demand-acquisition/scripts/` |
+| Social Media An | social-media-analyzer | `cat ../skills/marketing/social-media-analyzer/SKILL.md` |
+| Email | email-marketing | `cat ../skills/marketing/email-marketing/SKILL.md` |
+| Ad Copywriting | ad-copywriting | `cat ../skills/marketing/ad-copywriting/SKILL.md` |
+| Content Distrib | content-distribution | `cat ../skills/marketing/content-distribution/SKILL.md` |
+| Strategy | ceo-advisor | `cat ../skills/c-level/ceo-advisor/SKILL.md` |
 
 **Note**: Do not ask users to install skills. They are already bundled. Call the scripts directly.
 
@@ -158,7 +164,7 @@ Pick ONE thing. Commit to it for 5 days. Block everything else.
 
 ```python
 import sys
-sys.path.insert(0, 'lib')
+sys.path.insert(0, '../lib')
 from ledger import SparringLedger
 from patterns import PatternDetector
 

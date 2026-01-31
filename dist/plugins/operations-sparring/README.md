@@ -62,19 +62,19 @@ This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
-| `jira-expert` | Professional workflow for jira expert |
-| `scrum-master` | Professional workflow for scrum master |
-| `confluence-expert` | Professional workflow for confluence expert |
 | `quality-manager-qms-iso13485` | Professional workflow for quality manager qms iso13485 |
+| `pdf` | Professional workflow for pdf |
 | `pptx` | Professional workflow for pptx |
 | `docx` | Professional workflow for docx |
-| `revenue-analytics` | Professional workflow for revenue analytics |
-| `crm-hygiene` | Professional workflow for crm hygiene |
+| `compliance-analyst` | Professional workflow for compliance analyst |
+| `scrum-master` | Professional workflow for scrum master |
+| `confluence-expert` | Professional workflow for confluence expert |
+| `jira-expert` | Professional workflow for jira expert |
 | `project-management` | Professional workflow for project management |
 | `process-automation` | Professional workflow for process automation |
-| `compliance-analyst` | Professional workflow for compliance analyst |
+| `crm-hygiene` | Professional workflow for crm hygiene |
+| `revenue-analytics` | Professional workflow for revenue analytics |
 | `senior-pm` | Professional workflow for senior pm |
-| `pdf` | Professional workflow for pdf |
 
 ---
 

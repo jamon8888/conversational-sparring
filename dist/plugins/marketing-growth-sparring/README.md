@@ -62,18 +62,18 @@ This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
-| `app-store-optimization` | Professional workflow for app store optimization |
-| `unified-analytics` | Professional workflow for unified analytics |
+| `marketing-analytics` | Professional workflow for marketing analytics |
+| `keyword-research` | Professional workflow for keyword research |
+| `viral-mechanics` | Professional workflow for viral mechanics |
 | `referral-programs` | Professional workflow for referral programs |
 | `technical-seo` | Professional workflow for technical seo |
-| `keyword-research` | Professional workflow for keyword research |
-| `product-led-growth` | Professional workflow for product led growth |
-| `marketing-analytics` | Professional workflow for marketing analytics |
-| `viral-mechanics` | Professional workflow for viral mechanics |
-| `growth-analytics` | Professional workflow for growth analytics |
-| `marketing-demand-acquisition` | Professional workflow for marketing demand acquisition |
-| `attribution-roi` | Professional workflow for attribution roi |
 | `experiment-design` | Professional workflow for experiment design |
+| `unified-analytics` | Professional workflow for unified analytics |
+| `marketing-demand-acquisition` | Professional workflow for marketing demand acquisition |
+| `product-led-growth` | Professional workflow for product led growth |
+| `attribution-roi` | Professional workflow for attribution roi |
+| `growth-analytics` | Professional workflow for growth analytics |
+| `app-store-optimization` | Professional workflow for app store optimization |
 
 ---
 

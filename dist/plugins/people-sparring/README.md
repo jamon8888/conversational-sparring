@@ -63,11 +63,11 @@ This plugin includes a curated suite of skills:
 | Skill | Description |
 | :--- | :--- |
 | `ceo-advisor` | Professional workflow for ceo advisor |
-| `pptx` | Professional workflow for pptx |
-| `docx` | Professional workflow for docx |
-| `product-strategist` | Professional workflow for product strategist |
-| `senior-pm` | Professional workflow for senior pm |
 | `pdf` | Professional workflow for pdf |
+| `pptx` | Professional workflow for pptx |
+| `product-strategist` | Professional workflow for product strategist |
+| `docx` | Professional workflow for docx |
+| `senior-pm` | Professional workflow for senior pm |
 
 ---
 

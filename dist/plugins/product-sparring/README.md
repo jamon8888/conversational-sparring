@@ -62,28 +62,28 @@ This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
-| `jira-expert` | Professional workflow for jira expert |
 | `atlassian-templates` | Professional workflow for atlassian templates |
-| `scrum-master` | Professional workflow for scrum master |
-| `product-led-growth` | Professional workflow for product led growth |
-| `closed-loop-playbook` | Professional workflow for closed loop playbook |
-| `agile-product-owner` | Professional workflow for agile product owner |
-| `war-room-ops` | Professional workflow for war room ops |
-| `docx` | Professional workflow for docx |
-| `product-manager-toolkit` | Professional workflow for product manager toolkit |
-| `product-strategist` | Professional workflow for product strategist |
-| `pdf` | Professional workflow for pdf |
-| `ui-design-system` | Professional workflow for ui design system |
-| `product-launch-orchestration` | Professional workflow for product launch orchestration |
-| `confluence-expert` | Professional workflow for confluence expert |
 | `customer-feedback-taxonomy` | Professional workflow for customer feedback taxonomy |
-| `marketing-strategy-pmm` | Professional workflow for marketing strategy pmm |
-| `launch-tiering` | Professional workflow for launch tiering |
-| `pptx` | Professional workflow for pptx |
-| `ux-researcher-designer` | Professional workflow for ux researcher designer |
+| `product-led-growth` | Professional workflow for product led growth |
 | `market-analyst` | Professional workflow for market analyst |
-| `launch-plays` | Professional workflow for launch plays |
+| `product-launch-orchestration` | Professional workflow for product launch orchestration |
 | `senior-pm` | Professional workflow for senior pm |
+| `agile-product-owner` | Professional workflow for agile product owner |
+| `marketing-strategy-pmm` | Professional workflow for marketing strategy pmm |
+| `product-strategist` | Professional workflow for product strategist |
+| `docx` | Professional workflow for docx |
+| `confluence-expert` | Professional workflow for confluence expert |
+| `closed-loop-playbook` | Professional workflow for closed loop playbook |
+| `launch-tiering` | Professional workflow for launch tiering |
+| `pdf` | Professional workflow for pdf |
+| `war-room-ops` | Professional workflow for war room ops |
+| `launch-plays` | Professional workflow for launch plays |
+| `scrum-master` | Professional workflow for scrum master |
+| `pptx` | Professional workflow for pptx |
+| `ui-design-system` | Professional workflow for ui design system |
+| `jira-expert` | Professional workflow for jira expert |
+| `product-manager-toolkit` | Professional workflow for product manager toolkit |
+| `ux-researcher-designer` | Professional workflow for ux researcher designer |
 
 ---
 

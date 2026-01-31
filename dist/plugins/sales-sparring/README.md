@@ -62,26 +62,26 @@ This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
-| `value-propositions` | Professional workflow for value propositions |
-| `sales-marketing-alignment` | Professional workflow for sales marketing alignment |
-| `lead-qualification` | Professional workflow for lead qualification |
-| `docx` | Professional workflow for docx |
+| `marketing-demand-acquisition` | Professional workflow for marketing demand acquisition |
 | `attribution-roi` | Professional workflow for attribution roi |
-| `pdf` | Professional workflow for pdf |
+| `marketing-strategy-pmm` | Professional workflow for marketing strategy pmm |
+| `value-propositions` | Professional workflow for value propositions |
+| `objection-handling` | Professional workflow for objection handling |
+| `docx` | Professional workflow for docx |
 | `pipeline-forecasting` | Professional workflow for pipeline forecasting |
-| `ceo-advisor` | Professional workflow for ceo advisor |
 | `content-creator` | Professional workflow for content creator |
 | `revenue-analytics` | Professional workflow for revenue analytics |
-| `discovery-calls` | Professional workflow for discovery calls |
+| `ceo-advisor` | Professional workflow for ceo advisor |
+| `pdf` | Professional workflow for pdf |
+| `lead-qualification` | Professional workflow for lead qualification |
+| `sales-marketing-alignment` | Professional workflow for sales marketing alignment |
 | `pricing-packaging` | Professional workflow for pricing packaging |
-| `social-selling` | Professional workflow for social selling |
-| `marketing-strategy-pmm` | Professional workflow for marketing strategy pmm |
-| `pptx` | Professional workflow for pptx |
+| `discovery-calls` | Professional workflow for discovery calls |
 | `crm-hygiene` | Professional workflow for crm hygiene |
-| `cold-outreach` | Professional workflow for cold outreach |
 | `follow-up-sequences` | Professional workflow for follow up sequences |
-| `marketing-demand-acquisition` | Professional workflow for marketing demand acquisition |
-| `objection-handling` | Professional workflow for objection handling |
+| `pptx` | Professional workflow for pptx |
+| `cold-outreach` | Professional workflow for cold outreach |
+| `social-selling` | Professional workflow for social selling |
 
 ---
 

@@ -142,7 +142,7 @@ When intervention happens, record it:
 
 ```python
 import sys
-sys.path.insert(0, 'lib')
+sys.path.insert(0, '../lib')
 from ledger import SparringLedger
 from patterns import PatternDetector
 

@@ -170,7 +170,7 @@ Record achievements:
 
 ```python
 import sys
-sys.path.insert(0, 'lib')
+sys.path.insert(0, '../lib')
 from ledger import SparringLedger
 
 ledger = SparringLedger()

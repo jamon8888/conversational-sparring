@@ -201,7 +201,7 @@ One foot in front of the other.
 
 ```python
 import sys
-sys.path.insert(0, 'lib')
+sys.path.insert(0, '../lib')
 from ledger import SparringLedger
 from feedback import FeedbackGenerator
 from domains.loader import load_domain

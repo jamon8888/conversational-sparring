@@ -118,12 +118,14 @@ def copy_and_patch_agents(plugin_path: Path, coach_root: Path, domain_id: str):
     if src_agents.exists() and src_agents.is_dir():
         shutil.copytree(src_agents, dst_agents)
         
-        # Patch imports
+        # Patch imports - agents are in agents/ so lib is at ../lib
         for agent_file in dst_agents.glob("*.md"):
             patch_file_content(agent_file, [
-                ("conversational-sparring/lib", "lib"),
-                ("../../skills/", "../skills/"), # Fix relative skill paths if needed
-                ("conversational-coach/lib", "lib")
+                ("sys.path.insert(0, 'conversational-sparring/lib')", "sys.path.insert(0, '../lib')"),
+                ("sys.path.insert(0, 'lib')", "sys.path.insert(0, '../lib')"),
+                ("conversational-sparring/lib", "../lib"),
+                ("../../skills/", "../skills/"),  # Fix relative skill paths
+                ("conversational-coach/lib", "../lib")
             ])
         print(f"  + Included agents for domain '{domain_id}'")
     else:

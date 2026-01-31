@@ -130,7 +130,7 @@ If Market B is reversible (Two Way Door), it might be the safer initial bet whil
 
 ```python
 import sys
-sys.path.insert(0, 'lib')
+sys.path.insert(0, '../lib')
 from ledger import SparringLedger
 from patterns import PatternDetector
 

@@ -62,19 +62,19 @@ This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
+| `retention-dashboard` | Professional workflow for retention dashboard |
+| `market-scenario-modeler` | Professional workflow for market scenario modeler |
+| `insights-repository-kit` | Professional workflow for insights repository kit |
 | `opportunity-scorer` | Professional workflow for opportunity scorer |
+| `research-synthesizer` | Professional workflow for research synthesizer |
+| `market-analyst` | Professional workflow for market analyst |
+| `participant-operations-hub` | Professional workflow for participant operations hub |
 | `exa-search-expert` | Professional workflow for exa search expert |
+| `win-loss-dataset` | Professional workflow for win loss dataset |
+| `executive-briefing-kit` | Professional workflow for executive briefing kit |
+| `segmentation-framework` | Professional workflow for segmentation framework |
 | `strategic-research-orchestrator` | Professional workflow for strategic research orchestrator |
 | `comparative-analyzer` | Professional workflow for comparative analyzer |
-| `executive-briefing-kit` | Professional workflow for executive briefing kit |
-| `insights-repository-kit` | Professional workflow for insights repository kit |
-| `research-synthesizer` | Professional workflow for research synthesizer |
-| `win-loss-dataset` | Professional workflow for win loss dataset |
-| `retention-dashboard` | Professional workflow for retention dashboard |
-| `segmentation-framework` | Professional workflow for segmentation framework |
-| `participant-operations-hub` | Professional workflow for participant operations hub |
-| `market-scenario-modeler` | Professional workflow for market scenario modeler |
-| `market-analyst` | Professional workflow for market analyst |
 
 ---
 
