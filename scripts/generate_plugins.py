@@ -150,41 +150,84 @@ def generate_manifest(plugin_path: Path, domain_config: Dict[str, Any], domain_i
     with open(plugin_path / "manifest.json", 'w', encoding='utf-8') as f:
         json.dump(manifest, f, indent=2)
 
-def generate_readme(plugin_path: Path, domain_config: Dict[str, Any], domain_id: str):
+def generate_readme(plugin_path: Path, domain_config: Dict[str, Any], domain_id: str, included_skills: List[str]):
     """Generate a specific README for the domain plugin."""
     
-    name = domain_config.get("domain", {}).get("name", domain_id.title())
-    desc = domain_config.get("domain", {}).get("description", "")
-    
-    content = f"""# {name} Sparring Partner
+    plugin_name = f"{domain_id}-sparring"
+    domain_data = domain_config.get("domain", {})
+    readable_name = domain_data.get('name', domain_id.title())
 
-{desc}
+    readme_content = f"""# {plugin_name.replace('-', ' ').title()}
 
-## Overview
-This is a specialized Claude Code plugin designed for the **{name}** domain.
-It helps you track goals, detect patterns, and improve your workflow.
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
 
-## Installation
+**A specialized AI Sparring Partner for {readable_name} professionals.**
 
+---
+
+## ❓ Why This Plugin is Different
+
+Most AI plugins are just **Toolboxes** - they give you a hammer and saw but don't tell you how to build a house.
+
+**{plugin_name.replace('-', ' ').title()}** is a **Thinking Partner**. It combines:
+1.  **Expert Agents**: A "Sparring Mentor" who knows the best frameworks (e.g., First Principles, Jobs-to-be-Done, RICE).
+2.  **Proactive Challenge**: It doesn't just answer; it asks "Is this the right problem?" and "Have you considered X?"
+3.  **Deep Skills**: A library of {len(included_skills)} professional skills (not just distinct scripts, but integrated workflows).
+
+It doesn't just execute commands; it **elevates your thinking**.
+
+---
+
+## 🚀 Installation
+
+### Option 1: Marketplace (Recommended)
+If you have configured the Conversational Sparring marketplace:
 ```bash
-/plugin install {domain_id}-sparring@claude-code-skills
+/plugin install {plugin_name}@conversational-sparring-marketplace
 ```
 
-## Features
+### Option 2: Direct Install
+1.  Download this folder.
+2.  Run in Claude Code:
+    ```bash
+    /plugin install ./
+    ```
 
-- **Domain-Specific**: Optimized for {domain_id} workflows.
-- **Goal Tracking**: Set and track {domain_id} goals.
-- **Pattern Detection**: Identifies patterns like {', '.join(list(domain_config.get('patterns', {}).keys())[:3])}.
+---
 
-## Usage
+## 🧠 What's Included
 
-```bash
-/sparring goal "My new objective"
-/sparring progress
-```
+### 1. The Sparring Partner (Agent)
+Your dedicated AI co-pilot. Trigger it by asking:
+> "Spar with me on [topic]..."
+> "Challenge my assumptions about..."
+> "Help me plan a [project]..."
+
+### 2. Professional Skills ({len(included_skills)})
+This plugin includes a curated suite of skills:
+
+| Skill | Description |
+| :--- | :--- |
 """
-    with open(plugin_path / "README.md", 'w', encoding='utf-8') as f:
-        f.write(content)
+
+    for skill in included_skills:
+        readme_content += f"| `{skill}` | Professional workflow for {skill.replace('-', ' ')} |\n"
+
+    readme_content += """
+---
+
+## 🔧 Configuration
+
+To unlock full capabilities (Exa Search, Jira, etc.), ensure your `mcp.json` is configured.
+See the [Master Repository](https://github.com/jamon8888/conversational-sparring) for details.
+
+## License
+MIT
+"""
+    
+    with open(plugin_path / "README.md", "w", encoding='utf-8') as f:
+        f.write(readme_content)
 
 def main():
     parser = argparse.ArgumentParser(description="Generate domain plugins")
@@ -246,7 +289,8 @@ def main():
             
         # 6. Generate Metadata
         generate_manifest(plugin_path, domain_config, domain_id)
-        generate_readme(plugin_path, domain_config, domain_id)
+        generate_manifest(plugin_path, domain_config, domain_id)
+        generate_readme(plugin_path, domain_config, domain_id, list(skills_to_include))
         
     print("\\nGeneration complete!")
 
