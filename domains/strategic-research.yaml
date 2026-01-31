@@ -1,11 +1,158 @@
+# Strategic Research Domain - Deep Intelligence Sparring
+# Optimized for market analysis, competitive intelligence, and strategic decision making
+
 domain:
+  id: strategic-research
   name: Strategic Research
   description: Deep research sparring partner with Exa.ai integration, behavioral economics, and strategic playbooks.
 
-patterns:
-  research_gap: "Identify missing information in strategy"
-  bias_detection: "Spot cognitive biases in decision making"
+categories:
+  - id: market_intelligence
+    name: Market Intelligence
+    keywords:
+      - market
+      - size
+      - growth
+      - trend
+      - forecast
+      - tam
+      - sam
+      - som
+      - industry
+      - vertical
 
+  - id: competitive_analysis
+    name: Competitive Analysis
+    keywords:
+      - competitor
+      - rival
+      - swot
+      - differentiation
+      - moat
+      - pricing
+      - feature
+      - benchmark
+      - battlecard
+
+  - id: consumer_insights
+    name: Consumer Insights
+    keywords:
+      - customer
+      - user
+      - persona
+      - behavior
+      - psychology
+      - need
+      - pain point
+      - job to be done
+      - interview
+      - survey
+
+  - id: strategic_planning
+    name: Strategic Planning
+    keywords:
+      - strategy
+      - roadmap
+      - objective
+      - okr
+      - kpi
+      - goal
+      - vision
+      - mission
+      - pivot
+      - expansion
+
+  - id: decision_science
+    name: Decision Science
+    keywords:
+      - bias
+      - risk
+      - probability
+      - scenario
+      - model
+      - framework
+      - mental model
+      - economics
+      - game theory
+
+patterns:
+  confirmation_bias:
+    description: Seeking only data that confirms existing beliefs
+    severity_threshold: 3
+    severity: warning
+    suggestion: actively search for disconfirming evidence ("Kill your darlings")
+
+  analysis_paralysis:
+    description: Endless data gathering without decision making
+    severity_threshold: 4
+    severity: concern
+    suggestion: Time-box research and clarify the "decisive info" needed
+
+  surface_level_insight:
+    description: Relying on generic reports or obvious findings
+    severity_threshold: 3
+    severity: info
+    suggestion: Use "Five Whys" or Exa deep search to find non-obvious connections
+
+  data_silo:
+    description: Connecting dots only within one domain (e.g. only looking at marketing data)
+    severity_threshold: 4
+    severity: warning
+    suggestion: Cross-reference with product or sales data for holistic view
+
+impact_keywords:
+  high:
+    - breakthrough
+    - pivot
+    - monopoly
+    - dominance
+    - unrecognized
+    - secret
+  medium:
+    - optimization
+    - improvement
+    - clarity
+    - validation
+    - update
+  low:
+    - confirmation
+    - status quo
+    - noise
+    - interesting
+
+struggle_indicators:
+  blockers:
+    - missing data
+    - contradictory
+    - unclear
+    - too much noise
+    - untrusted source
+  confusion:
+    - what does this mean
+    - conflicting
+    - paradox
+    - anomaly
+  pressure:
+    - deadline
+    - board meeting
+    - investor
+    - launch
+
+thresholds:
+  stalled_goal_days: 10
+  quick_win_days: 2
+  max_open_goals: 3
+  reflection_cadence: weekly
+
+messages:
+  goal_created: "Research objective defined"
+  goal_completed: "Insight validated"
+  goal_abandoned: "Hypothesis discarded"
+  streak_message: "{count} insights uncovered"
+  stalled_warning: "This research question is stalling"
+  welcome: "Ready to uncover the truth"
+
+# Skills configuration for plugin generation
 recommended_skills:
   - strategic-research-orchestrator
   - exa-search-expert
@@ -15,3 +162,6 @@ recommended_skills:
   - insights-repository-kit
   - market-scenario-modeler
   - research-synthesizer
+  - executive-briefing-kit
+  - win-loss-dataset
+  - participant-operations-hub

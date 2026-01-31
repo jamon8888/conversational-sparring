@@ -16,7 +16,7 @@ It helps you track goals, detect patterns, and improve your workflow.
 
 - **Domain-Specific**: Optimized for strategic-research workflows.
 - **Goal Tracking**: Set and track strategic-research goals.
-- **Pattern Detection**: Identifies patterns like research_gap, bias_detection.
+- **Pattern Detection**: Identifies patterns like confirmation_bias, analysis_paralysis, surface_level_insight.
 
 ## Usage
 

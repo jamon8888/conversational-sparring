@@ -19,6 +19,15 @@
       "author": { "name": "Hacienda" }
     },
     {
+      "name": "strategic-research-sparring",
+      "description": "Deep research intelligence with Exa.ai, behavioral economics, and strategic playbooks",
+      "version": "1.0.0",
+      "source": "./dist/plugins/strategic-research-sparring",
+      "category": "research",
+      "tags": ["research", "strategy", "exa", "market-analysis", "c-suite"],
+      "author": { "name": "Hacienda" }
+    },
+    {
       "name": "marketing-sparring",
       "description": "Specialized sparring for Marketing professionals",
       "version": "1.0.0",
@@ -61,15 +70,6 @@
       "source": "./dist/plugins/solopreneur-sparring",
       "category": "business",
       "tags": ["solopreneur", "business", "startup"],
-      "author": { "name": "Hacienda" }
-    },
-    {
-      "name": "strategic-research-sparring",
-      "description": "Deep research with Exa.ai and strategic playbooks",
-      "version": "1.0.0",
-      "source": "./dist/plugins/strategic-research-sparring",
-      "category": "research",
-      "tags": ["research", "strategy", "exa", "analysis"],
       "author": { "name": "Hacienda" }
     }
   ]
