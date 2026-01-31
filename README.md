@@ -8,61 +8,69 @@ A comprehensive plugin for Claude Code that combines a **Strategic Sparring Part
 
 ---
 
-## 🚀 Marketplace Installation (Easiest Way)
+## 🚀 Installation Guide
 
-This repository serves as a **Plugin Marketplace**. You can add it to Claude Code and then install any of the specialized plugins below.
+Choose your preferred platform below to install the Domain Coaches (Sparring Partners).
 
-### 1. Add this Marketplace
+### 1. Claude Code (Recommended)
+
+Add the marketplace first:
 
 ```bash
 /plugin marketplace add https://github.com/jamon8888/conversational-sparring
 ```
 
-### 2. Install Your Preferred Plugin
+Then install your specific coach:
 
-| Plugin Name              | Description                                          | Install Command                                                                      |
-| :----------------------- | :--------------------------------------------------- | :----------------------------------------------------------------------------------- |
-| **Master Plugin**        | **ALL** 48+ skills and agents. Best for power users. | `/plugin install conversational-sparring-csuite@conversational-sparring-marketplace` |
-| **Marketing Sparring**   | Content creation, SEO, Demand Gen (18+ skills).      | `/plugin install marketing-sparring@conversational-sparring-marketplace`             |
-| **Engineering Sparring** | Code review, DevOps, Architecture (21+ skills).      | `/plugin install engineering-sparring@conversational-sparring-marketplace`           |
-| **C-Level Sparring**     | CEO/CTO strategic advisors and decision frameworks.  | `/plugin install c-level-sparring@conversational-sparring-marketplace`               |
-| **Product Sparring**     | RICE scoring, User Stories, Roadmapping.             | `/plugin install product-sparring@conversational-sparring-marketplace`               |
-| **Solopreneur Sparring** | Full-stack business management for single founders.  | `/plugin install solopreneur-sparring@conversational-sparring-marketplace`           |
-
-> **Note**: If marketplace commands are not yet available in your version, use the [Manual Installation](#-manual-installation-git-clone) method below.
+| Domain          | Coach Name           | Install Command                                                                      |
+| :-------------- | :------------------- | :----------------------------------------------------------------------------------- |
+| **All Domains** | **Master Plugin**    | `/plugin install conversational-sparring-csuite@conversational-sparring-marketplace` |
+| **Marketing**   | Marketing Sparring   | `/plugin install marketing-sparring@conversational-sparring-marketplace`             |
+| **Engineering** | Engineering Sparring | `/plugin install engineering-sparring@conversational-sparring-marketplace`           |
+| **Strategy**    | Strategic Research   | `/plugin install strategic-research-sparring@conversational-sparring-marketplace`    |
+| **Executive**   | C-Level Sparring     | `/plugin install c-level-sparring@conversational-sparring-marketplace`               |
+| **Product**     | Product Sparring     | `/plugin install product-sparring@conversational-sparring-marketplace`               |
+| **Solo/Indie**  | Solopreneur Sparring | `/plugin install solopreneur-sparring@conversational-sparring-marketplace`           |
 
 ---
 
-## 📦 MCP Configuration (Required)
+### 2. Codex (Local Script)
 
-To enable **Exa Neural Search**, **Jira**, and **Confluence**, you must configure the Model Context Protocol.
+If you are using the local Codex environment, use the provided scripts in `scripts/`.
 
-1.  Copy the example config:
+**Windows (`.bat`):**
+
+```cmd
+REM Install specific skills by name
+scripts\codex-install.bat --skill marketing-strategy-pmm
+scripts\codex-install.bat --skill senior-fullstack
+
+REM Or install everything
+scripts\codex-install.bat --all
+```
+
+**Mac/Linux (`.sh`):**
+
+```bash
+# Install by category (Recommended)
+./scripts/codex-install.sh --category marketing
+./scripts/codex-install.sh --category engineering
+
+# Or install everything
+./scripts/codex-install.sh --all
+```
+
+---
+
+## ⚙️ Configuration (Required)
+
+To enable **Deep Research (Exa)**, **Jira**, and **Confluence**, you must configure the Model Context Protocol (MCP).
+
+1.  **Copy Config**:
     ```bash
     cp mcp.example.json mcp.json
     ```
-2.  Edit `mcp.json` to add your API keys (e.g., `EXA_API_KEY`).
-
----
-
-## 🛠️ Manual Installation (Git Clone)
-
-If you prefer to manage the code yourself or contribute:
-
-1.  **Clone the Repo**:
-
-    ```bash
-    git clone https://github.com/jamon8888/conversational-sparring.git
-    cd conversational-sparring
-    ```
-
-2.  **Generate Standalone Plugins** (Optional):
-    If you only want a specific domain (e.g., Marketing), run the factory script:
-    ```bash
-    python scripts/generate_plugins.py
-    cd dist/plugins/marketing-sparring
-    # Point Claude Code to this folder
-    ```
+2.  **Add Keys**: Edit `mcp.json` and add your API keys (e.g., `EXA_API_KEY`, `ATLASSIAN_API_TOKEN`).
 
 ---
 
@@ -72,44 +80,34 @@ You can also use any skill individually by referencing its path in `skills/`.
 
 ### 🔍 Strategic Research (`skills/research-strategic/`)
 
-| Skill                             | Description                                        |
-| :-------------------------------- | :------------------------------------------------- |
-| `strategic-research-orchestrator` | **MASTER**: 18+ playbooks (Blue Ocean, Rumelt)     |
-| `exa-search-expert`               | **AI SEARCH**: Neural search, deep research agents |
-| `opportunity-scorer`              | RICE/ICE frameworks                                |
-| `market-analyst`                  | TAM/SAM/SOM modeling                               |
-| `comparative-analyzer`            | Competitive intelligence & SWOT                    |
-| ...                               | _See folder for 14+ more_                          |
+| Skill                             | Description                                  | Codex Install                                           |
+| :-------------------------------- | :------------------------------------------- | :------------------------------------------------------ |
+| `strategic-research-orchestrator` | **MASTER**: 18+ playbooks (Blue Ocean, etc.) | `codex-install --skill strategic-research-orchestrator` |
+| `exa-search-expert`               | **AI SEARCH**: Neural search & deep agents   | `codex-install --skill exa-search-expert`               |
+| `opportunity-scorer`              | RICE/ICE prioritization                      | `codex-install --skill opportunity-scorer`              |
 
 ### 📣 Marketing (`skills/marketing/`)
 
-| Skill                          | Description                                                |
-| :----------------------------- | :--------------------------------------------------------- |
-| `content-creator`              | **CORE**: Brand voice analysis (`brand_voice_analyzer.py`) |
-| `marketing-demand-acquisition` | Funnel analytics                                           |
-| `marketing-strategy-pmm`       | Go-to-Market strategy                                      |
-| `ad-copywriting`               | Direct response copy                                       |
-| `email-marketing`              | Newsletter strategy                                        |
-| `seo-blog-writing`             | Search-first drafting                                      |
-| ...                            | _See folder for 30+ more_                                  |
+| Skill                          | Description                         | Codex Install                                        |
+| :----------------------------- | :---------------------------------- | :--------------------------------------------------- |
+| `content-creator`              | **CORE**: Brand voice & SEO writing | `codex-install --skill content-creator`              |
+| `marketing-demand-acquisition` | Funnel analytics                    | `codex-install --skill marketing-demand-acquisition` |
+| `marketing-strategy-pmm`       | GTM strategy                        | `codex-install --skill marketing-strategy-pmm`       |
 
 ### 💻 Engineering (`skills/engineering/`)
 
-| Skill                   | Description                                 |
-| :---------------------- | :------------------------------------------ |
-| `senior-fullstack`      | **CORE**: Project scaffolding, code quality |
-| `senior-devops`         | CI/CD, Kubernetes, Docker                   |
-| `senior-security`       | Vulnerability scanning                      |
-| `senior-data-scientist` | Experiment design                           |
-| `tech-stack-evaluator`  | Selection matrices                          |
-| ...                     | _See folder for 15+ more_                   |
+| Skill              | Description                   | Codex Install                            |
+| :----------------- | :---------------------------- | :--------------------------------------- |
+| `senior-fullstack` | **CORE**: Project scaffolding | `codex-install --skill senior-fullstack` |
+| `senior-devops`    | CI/CD, K8s, Docker            | `codex-install --skill senior-devops`    |
+| `senior-security`  | Vulnerability scanning        | `codex-install --skill senior-security`  |
 
 ### 👔 C-Level (`skills/c-level/`)
 
-| Skill         | Description                   |
-| :------------ | :---------------------------- |
-| `ceo-advisor` | Strategic decision frameworks |
-| `cto-advisor` | Technology strategy           |
+| Skill         | Description                   | Codex Install                       |
+| :------------ | :---------------------------- | :---------------------------------- |
+| `ceo-advisor` | Strategic decision frameworks | `codex-install --skill ceo-advisor` |
+| `cto-advisor` | Technology strategy           | `codex-install --skill cto-advisor` |
 
 ---
 
