@@ -62,16 +62,16 @@ This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
-| `marketing-analytics` | Professional workflow for marketing analytics |
-| `revenue-analytics` | Professional workflow for revenue analytics |
-| `unified-analytics` | Professional workflow for unified analytics |
-| `content-pipeline-orchestration` | Professional workflow for content pipeline orchestration |
 | `pipeline-forecasting` | Professional workflow for pipeline forecasting |
 | `email-campaign-automation` | Professional workflow for email campaign automation |
-| `crm-hygiene` | Professional workflow for crm hygiene |
-| `content-attribution` | Professional workflow for content attribution |
+| `unified-analytics` | Professional workflow for unified analytics |
 | `email-marketing` | Professional workflow for email marketing |
+| `content-pipeline-orchestration` | Professional workflow for content pipeline orchestration |
 | `content-governance` | Professional workflow for content governance |
+| `marketing-analytics` | Professional workflow for marketing analytics |
+| `crm-hygiene` | Professional workflow for crm hygiene |
+| `revenue-analytics` | Professional workflow for revenue analytics |
+| `content-attribution` | Professional workflow for content attribution |
 
 ---
 

@@ -11,16 +11,16 @@ class TestDomainSystem:
         assert callable(list_available_domains)
         assert callable(get_default_domain)
 
-    def test_default_domain_is_strategy(self):
-        """Test default domain is strategy (CEO)."""
-        assert get_default_domain() == "strategy"
+    def test_default_domain_is_personal(self):
+        """Test default domain is personal."""
+        assert get_default_domain() == "personal"
 
-    def test_load_builtin_domain_strategy(self):
-        """Test loading the built-in strategy domain."""
+    def test_load_builtin_domain_c_level(self):
+        """Test loading the built-in c-level domain."""
         try:
-            config = load_domain("strategy")
-            assert config.id == "strategy"
-            assert "CEO" in config.description or "Strategy" in config.name
+            config = load_domain("c-level")
+            assert config.id == "c-level"
+            assert "CEO" in config.description or "C-Level" in config.name or "Executive" in config.description
         except ImportError:
             pytest.skip("PyYAML not installed")
 
@@ -34,5 +34,7 @@ class TestDomainSystem:
 
     def test_domain_exists_check(self):
         """Test domain_exists utility."""
-        assert domain_exists("strategy") is True
+        assert domain_exists("personal") is True
+        assert domain_exists("c-level") is True
         assert domain_exists("completely_fake_domain") is False
+

@@ -17,10 +17,10 @@ Set a new development goal for tracking and sparring.
 
 Goals are automatically categorized based on description:
 
-- **strategy** - Vision, Fundraising, Planning (Strategy)
+- **c-level** - Vision, Fundraising, Planning (Executive)
 - **product** - Roadmap, specs, user research (Product)
 - **engineering** - Architecture, code, devops (Engineering)
-- **growth** - Acquisition, campaigns, experiments (Growth)
+- **marketing-growth** - Acquisition, campaigns, experiments (Growth)
 - **sales** - Pipeline, closing, outreach (Sales)
 - **operations** - Finance, legal, systems (Ops)
 - **people** - Hiring, culture, feedback (People)
@@ -59,7 +59,7 @@ print(f"Active goals: {len(open_goals)}")
 
 ## Example
 
-**User**: `/sparring --domain=growth goal "Launch localized campaign in DACH"`
+**User**: `/sparring --domain=marketing-growth goal "Launch localized campaign in DACH"`
 
 **Response**:
 
@@ -86,4 +86,3 @@ starting new ones to avoid context switching.
 
 Use `/sparring goals` to review your active goals.
 ```
-

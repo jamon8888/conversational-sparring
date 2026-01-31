@@ -67,7 +67,7 @@ This looks like a Strategic Objective. Let's make it actionable.
 
 ```python
 # Suggestion:
-/sparring --domain=business goal "Sign 5 new enterprise partners in DACH region"
+/sparring --domain=c-level goal "Sign 5 new enterprise partners in DACH region"
 ```
 
 ## Goal Quality Checklist (SMART for Business)

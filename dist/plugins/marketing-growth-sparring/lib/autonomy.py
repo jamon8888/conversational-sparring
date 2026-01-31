@@ -12,6 +12,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
+from .ledger import SparringLedger
 from .mirror import SparringMirror
 from .rsm import SparringRSM
 
@@ -42,12 +43,27 @@ class SparringAutonomy:
 
     def __init__(
         self,
-        mirror: SparringMirror,
-        rsm: SparringRSM,
+        ledger: SparringLedger,
+        rsm: Optional[SparringRSM] = None,
         thresholds: Optional[Dict[str, int]] = None
     ) -> None:
-        self.mirror = mirror
-        self.rsm = rsm
+        """Initialize autonomy kernel.
+
+        Args:
+            ledger: The sparring ledger
+            rsm: Optional RSM (created if not provided)
+            thresholds: Optional threshold overrides
+        """
+        # Create Mirror from ledger
+        self.mirror = SparringMirror(ledger)
+        self.mirror.rebuild()
+
+        # Create or use provided RSM (RSM needs the mirror, not the ledger)
+        if rsm is None:
+            self.rsm = SparringRSM(self.mirror)
+        else:
+            self.rsm = rsm
+
         self.thresholds = {**self.DEFAULT_THRESHOLDS, **(thresholds or {})}
 
     def decide_next_action(self) -> SparringDecision:

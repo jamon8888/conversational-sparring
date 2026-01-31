@@ -62,26 +62,26 @@ This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
-| `revenue-analytics` | Professional workflow for revenue analytics |
 | `ad-copywriting` | Professional workflow for ad copywriting |
-| `content-distribution` | Professional workflow for content distribution |
+| `aws-solution-architect` | Professional workflow for aws solution architect |
+| `opportunity-scorer` | Professional workflow for opportunity scorer |
+| `social-media-analyzer` | Professional workflow for social media analyzer |
+| `lead-qualification` | Professional workflow for lead qualification |
+| `docx` | Professional workflow for docx |
 | `product-manager-toolkit` | Professional workflow for product manager toolkit |
-| `opportunity-discovery` | Professional workflow for opportunity discovery |
-| `ceo-advisor` | Professional workflow for ceo advisor |
-| `pricing-packaging` | Professional workflow for pricing packaging |
 | `growth-analytics` | Professional workflow for growth analytics |
+| `pdf` | Professional workflow for pdf |
+| `ceo-advisor` | Professional workflow for ceo advisor |
+| `email-marketing` | Professional workflow for email marketing |
+| `content-creator` | Professional workflow for content creator |
 | `product-launch-orchestration` | Professional workflow for product launch orchestration |
+| `content-distribution` | Professional workflow for content distribution |
+| `revenue-analytics` | Professional workflow for revenue analytics |
+| `pricing-packaging` | Professional workflow for pricing packaging |
+| `pptx` | Professional workflow for pptx |
 | `senior-fullstack` | Professional workflow for senior fullstack |
 | `marketing-demand-acquisition` | Professional workflow for marketing demand acquisition |
-| `content-creator` | Professional workflow for content creator |
-| `opportunity-scorer` | Professional workflow for opportunity scorer |
-| `email-marketing` | Professional workflow for email marketing |
-| `aws-solution-architect` | Professional workflow for aws solution architect |
-| `pptx` | Professional workflow for pptx |
-| `docx` | Professional workflow for docx |
-| `social-media-analyzer` | Professional workflow for social media analyzer |
 | `market-analyst` | Professional workflow for market analyst |
-| `pdf` | Professional workflow for pdf |
 
 ---
 

@@ -62,20 +62,20 @@ This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
-| `video-marketing` | Professional workflow for video marketing |
-| `content-personalization` | Professional workflow for content personalization |
-| `storytelling` | Professional workflow for storytelling |
 | `social-media-content` | Professional workflow for social media content |
 | `landing-page-copy` | Professional workflow for landing page copy |
-| `seo-blog-writing` | Professional workflow for seo blog writing |
 | `ad-copywriting` | Professional workflow for ad copywriting |
-| `brand-guidelines` | Professional workflow for brand guidelines |
 | `content-creator` | Professional workflow for content creator |
+| `storytelling` | Professional workflow for storytelling |
+| `podcasting` | Professional workflow for podcasting |
+| `seo-blog-writing` | Professional workflow for seo blog writing |
 | `content-repurposing` | Professional workflow for content repurposing |
 | `social-calendar-system` | Professional workflow for social calendar system |
 | `brand-narrative-playbook` | Professional workflow for brand narrative playbook |
-| `podcasting` | Professional workflow for podcasting |
 | `content-strategy` | Professional workflow for content strategy |
+| `content-personalization` | Professional workflow for content personalization |
+| `video-marketing` | Professional workflow for video marketing |
+| `brand-guidelines` | Professional workflow for brand guidelines |
 
 ---
 

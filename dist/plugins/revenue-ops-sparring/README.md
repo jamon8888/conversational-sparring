@@ -62,18 +62,18 @@ This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
-| `marketing-analytics` | Professional workflow for marketing analytics |
-| `revenue-analytics` | Professional workflow for revenue analytics |
-| `pptx` | Professional workflow for pptx |
-| `process-automation` | Professional workflow for process automation |
 | `pipeline-forecasting` | Professional workflow for pipeline forecasting |
-| `crm-hygiene` | Professional workflow for crm hygiene |
-| `docx` | Professional workflow for docx |
-| `pricing-packaging` | Professional workflow for pricing packaging |
 | `sales-marketing-alignment` | Professional workflow for sales marketing alignment |
+| `pptx` | Professional workflow for pptx |
+| `docx` | Professional workflow for docx |
+| `revenue-analytics` | Professional workflow for revenue analytics |
+| `marketing-analytics` | Professional workflow for marketing analytics |
+| `crm-hygiene` | Professional workflow for crm hygiene |
 | `growth-analytics` | Professional workflow for growth analytics |
-| `pdf` | Professional workflow for pdf |
+| `process-automation` | Professional workflow for process automation |
 | `attribution-roi` | Professional workflow for attribution roi |
+| `pricing-packaging` | Professional workflow for pricing packaging |
+| `pdf` | Professional workflow for pdf |
 
 ---
 

@@ -14,6 +14,7 @@ from typing import Any, Dict, List, Optional, TYPE_CHECKING
 
 if TYPE_CHECKING:
     from .domains import DomainConfig
+    from .mirror import SparringMirror
 
 try:
     from .ledger import SparringLedger
@@ -61,6 +62,7 @@ class GoalManager:
         ledger: SparringLedger,
         domain: Optional["DomainConfig"] = None,
         domain_id: Optional[str] = None,
+        mirror: Optional["SparringMirror"] = None,
     ) -> None:
         """Initialize GoalManager.
 
@@ -68,8 +70,10 @@ class GoalManager:
             ledger: Sparring ledger instance
             domain: Optional pre-loaded domain config
             domain_id: Optional domain ID to load (ignored if domain provided)
+            mirror: Optional Mirror for O(1) goal lookups (recommended)
         """
         self.ledger = ledger
+        self._mirror = mirror
 
         # Load domain config
         if domain is not None:
@@ -108,6 +112,72 @@ class GoalManager:
         description = (description or "").strip()
         if not description:
             raise ValueError("Goal description cannot be empty")
+
+        # Create session_start event if this is the first goal in a new session
+        # Check last 50 events for a recent session_start
+        recent_events = self.ledger.read_tail(limit=50)
+        has_recent_session = False
+
+        if recent_events:
+            from datetime import datetime, timezone, timedelta
+
+            # Check if any session_start in last hour
+            cutoff_time = datetime.now(timezone.utc) - timedelta(hours=1)
+            for event in reversed(recent_events):  # Most recent first
+                if event["kind"] == "session_start":
+                    event_time = datetime.fromisoformat(event["ts"].replace("Z", "+00:00"))
+                    if event_time > cutoff_time:
+                        has_recent_session = True
+                    break
+
+        if not has_recent_session:
+            from datetime import datetime, timezone
+
+            session_meta = {
+                "trigger": "goal_creation",
+            }
+
+            # Include domain if available
+            if self._domain:
+                session_meta["domain"] = self._domain.id
+
+            self.ledger.append(
+                kind="session_start",
+                content=json.dumps({
+                    "domain": self._domain.id if self._domain else "personal",
+                    "trigger": "goal_creation",
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                }, sort_keys=True),
+                meta=session_meta,
+            )
+
+        # Detect cognitive mode (LEARNING vs DECISION)
+        try:
+            from .cognition import CognitiveRouter
+
+            router = CognitiveRouter(self.ledger)
+            mode, confidence = router.determine_mode(description)
+            ere_level = router.get_current_ere_level()
+
+            # Persist cognitive mode to ledger
+            self.ledger.append(
+                kind="cognitive_mode_switch",
+                content=json.dumps({
+                    "mode": mode.value,
+                    "confidence": confidence,
+                    "ere_level": ere_level.value,
+                    "context": description[:100],
+                }, sort_keys=True),
+                meta={
+                    "mode": mode.value,
+                    "confidence": confidence,
+                    "ere_level": ere_level.value,
+                    "ere_name": ere_level.name,
+                },
+            )
+        except ImportError:
+            # Cognition module not available, skip
+            pass
 
         # Detect category from description if not provided
         if not category:
@@ -219,6 +289,14 @@ class GoalManager:
         # Record achievement for successful completion
         if outcome == "success":
             self._record_achievement(goal_id, duration_days)
+
+        # Pattern detection is now LAZY for performance optimization.
+        # Patterns are analyzed on-demand via:
+        # 1. /sparring patterns command
+        # 2. Periodic autonomy checks (SparringAutonomy.decide_next_action())
+        # 
+        # This avoids O(500) ledger scan on every goal close.
+        # See: lib/patterns.py, commands/sparring-patterns.md
 
         return True
 
@@ -347,6 +425,61 @@ class GoalManager:
             "stalled_count": len([g for g in open_goals if g["is_stalled"]]),
         }
 
+    def prompt_reflection(
+        self,
+        prompt: Optional[str] = None,
+        context: Optional[str] = None,
+        goal_ids: Optional[List[str]] = None,
+    ) -> str:
+        """Create a reflection prompt event.
+
+        Args:
+            prompt: Custom reflection prompt (auto-generated if not provided)
+            context: Context for the reflection
+            goal_ids: Related goal IDs
+
+        Returns:
+            Reflection event ID
+        """
+        from datetime import datetime, timezone
+
+        # Auto-generate prompt if not provided
+        if not prompt:
+            stats = self.get_goal_stats()
+            closed_count = stats["total_closed"]
+            if closed_count > 0:
+                prompt = f"You've completed {closed_count} goal(s) recently. What patterns do you notice in your work?"
+            else:
+                prompt = "Take a moment to reflect on your current goals and progress."
+
+        # Create event ID
+        event_id = sha1(f"reflection_{datetime.now(timezone.utc).isoformat()}".encode()).hexdigest()[:8]
+
+        content_data = {
+            "prompt": prompt,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+        }
+
+        meta_data = {
+            "reflection_id": event_id,
+        }
+
+        if context:
+            content_data["context"] = context
+            meta_data["context"] = context[:100]
+
+        if goal_ids:
+            content_data["goal_ids"] = goal_ids
+            meta_data["goal_count"] = len(goal_ids)
+
+        self.ledger.append(
+            kind="reflection",
+            content=json.dumps(content_data, sort_keys=True),
+            meta=meta_data,
+        )
+
+        return event_id
+
     def _is_goal_open(self, goal_id: str) -> bool:
         """Check if a goal is currently open."""
         return goal_id in self._build_open_map()
@@ -356,7 +489,16 @@ class GoalManager:
         return self._build_open_map().get(goal_id)
 
     def _build_open_map(self) -> Dict[str, Dict[str, Any]]:
-        """Build map of currently open goals."""
+        """Build map of currently open goals.
+        
+        Uses Mirror for O(1) lookup when available, falls back to O(N) ledger scan.
+        """
+        # O(1) path: use Mirror if available
+        if self._mirror is not None:
+            self._mirror.sync()
+            return self._mirror.open_goals
+        
+        # O(N) fallback: scan ledger
         events = self.ledger.read_all()
         opens: Dict[str, Dict[str, Any]] = {}
 

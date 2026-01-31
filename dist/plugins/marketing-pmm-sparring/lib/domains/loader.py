@@ -292,9 +292,9 @@ def get_default_domain() -> str:
     """Get the default domain ID.
 
     Returns:
-        Default domain ID ("developer")
+        Default domain ID ("personal")
     """
-    return "strategy"
+    return "personal"
 
 
 def domain_exists(domain_id: str) -> bool:

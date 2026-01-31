@@ -26,13 +26,13 @@ You help users browse, install, and manage skills from the claude-skills reposit
 
 Bundles provide curated skill sets for specific roles:
 
-### CEO/Strategy Bundles (`@strategy/*`)
+### CEO/C-Level Bundles (`@c-level/*`)
 
-| Bundle               | Skills                                                  | Use Case          |
-| -------------------- | ------------------------------------------------------- | ----------------- |
-| `@strategy/starter`  | ceo-advisor                                             | Getting started   |
-| `@strategy/growth`   | ceo-advisor, product-strategist, marketing-strategy-pmm | Scaling company   |
-| `@strategy/complete` | Full suite                                              | Executive toolkit |
+| Bundle              | Skills                                                  | Use Case          |
+| ------------------- | ------------------------------------------------------- | ----------------- |
+| `@c-level/starter`  | ceo-advisor                                             | Getting started   |
+| `@c-level/growth`   | ceo-advisor, product-strategist, marketing-strategy-pmm | Scaling company   |
+| `@c-level/complete` | Full suite                                              | Executive toolkit |
 
 ### CTO/Engineering Bundles (`@engineering/*`)
 
@@ -50,13 +50,13 @@ Bundles provide curated skill sets for specific roles:
 | `@product/discovery` | product-manager-toolkit, ux-researcher-designer | User research focus |
 | `@product/complete`  | Full product suite                              | Product leadership  |
 
-### CMO/Growth Bundles (`@growth/*`)
+### CMO/Marketing Bundles (`@marketing/*`)
 
-| Bundle             | Skills                                                | Use Case             |
-| ------------------ | ----------------------------------------------------- | -------------------- |
-| `@growth/starter`  | content-creator, marketing-strategy-pmm               | Getting started      |
-| `@growth/demand`   | + marketing-demand-acquisition, social-media-analyzer | Demand gen           |
-| `@growth/complete` | Full marketing suite                                  | Marketing leadership |
+| Bundle                | Skills                                                | Use Case             |
+| --------------------- | ----------------------------------------------------- | -------------------- |
+| `@marketing/starter`  | content-creator, marketing-strategy-pmm               | Getting started      |
+| `@marketing/demand`   | + marketing-demand-acquisition, social-media-analyzer | Demand gen           |
+| `@marketing/complete` | Full marketing suite                                  | Marketing leadership |
 
 ### CRO/Sales Bundles (`@sales/*`)
 
@@ -108,7 +108,7 @@ registry = SkillsRegistry()
 manager = SkillsManager(ledger, registry)
 
 # Get current domain
-domain_id = ledger.get_current_domain() or "strategy"
+domain_id = ledger.get_current_domain() or "personal"
 domain = load_domain(domain_id)
 
 # List skills
@@ -155,8 +155,8 @@ Skills integrate with your sparring workflow:
 ### CEO Starting Out
 
 ```bash
-/sparring --domain=strategy
-/skills install @strategy/starter
+/sparring --domain=c-level
+/skills install @c-level/starter
 /sparring goal "Prepare board deck for Q1"
 ```
 
@@ -216,14 +216,14 @@ Usage Stats:
 ### `/skills bundles`
 
 ```
-## Strategy Bundles
+## C-Level Bundles
 
-### @strategy/starter
+### @c-level/starter
 Skills: ceo-advisor
 
-### @strategy/growth
+### @c-level/growth
 Skills: ceo-advisor, product-strategist, marketing-strategy-pmm
 
-### @strategy/complete
+### @c-level/complete
 Skills: ceo-advisor, product-strategist, senior-architect, marketing-strategy-pmm, risk-management-specialist
 ```

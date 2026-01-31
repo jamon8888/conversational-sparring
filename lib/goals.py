@@ -14,6 +14,7 @@ from typing import Any, Dict, List, Optional, TYPE_CHECKING
 
 if TYPE_CHECKING:
     from .domains import DomainConfig
+    from .mirror import SparringMirror
 
 try:
     from .ledger import SparringLedger
@@ -61,6 +62,7 @@ class GoalManager:
         ledger: SparringLedger,
         domain: Optional["DomainConfig"] = None,
         domain_id: Optional[str] = None,
+        mirror: Optional["SparringMirror"] = None,
     ) -> None:
         """Initialize GoalManager.
 
@@ -68,8 +70,10 @@ class GoalManager:
             ledger: Sparring ledger instance
             domain: Optional pre-loaded domain config
             domain_id: Optional domain ID to load (ignored if domain provided)
+            mirror: Optional Mirror for O(1) goal lookups (recommended)
         """
         self.ledger = ledger
+        self._mirror = mirror
 
         # Load domain config
         if domain is not None:
@@ -286,38 +290,13 @@ class GoalManager:
         if outcome == "success":
             self._record_achievement(goal_id, duration_days)
 
-        # Trigger pattern detection after goal closure
-        try:
-            from .patterns import PatternDetector
-
-            detector = PatternDetector(self.ledger, domain=self._domain)
-            patterns = detector.analyze()
-
-            # Persist detected patterns
-            for pattern in patterns:
-                # Only record if pattern is significant (warning or concern)
-                if pattern.severity in ["warning", "concern"]:
-                    self.ledger.append(
-                        kind="pattern_detected",
-                        content=json.dumps({
-                            "pattern": pattern.name,
-                            "description": pattern.description,
-                            "severity": pattern.severity,
-                            "occurrences": pattern.occurrences,
-                            "trend": pattern.trend,
-                            "goal_id": goal_id,
-                        }, sort_keys=True),
-                        meta={
-                            "pattern": pattern.name,
-                            "severity": pattern.severity,
-                            "occurrences": pattern.occurrences,
-                            "trend": pattern.trend,
-                            "goal_id": goal_id,
-                        },
-                    )
-        except (ImportError, Exception):
-            # Patterns module not available or error in analysis, skip
-            pass
+        # Pattern detection is now LAZY for performance optimization.
+        # Patterns are analyzed on-demand via:
+        # 1. /sparring patterns command
+        # 2. Periodic autonomy checks (SparringAutonomy.decide_next_action())
+        # 
+        # This avoids O(500) ledger scan on every goal close.
+        # See: lib/patterns.py, commands/sparring-patterns.md
 
         return True
 
@@ -510,7 +489,16 @@ class GoalManager:
         return self._build_open_map().get(goal_id)
 
     def _build_open_map(self) -> Dict[str, Dict[str, Any]]:
-        """Build map of currently open goals."""
+        """Build map of currently open goals.
+        
+        Uses Mirror for O(1) lookup when available, falls back to O(N) ledger scan.
+        """
+        # O(1) path: use Mirror if available
+        if self._mirror is not None:
+            self._mirror.sync()
+            return self._mirror.open_goals
+        
+        # O(N) fallback: scan ledger
         events = self.ledger.read_all()
         opens: Dict[str, Dict[str, Any]] = {}
 

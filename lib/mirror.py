@@ -185,3 +185,56 @@ class SparringMirror:
             "total_reflections": sum(self.reflection_counts.values())
         }
 
+    # --- Snapshot Persistence ---
+
+    def save_snapshot(self, path: str) -> None:
+        """Persist mirror state to JSON for fast startup.
+        
+        Args:
+            path: File path to save snapshot
+        """
+        with self._lock:
+            data = {
+                "open_goals": self.open_goals,
+                "closed_goals": self.closed_goals,
+                "reflection_counts": self.reflection_counts,
+                "goal_counts": self.goal_counts,
+                "last_event_id": self.last_event_id,
+                "current_domain": self.current_domain,
+                "metadata": self.metadata,
+            }
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=2)
+
+    def load_snapshot(self, path: str) -> bool:
+        """Load mirror state from JSON snapshot.
+        
+        Args:
+            path: File path to load snapshot from
+            
+        Returns:
+            True if loaded successfully, False otherwise
+        """
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            
+            with self._lock:
+                self.open_goals = data.get("open_goals", {})
+                self.closed_goals = data.get("closed_goals", {})
+                self.reflection_counts = data.get("reflection_counts", {})
+                self.goal_counts = data.get("goal_counts", {})
+                self.last_event_id = data.get("last_event_id", 0)
+                self.current_domain = data.get("current_domain", "developer")
+                self.metadata = data.get("metadata", {})
+            
+            return True
+        except (FileNotFoundError, json.JSONDecodeError, KeyError):
+            return False
+
+    def get_snapshot_path(self) -> str:
+        """Get default snapshot path."""
+        from pathlib import Path
+        sparring_dir = Path.home() / ".claude" / "sparring"
+        sparring_dir.mkdir(parents=True, exist_ok=True)
+        return str(sparring_dir / "mirror_snapshot.json")

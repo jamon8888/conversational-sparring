@@ -62,18 +62,18 @@ This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
-| `launch-plays` | Professional workflow for launch plays |
 | `product-marketing` | Professional workflow for product marketing |
 | `marketing-strategy-pmm` | Professional workflow for marketing strategy pmm |
-| `signal-intel` | Professional workflow for signal intel |
-| `webinars` | Professional workflow for webinars |
-| `user-onboarding` | Professional workflow for user onboarding |
-| `lead-magnets` | Professional workflow for lead magnets |
-| `partnership-development` | Professional workflow for partnership development |
-| `account-tiering` | Professional workflow for account tiering |
-| `positioning` | Professional workflow for positioning |
-| `sales-marketing-alignment` | Professional workflow for sales marketing alignment |
 | `product-launch-orchestration` | Professional workflow for product launch orchestration |
+| `sales-marketing-alignment` | Professional workflow for sales marketing alignment |
+| `partnership-development` | Professional workflow for partnership development |
+| `user-onboarding` | Professional workflow for user onboarding |
+| `webinars` | Professional workflow for webinars |
+| `account-tiering` | Professional workflow for account tiering |
+| `launch-plays` | Professional workflow for launch plays |
+| `lead-magnets` | Professional workflow for lead magnets |
+| `positioning` | Professional workflow for positioning |
+| `signal-intel` | Professional workflow for signal intel |
 
 ---
 

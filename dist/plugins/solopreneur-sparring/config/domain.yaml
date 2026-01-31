@@ -165,25 +165,31 @@ messages:
 
 # Recommended skills for Solopreneurs
 recommended_skills:
+  # Core building
   - senior-fullstack
   - product-manager-toolkit
+  - aws-solution-architect
+  # Marketing & Content
   - content-creator
   - marketing-demand-acquisition
+  - social-media-analyzer
+  - email-marketing
+  - ad-copywriting
+  - content-distribution
+  # Analytics & Strategy
   - ceo-advisor
-  - aws-solution-architect
+  - market-analyst
+  - opportunity-scorer
+  - growth-analytics
+  - revenue-analytics
+  # Launch & Sales
+  - product-launch-orchestration
+  - lead-qualification
+  - pricing-packaging
+  # Document tools
   - docx
   - pdf
   - pptx
-  - market-analyst
-  - opportunity-discovery
-  - opportunity-scorer
-  - product-launch-orchestration
-  - email-marketing
-  - growth-analytics
-  - ad-copywriting
-  - content-distribution
-  - pricing-packaging
-  - revenue-analytics
 
 # Skill bundles for progressive adoption
 skill_bundles:

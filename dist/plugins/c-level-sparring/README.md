@@ -62,21 +62,21 @@ This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
-| `marketing-strategy-pmm` | Professional workflow for marketing strategy pmm |
-| `pptx` | Professional workflow for pptx |
-| `docx` | Professional workflow for docx |
-| `cto-advisor` | Professional workflow for cto advisor |
-| `comparative-analyzer` | Professional workflow for comparative analyzer |
-| `revenue-analytics` | Professional workflow for revenue analytics |
 | `pipeline-forecasting` | Professional workflow for pipeline forecasting |
 | `ceo-advisor` | Professional workflow for ceo advisor |
+| `marketing-strategy-pmm` | Professional workflow for marketing strategy pmm |
+| `opportunity-scorer` | Professional workflow for opportunity scorer |
+| `comparative-analyzer` | Professional workflow for comparative analyzer |
+| `pptx` | Professional workflow for pptx |
+| `docx` | Professional workflow for docx |
+| `revenue-analytics` | Professional workflow for revenue analytics |
+| `product-strategist` | Professional workflow for product strategist |
+| `growth-analytics` | Professional workflow for growth analytics |
+| `senior-architect` | Professional workflow for senior architect |
 | `market-analyst` | Professional workflow for market analyst |
 | `pricing-packaging` | Professional workflow for pricing packaging |
-| `senior-architect` | Professional workflow for senior architect |
-| `opportunity-scorer` | Professional workflow for opportunity scorer |
-| `growth-analytics` | Professional workflow for growth analytics |
+| `cto-advisor` | Professional workflow for cto advisor |
 | `pdf` | Professional workflow for pdf |
-| `product-strategist` | Professional workflow for product strategist |
 
 ---
 

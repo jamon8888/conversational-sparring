@@ -62,22 +62,22 @@ This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
+| `tech-stack-evaluator` | Professional workflow for tech stack evaluator |
+| `senior-backend` | Professional workflow for senior backend |
+| `pdf` | Professional workflow for pdf |
+| `senior-frontend` | Professional workflow for senior frontend |
+| `senior-security` | Professional workflow for senior security |
 | `tdd-guide` | Professional workflow for tdd guide |
-| `aws-solution-architect` | Professional workflow for aws solution architect |
 | `pptx` | Professional workflow for pptx |
 | `docx` | Professional workflow for docx |
+| `aws-solution-architect` | Professional workflow for aws solution architect |
+| `senior-devops` | Professional workflow for senior devops |
+| `senior-fullstack` | Professional workflow for senior fullstack |
+| `code-reviewer` | Professional workflow for code reviewer |
+| `senior-architect` | Professional workflow for senior architect |
+| `senior-qa` | Professional workflow for senior qa |
 | `cto-advisor` | Professional workflow for cto advisor |
 | `senior-data-scientist` | Professional workflow for senior data scientist |
-| `tech-stack-evaluator` | Professional workflow for tech stack evaluator |
-| `code-reviewer` | Professional workflow for code reviewer |
-| `senior-devops` | Professional workflow for senior devops |
-| `senior-architect` | Professional workflow for senior architect |
-| `senior-backend` | Professional workflow for senior backend |
-| `senior-frontend` | Professional workflow for senior frontend |
-| `pdf` | Professional workflow for pdf |
-| `senior-security` | Professional workflow for senior security |
-| `senior-fullstack` | Professional workflow for senior fullstack |
-| `senior-qa` | Professional workflow for senior qa |
 
 ---
 

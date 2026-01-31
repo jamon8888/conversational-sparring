@@ -62,26 +62,26 @@ This plugin includes a curated suite of skills:
 
 | Skill | Description |
 | :--- | :--- |
-| `revenue-analytics` | Professional workflow for revenue analytics |
-| `pipeline-forecasting` | Professional workflow for pipeline forecasting |
-| `crm-hygiene` | Professional workflow for crm hygiene |
-| `social-selling` | Professional workflow for social selling |
-| `ceo-advisor` | Professional workflow for ceo advisor |
-| `pricing-packaging` | Professional workflow for pricing packaging |
-| `attribution-roi` | Professional workflow for attribution roi |
-| `objection-handling` | Professional workflow for objection handling |
 | `value-propositions` | Professional workflow for value propositions |
-| `discovery-calls` | Professional workflow for discovery calls |
-| `cold-outreach` | Professional workflow for cold outreach |
-| `marketing-demand-acquisition` | Professional workflow for marketing demand acquisition |
+| `sales-marketing-alignment` | Professional workflow for sales marketing alignment |
 | `lead-qualification` | Professional workflow for lead qualification |
+| `docx` | Professional workflow for docx |
+| `attribution-roi` | Professional workflow for attribution roi |
+| `pdf` | Professional workflow for pdf |
+| `pipeline-forecasting` | Professional workflow for pipeline forecasting |
+| `ceo-advisor` | Professional workflow for ceo advisor |
 | `content-creator` | Professional workflow for content creator |
+| `revenue-analytics` | Professional workflow for revenue analytics |
+| `discovery-calls` | Professional workflow for discovery calls |
+| `pricing-packaging` | Professional workflow for pricing packaging |
+| `social-selling` | Professional workflow for social selling |
 | `marketing-strategy-pmm` | Professional workflow for marketing strategy pmm |
 | `pptx` | Professional workflow for pptx |
-| `docx` | Professional workflow for docx |
+| `crm-hygiene` | Professional workflow for crm hygiene |
+| `cold-outreach` | Professional workflow for cold outreach |
 | `follow-up-sequences` | Professional workflow for follow up sequences |
-| `sales-marketing-alignment` | Professional workflow for sales marketing alignment |
-| `pdf` | Professional workflow for pdf |
+| `marketing-demand-acquisition` | Professional workflow for marketing demand acquisition |
+| `objection-handling` | Professional workflow for objection handling |
 
 ---
 
